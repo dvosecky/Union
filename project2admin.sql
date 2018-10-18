@@ -5,13 +5,19 @@ CREATE TABLE account (
     pw VARCHAR2(30),
     fname VARCHAR2(20),
     lname VARCHAR2(20),
-    dep_id NUMBER(10)
+    dep_id NUMBER(10),
+    CONSTRAINT account_pk PRIMARY KEY (acc_id),
+    CONSTRAINT account_fk FOREIGN KEY (dep_id)
+    REFERENCES department (dep_id)
 );
 
 CREATE TABLE department (
     dep_id NUMBER(10),
     dname VARCHAR2(20),
-    lead_id NUMBER(10)
+    lead_id NUMBER(10),
+    CONSTRAINT department_pk PRIMARY KEY (dep_id),
+    CONSTRAINT department_fk FOREIGN KEY (lead_id)
+    REFERENCES account (acc_id)
 );
 
 CREATE TABLE event (
