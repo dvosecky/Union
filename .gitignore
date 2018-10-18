@@ -1,6 +1,8 @@
 #Git stuff
 .classpath
 .settings
+target/
+Union/src/main/resources/*.xml
 
 # Compiled class file
 *.class
