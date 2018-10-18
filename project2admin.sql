@@ -41,6 +41,6 @@ CREATE TABLE invitation (
 CREATE TABLE keyperson (
     role_id NUMBER(2),
     acc_id NUMBER(10),
-    CONSTRAINT invitation_ev_fk FOREIGN KEY (ev_id)
-    REFERENCES account (ev_id)
+    CONSTRAINT keyperson_acc_fk FOREIGN KEY (acc_id)
+    REFERENCES account (acc_id)
 );
