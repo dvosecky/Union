@@ -1,3 +1,7 @@
+#Git stuff
+.classpath
+.settings
+
 # Compiled class file
 *.class
 
