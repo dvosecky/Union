@@ -1,8 +1,11 @@
+
 DROP TABLE account CASCADE CONSTRAINTS;
 DROP TABLE department CASCADE CONSTRAINTS;
 DROP TABLE event CASCADE CONSTRAINTS;
 DROP TABLE invitation CASCADE CONSTRAINTS;
 DROP TABLE keyperson CASCADE CONSTRAINTS;
+DROP TABLE adrelation  CASCADE CONSTRAINTS;
+DROP TABLE aerelation  CASCADE CONSTRAINTS;
 
 CREATE TABLE account (
     acc_id NUMBER(10),
@@ -34,7 +37,7 @@ CREATE TABLE event (
 CREATE TABLE aerelation (
     lead_id NUMBER(10),
     ev_id NUMBER(10) UNIQUE
-)
+);
 
 CREATE TABLE invitation (
     acc_id NUMBER(10),
@@ -62,3 +65,5 @@ ALTER TABLE invitation ADD CONSTRAINT invitation_ev_fk FOREIGN KEY (ev_id)
     REFERENCES event (ev_id);
 ALTER TABLE keyperson ADD CONSTRAINT keyperson_acc_fk FOREIGN KEY (acc_id)
     REFERENCES account (acc_id);
+    
+commit;

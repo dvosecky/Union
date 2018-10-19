@@ -23,51 +23,7 @@ public class Department {
 	@Column(name="dname")
 	private String dname;
 
-	@ManyToOne
-	@JoinColumn(name="lead_id")
-	private Account lead_id;
-
-	public Integer getDep_id() {
-		return dep_id;
-	}
-
-	public void setDep_id(Integer dep_id) {
-		this.dep_id = dep_id;
-	}
-
-	public String getDname() {
-		return dname;
-	}
-
-	public void setDname(String dname) {
-		this.dname = dname;
-	}
-
-	public Account getLead_id() {
-		return lead_id;
-	}
-
-	public void setLead_id(Account lead_id) {
-		this.lead_id = lead_id;
-	}
-
-	@Override
-	public String toString() {
-		return "Department [dep_id=" + dep_id + ", dname=" + dname + ", lead_id=" + lead_id + "]";
-	}
-
-	public Department(Integer dep_id, String dname, Account lead_id) {
-		super();
-		this.dep_id = dep_id;
-		this.dname = dname;
-		this.lead_id = lead_id;
-	}
-
-	public Department() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
+	//dont forget 
 	
 }
 
