@@ -30,7 +30,7 @@
 		</property>
 
 		<property name="hibernate.connection.password">
-			
+			ilovedogs
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 
@@ -60,12 +60,10 @@
 
 	<!-- 	<mapping resource="candy.hbm.xml" /> -->
 		<mapping class="com.revature.beans.Account" />
-		<mapping class="com.revature.beans.Adrelation" />
-		<mapping class="com.revature.beans.Aerelation"/>
 		<mapping class="com.revature.beans.Department"/>
 		<mapping class="com.revature.beans.Event"/>
-		<mapping class="com.revature.beans.Invitation" /> 
 		<mapping class="com.revature.beans.Keyperson" /> 
+		 
 
 
 	</session-factory>
