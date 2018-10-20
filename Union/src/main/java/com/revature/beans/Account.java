@@ -15,9 +15,10 @@ import javax.persistence.Table;
 public class Account {
 	@Id
 	@Column(name = "acc_id")
-	@SequenceGenerator(sequenceName="acc_seq", name="accName")
-	@GeneratedValue(generator="javaName", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName="acc_seq", name="acc_seq")
+	@GeneratedValue(generator="acc_seq", strategy=GenerationType.SEQUENCE)
 	private Integer id;
+	
 	@Column(name = "uname")
 	private String username;
 	@Column(name = "fname")

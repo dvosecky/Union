@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,10 +18,23 @@ public class Event {
 	private Integer id;
 	@Column(name = "ename")
 	private String name;
-	@ManyToOne
-	@JoinColumn(name = "lead_id")
-	private Account lead;
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", name=" + name + "]";
+	}
+	public Event() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Event(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -36,24 +47,7 @@ public class Event {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Account getLead() {
-		return lead;
-	}
-	public void setLead(Account lead) {
-		this.lead = lead;
-	}
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", lead=" + lead + "]";
-	}
-	public Event(int id, String name, Account lead) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.lead = lead;
-	}
-	public Event() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
+
+	
 }
