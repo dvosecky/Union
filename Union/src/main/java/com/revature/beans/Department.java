@@ -30,7 +30,7 @@ public class Department {
 	@ManyToMany
 	@JoinTable(name="adrelation",
 	joinColumns= @JoinColumn(name="dep_id"),
-	inverseJoinColumns=@JoinColumn(name="acc_id"))
+	inverseJoinColumns=@JoinColumn(name="lead_id"))
 	private List<Account> accounts;
 
 

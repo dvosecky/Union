@@ -6,17 +6,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.beans.Account;
+import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
 
-public class AccountDaoImpl {
-
-	public Account selectAccountById( Integer id) {
-		Account account = null;
+public class DepartmentDaoImpl {
+	public Department selectDepartmentById(Integer id) {
+		Department dep = null;
 		Session session= HibernateUtil.getSession();
 		
 		try {
-		account = (Account) session.get(Account.class, id);
+		dep = (Department) session.get(Department.class, id);
 		}catch( HibernateException e) {
 			e.printStackTrace();
 		}finally {
@@ -24,17 +23,17 @@ public class AccountDaoImpl {
 		}
 		
 		
-		return account;
+		return dep;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
 	public void criteriaGetAll() {
 		Session session = HibernateUtil.getSession();
-		List<Account> accounts=null;
+		List<Department> deps = null;
 
 		try {
-			accounts= session.createCriteria("FROM Account").list();
+			deps = session.createCriteria("FROM Department").list();
 
 			
 		}catch(Exception e) {//atch( HibernateException e) {
@@ -44,7 +43,7 @@ public class AccountDaoImpl {
 			session.close();
 		}
 
-		for(Account a : accounts) {
+		for(Department a : deps) {
 			System.out.println(a);
 		}
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
@@ -52,30 +51,30 @@ public class AccountDaoImpl {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Account> selectAllAccount(){
-		List<Account> accounts=null;
+	public List<Department> selectAllDepartment(){
+		List<Department> deps = null;
 		Session session = HibernateUtil.getSession();
 		
 		try {
-		accounts = session.createQuery("FROM Account").list();
+		deps = session.createQuery("FROM department").list();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
 		
-		return accounts;
+		return deps;
 		
 	}
 	
-	public Integer insertAccount(Account acc){
+	public Integer insertDepartment(Department dep){
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Integer id = null;
 		
 		try {
 			tx = session.beginTransaction();
-			id = (Integer)session.save(acc);
+			id = (Integer)session.save(dep);
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();

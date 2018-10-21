@@ -35,13 +35,13 @@ public class Account {
 	
 	@ManyToMany
 	@JoinTable(name="adrelation" ,
-				joinColumns= @JoinColumn(name="acc_id"),
+				joinColumns= @JoinColumn(name="lead_id"),
 				inverseJoinColumns=@JoinColumn(name="dep_id"))
 	private List<Department> departments;
 	
 	@ManyToMany
 	@JoinTable(name="aerelation",
-				joinColumns= @JoinColumn(name="acc_id"),
+				joinColumns= @JoinColumn(name="lead_id"),
 				inverseJoinColumns=@JoinColumn(name="ev_id"))
 	private List<Event> events;
 	
