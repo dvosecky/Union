@@ -56,7 +56,7 @@ public class AccountDaoImpl {
 		Session session = HibernateUtil.getSession();
 		
 		try {
-		accounts = session.createQuery("FROM account").list();
+		accounts = session.createQuery("FROM Account").list();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

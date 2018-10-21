@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,27 +36,26 @@ public class Account {
 	
 	@ManyToMany
 	@JoinTable(name="adrelation" ,
-				joinColumns= @JoinColumn(name="acc_id"),
-				inverseJoinColumns=@JoinColumn(name="dep_id"))
+				joinColumns= @JoinColumn(name="lead_id"),
+				inverseJoinColumns= @JoinColumn(name="dep_id") )
 	private List<Department> departments;
-	
+
 	@ManyToMany
 	@JoinTable(name="aerelation",
-				joinColumns= @JoinColumn(name="acc_id"),
-				inverseJoinColumns=@JoinColumn(name="ev_id"))
+				joinColumns= @JoinColumn(name="lead_id"),
+				inverseJoinColumns= @JoinColumn(name="ev_id"))
 	private List<Event> events;
 	
 	@ManyToMany
 	@JoinTable(name="invitation",
 				joinColumns= @JoinColumn(name="acc_id"),
-				inverseJoinColumns=@JoinColumn(name="ev_id"))
-	private List<Event> invitations;
-
+				inverseJoinColumns= @JoinColumn(name="ev_id"))
+	private List<Event> invites;
 	
 	
 	
 	public Account(Integer id, String username, String firstname, String lastname, Department dep,
-			List<Department> departments, List<Event> events, List<Event> invitations) {
+			List<Department> departments,List<Event> events,List<Event> invites ) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -64,7 +64,8 @@ public class Account {
 		this.dep = dep;
 		this.departments = departments;
 		this.events = events;
-		this.invitations = invitations;
+		this.invites=invites;
+
 	}
 
 	public Account() {
@@ -75,8 +76,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + ", departments=" + departments + ", events=" + events + ", invitations="
-				+ invitations + "]";
+				+ ", dep=" + dep + "]";
 	}
 
 	public Integer getId() {
@@ -135,12 +135,12 @@ public class Account {
 		this.events = events;
 	}
 
-	public List<Event> getInvitations() {
-		return invitations;
+	public List<Event> getInvites() {
+		return invites;
 	}
 
-	public void setInvitations(List<Event> invitations) {
-		this.invitations = invitations;
+	public void setInvites(List<Event> invites) {
+		this.invites = invites;
 	}
 	
 	

@@ -11,12 +11,13 @@ public class Driver {
 		List<Account> accounts;
 		
 		accounts=account.selectAllAccount();
-		
+	
 		for( Account a: accounts) {
 			System.out.println(a);
 		}
 		
 		
+		System.out.println("===================================");
 		System.exit(0);
 
 	}

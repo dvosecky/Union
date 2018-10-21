@@ -24,27 +24,25 @@ public class Event {
 	@Column(name = "ename")
 	private String name;
 	
-	
 	@ManyToMany
 	@JoinTable(name="aerelation",
 	joinColumns= @JoinColumn(name="ev_id"),
-	inverseJoinColumns=@JoinColumn(name="acc_id"))
+	inverseJoinColumns=@JoinColumn(name="lead_id"))
 	private List<Account> accounts;
 	
 	@ManyToMany
 	@JoinTable(name="invitation",
 	joinColumns= @JoinColumn(name="ev_id"),
 	inverseJoinColumns=@JoinColumn(name="acc_id"))
-	private List<Account> invitation;
-
+	private List<Account> events;
 	
-	
-	public Event(Integer id, String name, List<Account> accounts, List<Account> invitation) {
+	public Event(Integer id, String name, List<Account> accounts,List<Account> events) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.accounts = accounts;
-		this.invitation = invitation;
+		this.events=events;
+	
 	}
 
 	public Event() {
@@ -54,7 +52,7 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", accounts=" + accounts + ", invitation=" + invitation + "]";
+		return "Event [id=" + id + ", name=" + name + "]";
 	}
 
 	public Integer getId() {
@@ -81,15 +79,13 @@ public class Event {
 		this.accounts = accounts;
 	}
 
-	public List<Account> getInvitation() {
-		return invitation;
+	public List<Account> getEvents() {
+		return events;
 	}
 
-	public void setInvitation(List<Account> invitation) {
-		this.invitation = invitation;
+	public void setEvents(List<Account> events) {
+		this.events = events;
 	}
-	
-	
 	
 	
 

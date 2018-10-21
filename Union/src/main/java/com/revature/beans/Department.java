@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,12 +31,21 @@ public class Department {
 	@ManyToMany
 	@JoinTable(name="adrelation",
 	joinColumns= @JoinColumn(name="dep_id"),
-	inverseJoinColumns=@JoinColumn(name="acc_id"))
+	inverseJoinColumns= @JoinColumn(name="lead_id"))
+	
 	private List<Account> accounts;
 
 
 	
 	
+	public Department(Integer dep_id, String dname, List<Account> accounts) {
+		super();
+		this.dep_id = dep_id;
+		this.dname = dname;
+		this.accounts = accounts;
+	}
+
+
 	public Department() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,7 +54,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [dep_id=" + dep_id + ", dname=" + dname + ", accounts=" + accounts + "]";
+		return "Department [dep_id=" + dep_id + ", dname=" + dname + "]";
 	}
 
 
