@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // request code
-    alert("email: " + this.email + ", password: " + this.password);
+    // alert("email: " + this.email + ", password: " + this.password);
     // send httpRequest to get user information, including user type, which 
     // we need to know to determine which welcome page to go to"
     
