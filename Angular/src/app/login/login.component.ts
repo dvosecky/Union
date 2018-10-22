@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // request code
-    // alert("email: " + this.email + ", password: " + this.password);
-    this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
+    alert("email: " + this.email + ", password: " + this.password);
+    // this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
   }
 
   ngOnInit() {
