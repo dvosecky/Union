@@ -15,7 +15,26 @@ export class LoginComponent implements OnInit {
   
   constructor(private router :Router, private route: ActivatedRoute) { }
 
+  private validateEmail() {
+    if (this.email === undefined || this.email === "") {
+      return false;
+    }
+    return true;
+  }
+
+  private validatePassword() {
+    if (this.password == undefined || this.password === "") {
+      return false;
+    }
+    return true;
+  }
+
   onSubmit() {
+    if (!this.validateEmail() || !this.validatePassword()) {
+      alert('Invalid email or password');
+      return;
+    }
+
     // request code
     // alert("email: " + this.email + ", password: " + this.password);
     // send httpRequest to get user information, including user type, which 
