@@ -7,12 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EmpWelcomeComponent } from './emp-welcome/emp-welcome.component';
+import { AdminWelcomeComponent } from './admin-welcome/admin-welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EmpWelcomeComponent
+    EmpWelcomeComponent,
+    AdminWelcomeComponent
   ],
   imports: [
     BrowserModule,
