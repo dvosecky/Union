@@ -8,15 +8,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar11">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"> <a class="nav-link" href="#">View Your Events</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">View Events</a> </li>
           <li class="nav-item" style=""> <a class="nav-link" href="#">Request A New Event</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Send An Invite</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">Manage My Events</a> </li>
         </ul>
-        <a class="btn navbar-btn ml-md-2 text-white btn-danger">Logout</a>
+        <a class="btn navbar-btn ml-md-2 text-white btn-danger" (click)=logout()>Logout</a>
       </div>
     </div>
   </nav>
-  <div class="filter-dark py-0 h-50 cover bg-fixed" style="	background-image: url(&quot;dallas.jpg&quot;);	background-position: center;	background-repeat: no-repeat;	background-size: 1;" id="mission">
+  <div class="filter-dark py-0 h-50 cover bg-fixed" style="	background-image: url(assets/dallas.jpg);	background-position: center;	background-repeat: no-repeat;	background-size: 1;" id="mission">
     <div class="container my-auto">
       <div class="row">
         <div class="col-md-8 p-3 text-white my-4 mb-5">
@@ -38,7 +38,7 @@
                   <a class="btn btn-block btn-lg btn-dark" href="#"><i class="fa fa-fw fa-list"></i>View Your Events</a>
                 </div>
               </div>
-              <p class="text-muted">View a full list of all your events that you have been invited to.</p>
+              <p class="text-muted">View a list of all events that you have been invited to</p>
             </div>
             <div class="p-3 col-lg-4 col-md-6">
               <div class="row mb-3">
@@ -50,9 +50,9 @@
             </div>
             <div class="p-3 col-lg-4 col-9">
               <div class="row mb-3">
-                <div class="col-md-12"><a class="btn btn-block btn-lg btn-dark px-3" href="#"><i class="fa fa-fw fa-send"></i>Send An Invite</a></div>
+                <div class="col-md-12"><a class="btn btn-block btn-lg btn-dark px-3" href="#"><i class="fa fa-fw fa-send"></i>Manage My Events</a></div>
               </div>
-              <p class="text-muted" contenteditable="true">Send an invite to your co-workers today!</p>
+              <p class="text-muted" contenteditable="true">Manage events you have created</p>
             </div>
           </div>
         </div>
