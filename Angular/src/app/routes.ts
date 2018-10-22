@@ -6,7 +6,7 @@ import { Routes } from '@angular/router';
 export const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'emp-welcome', component: EmpWelcomeComponent},
-    { path: 'admin-welcome', component: AdminWelcomeComponent}
+    { path: 'admin-welcome', component: AdminWelcomeComponent},
     { path: '',
       redirectTo: 'login',
       pathMatch: 'full' // what is this for?
