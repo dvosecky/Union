@@ -334,13 +334,13 @@ h6, .h6 {
   font-weight: 300; }
 
 .display-1 {
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 300;
   line-height: 1.5; }
 
   @media screen and (max-width: 500px) {
     .display-1{
-      font-size: 3.5rem;
+      font-size: 4rem;
     }
   }
 
