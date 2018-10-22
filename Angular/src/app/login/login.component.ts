@@ -7,8 +7,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-// NEED TO VALIDATE INPUT
-
 export class LoginComponent implements OnInit {
   email :string;
   password :string;
@@ -35,8 +33,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    // request code
-    // alert("email: " + this.email + ", password: " + this.password);
     // send httpRequest to get user information, including user type, which 
     // we need to know to determine which welcome page to go to"
     
