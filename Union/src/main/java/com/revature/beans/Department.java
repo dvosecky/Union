@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,6 +38,13 @@ public class Department {
 
 	
 	
+	public Department(Integer dep_id, String dname) {
+		super();
+		this.dep_id = dep_id;
+		this.dname = dname;
+	}
+
+
 	public Department(Integer dep_id, String dname, List<Account> accounts) {
 		super();
 		this.dep_id = dep_id;
