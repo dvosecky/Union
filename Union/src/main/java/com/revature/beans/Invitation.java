@@ -13,24 +13,24 @@ import javax.persistence.Table;
 public class Invitation {
 	@ManyToOne
 	@JoinColumn(name = "acc_id")
-	private List<Account> accs;
+	private Account accs;
 	@ManyToOne
 	@JoinColumn(name = "ev_id")
-	private List<Event> evs;
+	private Event evs;
 	@Column(name = "priv_flag")
 	private int privilegeFlag;
 	@Column(name = "accept_flag")
 	private int acceptFlag;
-	public List<Account> getAccs() {
+	public Account getAccs() {
 		return accs;
 	}
-	public void setAccs(List<Account> accs) {
+	public void setAccs(Account accs) {
 		this.accs = accs;
 	}
-	public List<Event> getEvs() {
+	public Event getEvs() {
 		return evs;
 	}
-	public void setEvs(List<Event> evs) {
+	public void setEvs(Event evs) {
 		this.evs = evs;
 	}
 	public int getPrivilegeFlag() {

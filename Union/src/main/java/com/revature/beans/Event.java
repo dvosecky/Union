@@ -20,7 +20,7 @@ public class Event {
 	@Column(name = "ev_id")
 	@SequenceGenerator(sequenceName="MY_SEQ", name="javaName")
 	@GeneratedValue(generator="javaName", strategy=GenerationType.SEQUENCE)
-	private Integer id;
+	private Integer id; 
 	@Column(name = "ename")
 	private String name;
 	
@@ -31,20 +31,11 @@ public class Event {
 	inverseJoinColumns=@JoinColumn(name="acc_id"))
 	private List<Account> accounts;
 	
-	@ManyToMany
-	@JoinTable(name="invitation",
-	joinColumns= @JoinColumn(name="ev_id"),
-	inverseJoinColumns=@JoinColumn(name="acc_id"))
-	private List<Account> invitation;
-
-	
-	
-	public Event(Integer id, String name, List<Account> accounts, List<Account> invitation) {
+	public Event(Integer id, String name, List<Account> accounts) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.accounts = accounts;
-		this.invitation = invitation;
 	}
 
 	public Event() {
@@ -80,18 +71,5 @@ public class Event {
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
-
-	public List<Account> getInvitation() {
-		return invitation;
-	}
-
-	public void setInvitation(List<Account> invitation) {
-		this.invitation = invitation;
-	}
-	
-	
-	
-	
-
 	
 }

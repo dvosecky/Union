@@ -30,7 +30,8 @@ CREATE TABLE adrelation (
 
 CREATE TABLE event (
     ev_id NUMBER(10),
-    ename VARCHAR2(20),    
+    ename VARCHAR2(20),
+    etime TIMESTAMP,
     CONSTRAINT event_pk PRIMARY KEY (ev_id)
 );
 
@@ -41,7 +42,9 @@ CREATE TABLE aerelation (
 
 CREATE TABLE invitation (
     acc_id NUMBER(10),
-    ev_id NUMBER(10)
+    ev_id NUMBER(10),
+    accept_flag NUMBER(1),
+    priv_flag NUMBER(1)
 );
 
 CREATE TABLE keyperson (
@@ -68,6 +71,14 @@ ALTER TABLE keyperson ADD CONSTRAINT keyperson_acc_fk FOREIGN KEY (acc_id)
     
 INSERT INTO department VALUES(1, 'gogo');
 INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1);
+INSERT INTO account VALUES(2, 'a', 'a', 'a', 'a', 1);
 INSERT INTO adrelation VALUES(1, 1);
+INSERT INTO event VALUES(1, 'meeting');
+INSERT INTO invitation VALUES(1, 1, 0, 0);
+INSERT INTO invitation VALUES(2, 1, 0, 0);
+
+SELECT * FROM account;
+SELECT * FROM event;
+SELECT * FROM invitation;
 
 commit;
