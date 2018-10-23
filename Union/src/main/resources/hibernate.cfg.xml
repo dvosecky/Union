@@ -22,15 +22,15 @@
 		<property name="hibernate.connection.url">
 			<!-- jdbc:oracle:thin:@practicerd2.cosylogl4jcy.us-east-2.rds.amazonaws.com:1521:orcl
 		 -->
-		 jdbc:oracle:thin:@practicerd2.cosylogl4jcy.us-east-2.rds.amazonaws.com:1521/orcl
+		 jdbc:oracle:thin:@localhost:1521:xe
 		</property>
 
 		<property name="hibernate.connection.username">
-			floresrene1
+			SYSTEM
 		</property>
 
 		<property name="hibernate.connection.password">
-			ilovedogs
+			
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 
@@ -63,7 +63,6 @@
 		<mapping class="com.revature.beans.Department"/>
 		<mapping class="com.revature.beans.Event"/>
 		<mapping class="com.revature.beans.Keyperson" /> 
-		 
 
 
 	</session-factory>

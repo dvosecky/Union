@@ -54,7 +54,7 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", accounts=" + accounts + ", invitation=" + invitation + "]";
+		return "Event [id=" + id + ", name=" + name + ", accounts=" + accounts + "]";
 	}
 
 	public Integer getId() {

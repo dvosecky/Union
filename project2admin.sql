@@ -66,4 +66,8 @@ ALTER TABLE invitation ADD CONSTRAINT invitation_ev_fk FOREIGN KEY (ev_id)
 ALTER TABLE keyperson ADD CONSTRAINT keyperson_acc_fk FOREIGN KEY (acc_id)
     REFERENCES account (acc_id);
     
+INSERT INTO department VALUES(1, 'gogo');
+INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1);
+INSERT INTO adrelation VALUES(1, 1);
+
 commit;
