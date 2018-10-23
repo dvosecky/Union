@@ -49,12 +49,11 @@ public class Account {
 				inverseJoinColumns= @JoinColumn(name="ev_id"))
 	private List<Event> events;
 	
-	@OneToMany(mappedBy ="acc")
+	@OneToMany(mappedBy = "acc")
 	private List<Invitation> invites;
 	
-	
-	
-	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep) {
+	public Account(Integer id, String username, String firstname, String lastname, Department dep,
+			List<Department> departments, List<Event> events, List<Invitation> invites) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -75,7 +74,7 @@ public class Account {
 		this.dep = dep;
 		this.departments = departments;
 		this.events = events;
-		this.invites=invites;
+		this.invites = invites;
 
 	}
 
@@ -86,8 +85,10 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", username=" + username + ", password= "+password +", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + "]";
+		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", dep=" + dep + ", departments=" + departments + ", events=" + events + ", invites="
+				+ invites + "]";
+
 	}
 
 	public Integer getId() {
@@ -146,16 +147,6 @@ public class Account {
 		this.events = events;
 	}
 
-
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public List<Invitation> getInvites() {
 		return invites;
 	}
@@ -163,8 +154,8 @@ public class Account {
 	public void setInvites(List<Invitation> invites) {
 		this.invites = invites;
 	}
-	
-	
+
+
 	
 	
 }

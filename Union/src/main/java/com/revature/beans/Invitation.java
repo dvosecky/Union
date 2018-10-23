@@ -1,7 +1,5 @@
 package com.revature.beans;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "invitation")
 public class Invitation {
-	
 	@Id
 	@Column(name = "inv_id")
 	@SequenceGenerator(sequenceName="inv_seq", name="inv_seq")
@@ -67,7 +64,7 @@ public class Invitation {
 	}
 	@Override
 	public String toString() {
-		return "Invitation [privilegeFlag=" + privilegeFlag + ", acceptFlag=" + acceptFlag + "]";
+		return "Invitation [id=" + id + ", privilegeFlag=" + privilegeFlag + ", acceptFlag=" + acceptFlag + "]";
 	}
 	
 	
