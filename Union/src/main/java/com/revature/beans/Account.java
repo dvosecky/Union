@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -45,17 +46,11 @@ public class Account {
 				inverseJoinColumns=@JoinColumn(name="ev_id"))
 	private List<Event> events;
 	
-	@ManyToMany
-	@JoinTable(name="invitation",
-				joinColumns= @JoinColumn(name="acc_id"),
-				inverseJoinColumns=@JoinColumn(name="ev_id"))
-	private List<Event> invitations;
-
-	
-	
+	@OneToMany(mappedBy = "acc")
+	private List<Invitation> invites;
 	
 	public Account(Integer id, String username, String firstname, String lastname, Department dep,
-			List<Department> departments, List<Event> events, List<Event> invitations) {
+			List<Department> departments, List<Event> events, List<Invitation> invites) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -64,7 +59,7 @@ public class Account {
 		this.dep = dep;
 		this.departments = departments;
 		this.events = events;
-		this.invitations = invitations;
+		this.invites = invites;
 	}
 
 	public Account() {
@@ -75,8 +70,8 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + ", departments=" + departments + ", events=" + events + ", invitations="
-				+ invitations + "]";
+				+ ", dep=" + dep + ", departments=" + departments + ", events=" + events + ", invites="
+				+ invites + "]";
 	}
 
 	public Integer getId() {
@@ -135,12 +130,12 @@ public class Account {
 		this.events = events;
 	}
 
-	public List<Event> getInvitations() {
-		return invitations;
+	public List<Invitation> getInvites() {
+		return invites;
 	}
 
-	public void setInvitations(List<Event> invitations) {
-		this.invitations = invitations;
+	public void setInvites(List<Invitation> invites) {
+		this.invites = invites;
 	}
 	
 	

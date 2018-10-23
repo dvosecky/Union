@@ -41,10 +41,12 @@ CREATE TABLE aerelation (
 );
 
 CREATE TABLE invitation (
+    inv_id NUMBER(10),
     acc_id NUMBER(10),
     ev_id NUMBER(10),
     accept_flag NUMBER(1),
-    priv_flag NUMBER(1)
+    priv_flag NUMBER(1),
+    CONSTRAINT invitation_pk PRIMARY KEY (inv_id)
 );
 
 CREATE TABLE keyperson (
@@ -74,8 +76,8 @@ INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1);
 INSERT INTO account VALUES(2, 'a', 'a', 'a', 'a', 1);
 INSERT INTO adrelation VALUES(1, 1);
 INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('','dd-mm-yyy'));
-INSERT INTO invitation VALUES(1, 1, 0, 0);
-INSERT INTO invitation VALUES(2, 1, 0, 0);
+INSERT INTO invitation VALUES(1, 1, 1, 0, 0);
+INSERT INTO invitation VALUES(2, 2, 1, 0, 0);
 
 SELECT * FROM account;
 SELECT * FROM event;

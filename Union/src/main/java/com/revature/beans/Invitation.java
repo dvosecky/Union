@@ -1,37 +1,44 @@
 package com.revature.beans;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "invitation")
 public class Invitation {
+	@Id
+	@Column(name = "inv_id")
+	@SequenceGenerator(sequenceName="inv_seq", name="inv_seq")
+	@GeneratedValue(generator="inv_seq", strategy=GenerationType.SEQUENCE)
+	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "acc_id")
-	private Account accs;
+	private Account acc;
 	@ManyToOne
 	@JoinColumn(name = "ev_id")
-	private Event evs;
+	private Event ev;
 	@Column(name = "priv_flag")
 	private int privilegeFlag;
 	@Column(name = "accept_flag")
 	private int acceptFlag;
-	public Account getAccs() {
-		return accs;
+	public Account getacc() {
+		return acc;
 	}
-	public void setAccs(Account accs) {
-		this.accs = accs;
+	public void setacc(Account acc) {
+		this.acc = acc;
 	}
-	public Event getEvs() {
-		return evs;
+	public Event getev() {
+		return ev;
 	}
-	public void setEvs(Event evs) {
-		this.evs = evs;
+	public void setev(Event ev) {
+		this.ev = ev;
 	}
 	public int getPrivilegeFlag() {
 		return privilegeFlag;
@@ -56,7 +63,7 @@ public class Invitation {
 	}
 	@Override
 	public String toString() {
-		return "Invitation [privilegeFlag=" + privilegeFlag + ", acceptFlag=" + acceptFlag + "]";
+		return "Invitation [id=" + id + ", privilegeFlag=" + privilegeFlag + ", acceptFlag=" + acceptFlag + "]";
 	}
 	
 	
