@@ -7,7 +7,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import org.hibernate.criterion.Restrictions;
+
 
 import com.revature.beans.Account;
 import com.revature.beans.Department;
@@ -67,10 +69,12 @@ public class AccountDaoImpl {
 		Integer id=null;
 	
 		try {
+
 			tx = session.beginTransaction();
 			id=(Integer)session.save(account);
 			tx.commit();
 		}catch(HibernateException e) {
+
 			e.printStackTrace();
 		}finally {
 			session.close();
@@ -112,6 +116,7 @@ public class AccountDaoImpl {
 		return accounts;
 		
 	}
+
 
 	public Account getAccountByUsername( String username) {
 		Account account=null;

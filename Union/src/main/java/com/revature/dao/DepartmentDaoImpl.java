@@ -40,11 +40,11 @@ public class DepartmentDaoImpl {
 			session.delete(session.get(Department.class, id));
 			tx.commit();
 		}catch(HibernateException e) {
+
 			e.printStackTrace();
 		}finally {
 			session.close();
-		}
-		
+		}		
 		
 	}
 
@@ -65,4 +65,5 @@ public class DepartmentDaoImpl {
 		return departments;
 		
 	}
+
 }

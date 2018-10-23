@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -48,11 +49,8 @@ public class Account {
 				inverseJoinColumns= @JoinColumn(name="ev_id"))
 	private List<Event> events;
 	
-	@ManyToMany
-	@JoinTable(name="invitation",
-				joinColumns= @JoinColumn(name="acc_id"),
-				inverseJoinColumns= @JoinColumn(name="ev_id"))
-	private List<Event> invites;
+	@OneToMany(mappedBy ="acc")
+	private List<Invitation> invites;
 	
 	
 	
@@ -67,7 +65,7 @@ public class Account {
 	}
 
 	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep,
-			List<Department> departments,List<Event> events,List<Event> invites ) {
+			List<Department> departments,List<Event> events,List<Invitation> invites ) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -148,13 +146,7 @@ public class Account {
 		this.events = events;
 	}
 
-	public List<Event> getInvites() {
-		return invites;
-	}
 
-	public void setInvites(List<Event> invites) {
-		this.invites = invites;
-	}
 
 	public String getPassword() {
 		return password;
@@ -163,6 +155,15 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<Invitation> getInvites() {
+		return invites;
+	}
+
+	public void setInvites(List<Invitation> invites) {
+		this.invites = invites;
+	}
+	
 	
 	
 	

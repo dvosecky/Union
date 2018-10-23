@@ -6,6 +6,7 @@
 
 	<!-- This tag begins configuration detail for the hibernate app -->
 
+	
 	<session-factory>
 		<!-- This is like the jdbc class.forName() -->
 		<property name="hibernate.connection.driver_class">
@@ -19,15 +20,17 @@
 		</property>
 
 		<property name="hibernate.connection.url">
-			jdbc:oracle:thin:@localhost:1521:xe
+			<!-- jdbc:oracle:thin:@practicerd2.cosylogl4jcy.us-east-2.rds.amazonaws.com:1521:orcl
+		 -->
+		 jdbc:oracle:thin:@practicerd2.cosylogl4jcy.us-east-2.rds.amazonaws.com:1521/orcl
 		</property>
 
 		<property name="hibernate.connection.username">
-			local_1
+			floresrene1
 		</property>
 
 		<property name="hibernate.connection.password">
-			abc
+			ilovedogs
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 
@@ -55,14 +58,12 @@
 			update
 		</property>
 
-<!-- 		<mapping resource="candy.hbm.xml" />
-		<mapping class="com.revature.beans.Family" />
-		<mapping class="com.revature.beans.Member" />
-		<mapping class="com.revature.beans.Status"/>
-		<mapping class="com.revature.beans.Task"/>
-		<mapping class="com.revature.beans.TaskStatus"/>
-
-		<mapping class="com.revature.beans.Rank" /> -->
+	<!-- 	<mapping resource="candy.hbm.xml" /> -->
+		<mapping class="com.revature.beans.Account" />
+		<mapping class="com.revature.beans.Department"/>
+		<mapping class="com.revature.beans.Event"/>
+		<mapping class="com.revature.beans.Invitation" /> 
+		<mapping class="com.revature.beans.Keyperson" /> 
 
 
 	</session-factory>

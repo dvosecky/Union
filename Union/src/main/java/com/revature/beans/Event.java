@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "event")
@@ -21,28 +24,24 @@ public class Event {
 	@SequenceGenerator(sequenceName="MY_SEQ", name="javaName")
 	@GeneratedValue(generator="javaName", strategy=GenerationType.SEQUENCE)
 	private Integer id;
+	@Column(name = "etime")
+	private Timestamp time;
 	@Column(name = "ename")
 	private String name;
-	
-	@ManyToMany
+
+	@ManyToOne
+	@Cascade({CascadeType.ALL})
 	@JoinTable(name="aerelation",
 	joinColumns= @JoinColumn(name="ev_id"),
-	inverseJoinColumns=@JoinColumn(name="lead_id"))
-	private List<Account> accounts;
-	
-	@ManyToMany
-	@JoinTable(name="invitation",
-	joinColumns= @JoinColumn(name="ev_id"),
 	inverseJoinColumns=@JoinColumn(name="acc_id"))
-	private List<Account> events;
+	private Account account;
 	
-	public Event(Integer id, String name, List<Account> accounts,List<Account> events) {
+	public Event(Integer id, String name, Timestamp time, Account account) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.accounts = accounts;
-		this.events=events;
-	
+		this.time = time;
+		this.account = account;
 	}
 
 	public Event() {
@@ -52,7 +51,7 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + "]";
+		return "Event [id=" + id + ", name=" + name + ", time=" + time + "]";
 	}
 
 	public Integer getId() {
@@ -71,23 +70,20 @@ public class Event {
 		this.name = name;
 	}
 
-	public List<Account> getAccounts() {
-		return accounts;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
-	public List<Account> getEvents() {
-		return events;
+	public Timestamp getTime() {
+		return time;
 	}
 
-	public void setEvents(List<Account> events) {
-		this.events = events;
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
-	
-	
-
 	
 }
