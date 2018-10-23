@@ -73,7 +73,7 @@ INSERT INTO department VALUES(1, 'gogo');
 INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1);
 INSERT INTO account VALUES(2, 'a', 'a', 'a', 'a', 1);
 INSERT INTO adrelation VALUES(1, 1);
-INSERT INTO event VALUES(1, 'meeting');
+INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('','dd-mm-yyy'));
 INSERT INTO invitation VALUES(1, 1, 0, 0);
 INSERT INTO invitation VALUES(2, 1, 0, 0);
 
