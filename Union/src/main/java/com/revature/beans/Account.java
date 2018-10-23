@@ -26,6 +26,8 @@ public class Account {
 	
 	@Column(name = "uname")
 	private String username;
+	@Column(name="pw")
+	private String password;
 	@Column(name = "fname")
 	private String firstname;
 	@Column(name = "lname")
@@ -54,11 +56,22 @@ public class Account {
 	
 	
 	
-	public Account(Integer id, String username, String firstname, String lastname, Department dep,
+	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password=password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.dep = dep;
+	}
+
+	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep,
 			List<Department> departments,List<Event> events,List<Event> invites ) {
 		super();
 		this.id = id;
 		this.username = username;
+		this.password=password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.dep = dep;
@@ -75,7 +88,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
+		return "Account [id=" + id + ", username=" + username + ", password= "+password +", firstname=" + firstname + ", lastname=" + lastname
 				+ ", dep=" + dep + "]";
 	}
 
@@ -141,6 +154,14 @@ public class Account {
 
 	public void setInvites(List<Event> invites) {
 		this.invites = invites;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	
