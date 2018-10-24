@@ -6369,7 +6369,7 @@ html, body {
   background: linear-gradient(-30deg, #4f70ce 0%, #12bbad 50%, #12bbad 100%); }
 
 .filter-dark {
-  overflow: auto;
+  overflow: hidden;
   position: relative;
   color: #fff; }
   .filter-dark:before {

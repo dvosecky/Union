@@ -15,10 +15,7 @@ export class EmpNavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
       document.querySelector('.navbar').setAttribute('style', '');
-    }
-    , 10);
   }
 
 }

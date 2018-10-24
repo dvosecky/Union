@@ -16,7 +16,11 @@ export class EmpWelcomeComponent implements OnInit {
       this.invisibleNavBar();
       window.addEventListener("scroll", this.updateNavBar);
     }
-    , 20);
+    , 10);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener("scroll", this.updateNavBar);
   }
 
   invisibleNavBar() {
