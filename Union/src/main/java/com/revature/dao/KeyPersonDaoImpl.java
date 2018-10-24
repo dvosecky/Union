@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import com.revature.beans.Account;
 import com.revature.beans.Keyperson;
 import com.revature.util.HibernateUtil;
 
@@ -16,7 +17,7 @@ public class KeyPersonDaoImpl {
 		Session s = HibernateUtil.getSession();
 		
 		try {
-			result = (List<Keyperson>) s.createQuery("FROM keyperson").list();
+			result = (List<Keyperson>) s.createCriteria(Keyperson.class).list();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -28,13 +29,13 @@ public class KeyPersonDaoImpl {
 		return result;
 	}
 	
-	public List<Keyperson> getAllKeypersonsById(int id){
+	public List<Keyperson> getAllKeypersonsByAcc(Account acc){
 		List<Keyperson> result = null;
 		Session s = HibernateUtil.getSession();
 		
 		try {
 			Criteria c = s.createCriteria(Keyperson.class);
-			c.add(Restrictions.like("acc_id", id));
+			c.add(Restrictions.like("acc", acc));
 			result = (List<Keyperson>) c.list();
 		}
 		catch (Exception e) {

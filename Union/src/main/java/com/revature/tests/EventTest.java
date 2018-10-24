@@ -38,5 +38,7 @@ public class EventTest {
 		
 		System.out.println("DELETE");
 		ed.deleteEventById(1);
+		
+		System.exit(0);
 	}
 }
