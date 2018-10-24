@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit {
     // send httpRequest to get user information, including user type, which 
     // we need to know to determine which welcome page to go to"
     
-    window.scrollTo(0, 0);
-    if (this.email == "admin") {
+    if (this.email === "admin") {
       this.session.role = 'admin';
       this.router.navigate(['../admin-welcome'], { relativeTo: this.route });
     } else {
@@ -49,6 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
 }

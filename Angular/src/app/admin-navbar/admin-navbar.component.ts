@@ -11,11 +11,14 @@ export class AdminNavbarComponent implements OnInit {
   constructor(private router :Router, private route :ActivatedRoute) { }
 
   logout() {
-    window.scrollTo(0,0);
     this.router.navigate(['../login'], { relativeTo: this.route });
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      document.querySelector('.navbar').setAttribute('style', '');
+    }
+    , 10);
   }
 
 }

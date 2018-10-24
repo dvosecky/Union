@@ -11,30 +11,28 @@ export class EmpWelcomeComponent implements OnInit {
   constructor(private router :Router, private route :ActivatedRoute) { }
 
   ngOnInit() {
-    this.invisibleNavBar();
-
-    window.addEventListener("scroll", this.updateNavBar);
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      this.invisibleNavBar();
+      window.addEventListener("scroll", this.updateNavBar);
+    }
+    , 20);
   }
 
   invisibleNavBar() {
     var nav = document.querySelector(".navbar")
-    nav.setAttribute('style', 'visibility: hidden');
-    nav.classList.add('navbar-ontop');
+    nav.setAttribute('style', 'visibility: hidden; opacity: 0 !important;');
   }
 	
 	updateNavBar() {
-
-    var nav = document.querySelector(".navbar");
-    var className = "navbar-ontop";
+    let nav = document.querySelector(".navbar");
 
 		if (window.scrollY > 30) {
-      nav.classList.remove(className)
       nav.setAttribute('style', 'visibility: visible');
+      nav.setAttribute('style', '');
     } else {
-      nav.classList.add(className);
-
+      nav.setAttribute('style', 'opacity: 0 !important;');
     }
 	}
-
 
 }

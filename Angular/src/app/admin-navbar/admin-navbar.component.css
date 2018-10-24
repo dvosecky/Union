@@ -1,6 +1,3 @@
 .navbar {
     opacity: 1;
     transition: opacity .5s ease-out; }
-
-.navbar-ontop {
-    opacity: 0 !important; }
