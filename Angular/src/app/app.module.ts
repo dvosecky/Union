@@ -13,6 +13,7 @@ import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { Session } from './session';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { ApproveEventsComponent } from './approve-events/approve-events.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     ViewEventsComponent,
     EmpNavbarComponent,
     AdminNavbarComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    ApproveEventsComponent
   ],
   imports: [
     BrowserModule,
