@@ -33,7 +33,8 @@ public class Event {
 	@Cascade({CascadeType.ALL})
 	@JoinTable(name="aerelation",
 	joinColumns= @JoinColumn(name="ev_id"),
-	inverseJoinColumns=@JoinColumn(name="acc_id"))
+	inverseJoinColumns=@JoinColumn(name="lead_id"))
+	
 	private Account account;
 	
 	public Event(Integer id, String name, Timestamp time, Account account) {

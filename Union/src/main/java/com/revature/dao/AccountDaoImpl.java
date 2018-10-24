@@ -17,7 +17,7 @@ import com.revature.util.HibernateUtil;
 
 public class AccountDaoImpl {
 
-	public void deleteAccount(Integer id) {
+	public void deleteAccountById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
 		
@@ -57,8 +57,8 @@ public class AccountDaoImpl {
 	
 	}
 	
-	public Account selectAccountByDepartment( Department department ) {
-		Account account=null;
+	public List<Account> selectAccountByDepartment( Department department ) {
+		List<Account> account=null;
 		
 		return account;
 	}
@@ -118,7 +118,7 @@ public class AccountDaoImpl {
 	}
 
 
-	public Account getAccountByUsername( String username) {
+	public Account selectAccountByUsername( String username) {
 		Account account=null;
 		Query query=null;
 		Session session=HibernateUtil.getSession();
@@ -139,4 +139,6 @@ public class AccountDaoImpl {
 		return account;
 		
 	}
+
+
 }

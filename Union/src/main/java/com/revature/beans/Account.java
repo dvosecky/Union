@@ -52,12 +52,12 @@ public class Account {
 	@OneToMany(mappedBy = "acc")
 	private List<Invitation> invites;
 	
-	public Account(Integer id, String username, String firstname, String lastname, Department dep,
-			List<Department> departments, List<Event> events, List<Invitation> invites) {
+	
+	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.password=password;
+		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.dep = dep;
@@ -86,8 +86,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + ", departments=" + departments + ", events=" + events + ", invites="
-				+ invites + "]";
+				+ ", dep=" + dep + "]";
 
 	}
 
