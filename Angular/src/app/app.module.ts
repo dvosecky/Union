@@ -12,6 +12,7 @@ import { ViewEventsComponent } from './view-events/view-events.component';
 import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { Session } from './session';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { Session } from './session';
     AdminWelcomeComponent,
     ViewEventsComponent,
     EmpNavbarComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,
