@@ -4,7 +4,7 @@ import { Session } from '../session';
 @Component({
   selector: 'app-view-events',
   templateUrl: './view-events.component.html',
-  styleUrls: ['./view-events.component.css']
+  styleUrls: []
 })
 export class ViewEventsComponent implements OnInit {
 
