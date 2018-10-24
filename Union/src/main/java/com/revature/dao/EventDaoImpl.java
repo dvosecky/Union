@@ -22,7 +22,7 @@ public class EventDaoImpl {
 		
 		try {
 			Criteria c = s.createCriteria(Event.class);
-			c.addOrder(Order.desc("etime"));
+			c.addOrder(Order.desc("time"));
 			events = (List<Event>) c.list();
 		}
 		catch (Exception e){
@@ -41,8 +41,8 @@ public class EventDaoImpl {
 		
 		try {
 			Criteria c = s.createCriteria(Event.class);
-			c.add(Restrictions.like("ename", name));
-			c.addOrder(Order.desc("etime"));
+			c.add(Restrictions.like("name", name));
+			c.addOrder(Order.desc("time"));
 			events = (List<Event>) c.list();
 		}
 		catch (Exception e){
@@ -81,23 +81,65 @@ public class EventDaoImpl {
 		return id;
 	}
 	
-	//Delete statement, which returns number of entries deleted/removed
-	
-	public int deleteEventById(int id) {
+	public Event getEventById(int id) {
+		Event e = null;
 		Session s = HibernateUtil.getSession();
-		int changed = 0;
+		
 		try {
-			Query q = s.createQuery("DELETE event WHERE ev_id = ?");
-			q.setParameter(1, id);
-			changed = q.executeUpdate();
+			Criteria c = s.createCriteria(Event.class);
+			c.add(Restrictions.like("id", id));
+			e = (Event) c.uniqueResult();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exc) {
+			exc.printStackTrace();
 		}
 		finally {
 			s.close();
 		}
 		
-		return changed;
+		return e;
+	}
+	
+	//Add statement
+	
+	public Integer insertEvent(Event event) {
+		Integer result = null;
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		
+		try {
+			t = s.beginTransaction();
+			result = (Integer)s.save(event);
+			t.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
+	}
+	
+	//Delete statement, which returns number of entries deleted/removed
+	
+	public void deleteEventById(int id) {
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		try {
+			t = s.beginTransaction();
+			Event e = (Event) s.load(Event.class, 1);
+			s.delete(e);
+			t.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
 	}
 }

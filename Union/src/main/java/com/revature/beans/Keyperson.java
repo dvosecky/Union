@@ -23,25 +23,27 @@ public class Keyperson {
 	
 	@ManyToOne
 	@JoinColumn(name="acc_id")
-	private Account acc_id;
-	
-	
-	
+	private Account acc;
 
 	public Keyperson() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Keyperson(Integer role_id, Account acc_id) {
+	public Keyperson(Integer role_id) {
 		super();
 		this.role_id = role_id;
-		this.acc_id = acc_id;
+	}
+	
+	public Keyperson(Integer role_id, Account acc) {
+		super();
+		this.role_id = role_id;
+		this.acc = acc;
 	}
 
 	@Override
 	public String toString() {
-		return "Keyperson [role_id=" + role_id + ", acc_id=" + acc_id + "]";
+		return "Keyperson [role_id=" + role_id + "]";
 	}
 
 	public Integer getRole_id() {
@@ -50,16 +52,6 @@ public class Keyperson {
 
 	public void setRole_id(Integer role_id) {
 		this.role_id = role_id;
-	}
-
-	public Account getAcc_id() {
-		return acc_id;
-	}
-
-	public void setAcc_id(Account acc_id) {
-		this.acc_id = acc_id;
-	} 
-	 
-	
+	}	
 
 }

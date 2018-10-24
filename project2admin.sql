@@ -51,7 +51,8 @@ CREATE TABLE invitation (
 
 CREATE TABLE keyperson (
     role_id NUMBER(2),
-    acc_id NUMBER(10)
+    acc_id NUMBER(10),
+    CONSTRAINT keyperson_pk PRIMARY KEY (role_id)
 );
 
 ALTER TABLE account ADD CONSTRAINT account_fk FOREIGN KEY (dep_id)
@@ -75,12 +76,16 @@ INSERT INTO department VALUES(1, 'gogo');
 INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1);
 INSERT INTO account VALUES(2, 'a', 'a', 'a', 'a', 1);
 INSERT INTO adrelation VALUES(1, 1);
-INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('','dd-mm-yyy'));
+INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('11-11-1994','dd-mm-yyyy'));
 INSERT INTO invitation VALUES(1, 1, 1, 0, 0);
 INSERT INTO invitation VALUES(2, 2, 1, 0, 0);
 
 SELECT * FROM account;
 SELECT * FROM event;
 SELECT * FROM invitation;
+SELECT * FROM keyperson;
+DESC aerelation;
+
+DESC event;
 
 commit;

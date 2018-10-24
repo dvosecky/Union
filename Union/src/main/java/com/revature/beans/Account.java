@@ -46,11 +46,8 @@ public class Account {
 				inverseJoinColumns=@JoinColumn(name="ev_id"))
 	private List<Event> events;
 	
-	@OneToMany(mappedBy = "acc")
-	private List<Invitation> invites;
-	
 	public Account(Integer id, String username, String firstname, String lastname, Department dep,
-			List<Department> departments, List<Event> events, List<Invitation> invites) {
+			List<Department> departments, List<Event> events) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -59,7 +56,6 @@ public class Account {
 		this.dep = dep;
 		this.departments = departments;
 		this.events = events;
-		this.invites = invites;
 	}
 
 	public Account() {
@@ -70,8 +66,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + ", departments=" + departments + ", events=" + events + ", invites="
-				+ invites + "]";
+				+ ", dep=" + dep + "]";
 	}
 
 	public Integer getId() {
@@ -129,15 +124,4 @@ public class Account {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
-
-	public List<Invitation> getInvites() {
-		return invites;
-	}
-
-	public void setInvites(List<Invitation> invites) {
-		this.invites = invites;
-	}
-	
-	
-	
 }
