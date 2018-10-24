@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,12 +29,11 @@ public class Department {
 	private String dname;
 
 	
-	@ManyToMany
+	@ManyToOne
 	@JoinTable(name="adrelation",
 	joinColumns= @JoinColumn(name="dep_id"),
 	inverseJoinColumns= @JoinColumn(name="lead_id"))
-	
-	private List<Account> accounts;
+	private Account account;
 
 
 	
@@ -45,11 +45,11 @@ public class Department {
 	}
 
 
-	public Department(Integer dep_id, String dname, List<Account> accounts) {
+	public Department(Integer dep_id, String dname, Account account) {
 		super();
 		this.dep_id = dep_id;
 		this.dname = dname;
-		this.accounts = accounts;
+		this.account = account;
 	}
 
 
@@ -61,7 +61,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [dep_id=" + dep_id + ", dname=" + dname + "]";
+		return "Department [dep_id=" + dep_id + ", dname=" + dname+ "]";
 	}
 
 
@@ -85,13 +85,13 @@ public class Department {
 	}
 
 
-	public List<Account> getAccounts() {
-		return accounts;
+	public Account getAccount() {
+		return account;
 	}
 
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	
 	

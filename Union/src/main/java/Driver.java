@@ -1,7 +1,9 @@
 import java.util.List;
 
 import com.revature.beans.Account;
+import com.revature.beans.Department;
 import com.revature.dao.AccountDaoImpl;
+import com.revature.dao.DepartmentDaoImpl;
 public class Driver {
 
 	public static void main(String[] args) {
@@ -42,9 +44,9 @@ public class Driver {
 		System.out.println("===================================");
 		
 		acc=account.selectAccountByUsername("z");
-		System.out.println("Deleting id: "+"z"+ acc);
-		
-		account.deleteAccountByUsername("z");
+		System.out.println("Deleting id: "+"z "+ acc);
+		//work if record exist 
+		//account.deleteAccountByUsername("z");
 		
 		System.out.println("===================================");
 		accounts = account.selectAllAccount();
@@ -53,9 +55,21 @@ public class Driver {
 			System.out.println(a);
 		}
 		
+		System.out.println();
+		System.out.println("================Department===================");
+		
+		List<Department> departments=null;
+		DepartmentDaoImpl depart = new DepartmentDaoImpl();
+		
+		departments= depart.selectAllDepartment();
+		
+		for( Department d: departments) {
+			System.out.println(d);
+			System.out.println(d.getAccount());
+		}
 		
 		
-		System.out.println("===================================");
+		System.out.println("================END===================");
 		System.exit(0);
 
 	}

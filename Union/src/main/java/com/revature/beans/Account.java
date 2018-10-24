@@ -37,7 +37,7 @@ public class Account {
 	@JoinColumn(name = "dep_id")
 	private Department dep;
 	
-	@ManyToMany
+	@OneToMany
 	@JoinTable(name="adrelation" ,
 				joinColumns= @JoinColumn(name="lead_id"),
 				inverseJoinColumns= @JoinColumn(name="dep_id") )
