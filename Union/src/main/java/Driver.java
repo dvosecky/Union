@@ -68,6 +68,18 @@ public class Driver {
 			System.out.println(d.getAccount());
 		}
 		
+		System.out.println("=====================================");
+		//Department d = new Department(null,"landon");
+		
+		//index= depart.insertDepartment(2);
+		
+		//System.out.println("Department add id: " + index);
+		
+		System.out.println("=====================================");
+		
+
+		
+		//depart.deleteDepartment(2);
 		
 		System.out.println("================END===================");
 		System.exit(0);
