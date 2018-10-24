@@ -10,10 +10,6 @@ export class EmpWelcomeComponent implements OnInit {
 
   constructor(private router :Router, private route :ActivatedRoute) { }
 
-  logout() {
-    this.router.navigate(['../login'], { relativeTo: this.route });
-  }
-
   ngOnInit() {
     this.invisibleNavBar();
 
@@ -35,7 +31,8 @@ export class EmpWelcomeComponent implements OnInit {
       nav.classList.remove(className)
       nav.setAttribute('style', 'visibility: visible');
     } else {
-      nav.classList.add(className) 
+      nav.classList.add(className);
+
     }
 	}
 

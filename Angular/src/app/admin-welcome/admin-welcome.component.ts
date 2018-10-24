@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,12 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminWelcomeComponent implements OnInit {
 
-  constructor(private router :Router, private route :ActivatedRoute) { }
+  constructor() { }
 
-  logout() {
-    window.scrollTo(0,0);
-    this.router.navigate(['../login'], { relativeTo: this.route });
-  }
+  
 
   ngOnInit() {
     this.invisibleNavBar();

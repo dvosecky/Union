@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { EmpWelcomeComponent } from './emp-welcome/emp-welcome.component';
 import { AdminWelcomeComponent } from './admin-welcome/admin-welcome.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
+import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { Session } from './session';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,16 @@ import { ViewEventsComponent } from './view-events/view-events.component';
     LoginComponent,
     EmpWelcomeComponent,
     AdminWelcomeComponent,
-    ViewEventsComponent
+    ViewEventsComponent,
+    EmpNavbarComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [Session],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
