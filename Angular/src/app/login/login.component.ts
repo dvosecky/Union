@@ -36,7 +36,12 @@ export class LoginComponent implements OnInit {
     // send httpRequest to get user information, including user type, which 
     // we need to know to determine which welcome page to go to"
     
-     this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
+    window.scrollTo(0, 0);
+    if (this.email == "admin") {
+      this.router.navigate(['../admin-welcome'], { relativeTo: this.route });
+    } else {
+      this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
+    }
   }
 
   ngOnInit() {
