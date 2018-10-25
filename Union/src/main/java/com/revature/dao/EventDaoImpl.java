@@ -3,7 +3,6 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -16,6 +15,7 @@ public class EventDaoImpl {
 	
 	//Primary criteria. Automatically will order by date.
 	
+	@SuppressWarnings("unchecked")
 	public List<Event> getAllEvents(){
 		List<Event> events = null;
 		Session s = HibernateUtil.getSession();
@@ -35,6 +35,7 @@ public class EventDaoImpl {
 		return events;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Event> getEventsByName(String name){
 		List<Event> events = null;
 		Session s = HibernateUtil.getSession();
@@ -55,32 +56,6 @@ public class EventDaoImpl {
 		return events;
 	}
 	
-	//Inserts
-	//Adds event if account present
-	public Integer addEvent(Event event) {
-		if (event == null || event.getAccount() == null) {
-			return null;
-		}
-		
-		Session s = HibernateUtil.getSession();
-		Transaction tx = null;
-		Integer id = null;
-		
-		try {
-			tx = s.beginTransaction();
-			id = (Integer)s.save(event);
-			tx.commit();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			s.close();
-		}
-		
-		return id;
-	}
-	
 	public Event getEventById(int id) {
 		Event e = null;
 		Session s = HibernateUtil.getSession();
@@ -98,6 +73,32 @@ public class EventDaoImpl {
 		}
 		
 		return e;
+	}
+	
+	//Inserts
+	//Adds event if account present
+	public Integer addEvent(Event event) {
+		if (event == null || event.getLead() == null) {
+			return null;
+		}
+			
+		Session s = HibernateUtil.getSession();
+		Transaction tx = null;
+		Integer id = null;
+			
+		try {
+			tx = s.beginTransaction();
+			id = (Integer)s.save(event);
+			tx.commit();
+		}
+			catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
+		
+		return id;
 	}
 	
 	//Add statement

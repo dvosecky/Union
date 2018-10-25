@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -26,6 +24,8 @@ public class Account {
 	
 	@Column(name = "uname")
 	private String username;
+	@Column(name = "pw")
+	private String password;
 	@Column(name = "fname")
 	private String firstname;
 	@Column(name = "lname")
@@ -33,44 +33,53 @@ public class Account {
 	@ManyToOne
 	@JoinColumn(name = "dep_id")
 	private Department dep;
+	@Column(name = "role")
+	private Integer role;
 	
-	@ManyToMany
-	@JoinTable(name="adrelation" ,
-				joinColumns= @JoinColumn(name="lead_id"),
-				inverseJoinColumns=@JoinColumn(name="dep_id"))
-	private List<Department> departments;
-	
-	@ManyToMany
-	@JoinTable(name="aerelation",
-				joinColumns= @JoinColumn(name="lead_id"),
-				inverseJoinColumns=@JoinColumn(name="ev_id"))
-	private List<Event> events;
-	
-	public Account(Integer id, String username, String firstname, String lastname, Department dep,
-			List<Department> departments, List<Event> events) {
+	@OneToMany(mappedBy="acc")
+	List<Invitation> invites;
+
+	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep,
+			Integer role, List<Invitation> invites) {
 		super();
 		this.id = id;
 		this.username = username;
+		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.dep = dep;
-		this.departments = departments;
-		this.events = events;
+		this.role = role;
+		this.invites = invites;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Account() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + "]";
+		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
+				+ ", lastname=" + lastname + ", role=" + role + "]";
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public List<Invitation> getInvites() {
+		return invites;
+	}
+
+	public void setInvites(List<Invitation> invites) {
+		this.invites = invites;
 	}
 
 	public void setId(Integer id) {
@@ -109,19 +118,11 @@ public class Account {
 		this.dep = dep;
 	}
 
-	public List<Department> getDepartments() {
-		return departments;
+	public Integer getRole() {
+		return role;
 	}
 
-	public void setDepartments(List<Department> departments) {
-		this.departments = departments;
-	}
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
+	public void setRole(Integer role) {
+		this.role = role;
 	}
 }

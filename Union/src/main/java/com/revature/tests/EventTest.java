@@ -3,9 +3,7 @@ package com.revature.tests;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.revature.beans.Account;
 import com.revature.beans.Event;
-import com.revature.dao.AccountDaoImpl;
 import com.revature.dao.EventDaoImpl;
 
 public class EventTest {
@@ -28,12 +26,8 @@ public class EventTest {
 		Event ev = ed.getEventById(1);
 		System.out.println(ev);
 		
-		System.out.println("ADD");
-		AccountDaoImpl ad = new AccountDaoImpl();
-		Account a = ad.selectAccountById(1);
-		
-		ev = new Event(3, Timestamp.valueOf("1994-11-07 12:00:00"), "Stuff", a);
-		
+		System.out.println("ADD");	
+		ev = new Event(3, Timestamp.valueOf("1994-11-07 12:00:00"), "Stuff", null, null);
 		System.out.println("Added event with id of " + ed.addEvent(ev) + ".");
 		
 		System.out.println("DELETE");

@@ -1,15 +1,10 @@
 package com.revature.beans;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,26 +20,15 @@ public class Department {
 	
 	@Column(name="dname")
 	private String dname;
-
-	
-	@ManyToMany
-	@JoinTable(name="adrelation",
-	joinColumns= @JoinColumn(name="dep_id"),
-	inverseJoinColumns=@JoinColumn(name="lead_id"))
-	private List<Account> accounts;
-
-
-	
 	
 	public Department() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@Override
 	public String toString() {
-		return "Department [dep_id=" + dep_id + ", dname=" + dname + ", accounts=" + accounts + "]";
+		return "Department [dep_id=" + dep_id + ", dname=" + dname + "]";
 	}
 
 
@@ -66,19 +50,5 @@ public class Department {
 	public void setDname(String dname) {
 		this.dname = dname;
 	}
-
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-	
-	
-	
-	
 }
 

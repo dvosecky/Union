@@ -30,7 +30,7 @@
 		</property>
 			
 		<property name="hibernate.connection.password">
-			
+		
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 
@@ -62,7 +62,6 @@
 		<mapping class="com.revature.beans.Account" />
 		<mapping class="com.revature.beans.Department"/>
 		<mapping class="com.revature.beans.Event"/>
-		<mapping class="com.revature.beans.Keyperson" /> 
 		<mapping class="com.revature.beans.Invitation" />
 
 	</session-factory>

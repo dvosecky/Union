@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -30,24 +29,16 @@ public class Event {
 	private Timestamp time;
 	@Column(name = "ename")
 	private String name;
-	
 	@ManyToOne
-	@Cascade({CascadeType.ALL})
-	@JoinTable(name="aerelation",
-	joinColumns= @JoinColumn(name="ev_id"),
-	inverseJoinColumns=@JoinColumn(name="lead_id"))
-	private Account account;
-
+	@JoinColumn(name = "lead_id")
+	private Account lead;
+	
 	@OneToMany(mappedBy="ev")
-	@Cascade({CascadeType.ALL})
+	@Cascade(CascadeType.ALL)
 	List<Invitation> invites;
 	
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public List<Invitation> getInvites() {
@@ -56,6 +47,10 @@ public class Event {
 
 	public void setInvites(List<Invitation> invites) {
 		this.invites = invites;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Timestamp getTime() {
@@ -74,12 +69,12 @@ public class Event {
 		this.name = name;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Account getLead() {
+		return lead;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setLead(Account lead) {
+		this.lead = lead;
 	}
 
 	@Override
@@ -87,12 +82,13 @@ public class Event {
 		return "Event [id=" + id + ", time=" + time + ", name=" + name + "]";
 	}
 
-	public Event(Integer id, Timestamp time, String name, Account account) {
+	public Event(Integer id, Timestamp time, String name, Account lead, List<Invitation> invites) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.name = name;
-		this.account = account;
+		this.lead = lead;
+		this.invites = invites;
 	}
 
 	public Event() {

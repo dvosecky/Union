@@ -2,16 +2,39 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.Account;
+import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
 
 public class AccountDaoImpl {
 
-	public Account selectAccountById( Integer id) {
+	@SuppressWarnings("unchecked")
+	public List<Account> selectAccountsByDep(Department dep){
+		List<Account> accounts = null;
+		Session s = HibernateUtil.getSession();
+		
+		try {
+			Criteria c = s.createCriteria(Account.class);
+			c.add(Restrictions.like("dep", dep));
+			accounts = (List<Account>) c.list();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
+		
+		return accounts;
+	}
+	
+	public Account selectAccountById(Integer id) {
 		Account account = null;
 		Session session= HibernateUtil.getSession();
 		
@@ -25,30 +48,6 @@ public class AccountDaoImpl {
 		
 		
 		return account;
-	}
-	
-	
-	@SuppressWarnings("unchecked")
-	public void criteriaGetAll() {
-		Session session = HibernateUtil.getSession();
-		List<Account> accounts=null;
-
-		try {
-			accounts= session.createCriteria("FROM Account").list();
-
-			
-		}catch(Exception e) {//atch( HibernateException e) {
-			
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-
-		for(Account a : accounts) {
-			System.out.println(a);
-		}
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
-		
 	}
 	
 	@SuppressWarnings("unchecked")

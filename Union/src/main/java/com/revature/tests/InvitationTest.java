@@ -3,11 +3,9 @@ package com.revature.tests;
 import java.util.List;
 
 import com.revature.beans.Account;
-//import com.revature.beans.Department;
 import com.revature.beans.Event;
 import com.revature.beans.Invitation;
 import com.revature.dao.AccountDaoImpl;
-//import com.revature.dao.DepartmentDaoImpl;
 import com.revature.dao.EventDaoImpl;
 import com.revature.dao.InvitationDaoImpl;
 
@@ -46,13 +44,11 @@ public class InvitationTest {
 			System.out.println(i);
 		}
 		
-		/*System.out.println("ADD");
-		DepartmentDaoImpl dd = new DepartmentDaoImpl();
-		Department d = dd.selectDepartmentById(1);
-		Account ac = new Account(3, "d", "d", "d", d, null, null);
-		Invitation inv = new Invitation(3, ac, e, 0, 0);
+		System.out.println("ADD");
+		e = ed.getEventById(2);
+		Invitation inv = new Invitation(3, a, e, 0, 0);
 		System.out.println("with event: " + inv.getEv() + ", acc: " + inv.getAcc());
-		id.insertInvitation(inv);*/
+		id.insertInvitation(inv);
 		
 		System.out.println("DELETE");
 		id.deleteInvitationById(1);
