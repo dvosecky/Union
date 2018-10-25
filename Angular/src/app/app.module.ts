@@ -13,6 +13,10 @@ import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { Session } from './session';
 
+import { LoginService } from './services/login.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,8 @@ import { Session } from './session';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [Session],
   bootstrap: [AppComponent]
