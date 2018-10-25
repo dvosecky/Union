@@ -15,5 +15,5 @@ export const appRoutes: Routes = [
       redirectTo: 'login',
       pathMatch: 'full' // what is this for?
     },
-    { path: '**', redirectTo: 'login' }
+    { path: '**', redirectTo: '' }
   ];
