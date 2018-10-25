@@ -14,6 +14,8 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { Session } from './session';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { ApproveEventsComponent } from './approve-events/approve-events.component';
+import { CreateEventsComponent } from './create-events/create-events.component';
+import { DhWelcomeComponent } from './dh-welcome/dh-welcome.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ApproveEventsComponent } from './approve-events/approve-events.componen
     EmpNavbarComponent,
     AdminNavbarComponent,
     EventDetailsComponent,
-    ApproveEventsComponent
+    ApproveEventsComponent,
+    CreateEventsComponent,
+    DhWelcomeComponent
   ],
   imports: [
     BrowserModule,
