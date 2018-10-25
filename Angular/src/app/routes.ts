@@ -14,6 +14,6 @@ export const appRoutes: Routes = [
     { path: '',
       redirectTo: 'login',
       pathMatch: 'full' // what is this for?
-    }
-    // { path: '**', component: PageNotFoundComponent }
+    },
+    { path: '**', redirectTo: 'login' }
   ];
