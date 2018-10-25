@@ -154,7 +154,15 @@ public class Account {
 		this.invites = invites;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
 	
 	
 }
