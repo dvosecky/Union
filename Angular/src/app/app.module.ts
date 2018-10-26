@@ -22,6 +22,8 @@ import { DhWelcomeComponent } from './dh-welcome/dh-welcome.component';
 import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { UsersComponent } from './users/users.component';
+import { DepartmentsComponent } from './departments/departments.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { HttpClientModule } from '@angular/common/http';
     ApproveEventsComponent,
     CreateEventsComponent,
     DhWelcomeComponent,
-    MyEventsComponent
+    MyEventsComponent,
+    UsersComponent,
+    DepartmentsComponent
   ],
   imports: [
     BrowserModule,
