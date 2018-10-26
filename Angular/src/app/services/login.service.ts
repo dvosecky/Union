@@ -10,24 +10,28 @@ export class LoginService {
     login(email :String, password :String) {
         console.log("email: " + email);
         console.log("password: " + password);
-        // this.http.get("http://localhost:8085/Union/Login").subscribe(
-        //     function() { console.log("get") },
-        //     function() { console.log("geterror") }
-        // );
 
-        // this.http.post("http://localhost:8085/Union/Login", "email=" + email + "&password=" + password)
         this.http.post("http://localhost:8085/Union/Login", "email=" + email + "&password=" + password,
             {
             headers: new HttpHeaders({
-              'Content-Type': 'application/x-www-form-urlencoded'
-            })
-          } )
-            .subscribe((data) => {        
-                console.log("received: " + data);
+              'Content-Type': 'application/x-www-form-urlencoded'})
+            }).subscribe((data) => {       
+               
+                console.log(data);
+
+                // { id: 3200, username: "c", password: "c", firstname: "c", lastname: "c", dep: 1, role: 0 }
+                this.session.id = data['id'];
+                if (data['role'] === 0) {
+                    this.session.role = 'emp';
+                } else if (data['role'] === 1) {
+                    this.session.role = 'dh';
+                } else if (data['role'] === 2) {
+                    this.session.role = 'admin';
+                }
+                
             }, (error) => {
-                console.log("got error: " + error);
+                console.log(error);
             });
 
-    
     }
 }
