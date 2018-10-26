@@ -17,6 +17,10 @@ import { ApproveEventsComponent } from './approve-events/approve-events.componen
 import { CreateEventsComponent } from './create-events/create-events.component';
 import { DhWelcomeComponent } from './dh-welcome/dh-welcome.component';
 
+import { LoginService } from './services/login.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +38,10 @@ import { DhWelcomeComponent } from './dh-welcome/dh-welcome.component';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [Session],
+  providers: [Session, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
