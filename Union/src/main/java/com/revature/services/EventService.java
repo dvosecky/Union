@@ -14,4 +14,17 @@ public class EventService {
 		
 		return events;
 	}
+
+	public static boolean insertEvent(Event event) {
+		boolean inserted = false;
+		EventDaoImpl manager = new EventDaoImpl();
+
+		int id = manager.insertEvent(event);
+		if( id >0) {
+			inserted = true;
+		}
+		
+		
+		return inserted;
+	}
 }

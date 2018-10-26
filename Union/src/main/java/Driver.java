@@ -2,45 +2,53 @@ import java.util.List;
 
 import com.revature.beans.Account;
 import com.revature.dao.AccountDaoImpl;
+import com.revature.services.UserService;
 public class Driver {
 
 	public static void main(String[] args) {
 		
 		
 		AccountDaoImpl account= new AccountDaoImpl();
-		List<Account> accounts;
-		
-		System.out.println("===================================");
-		
+	List<Account> accounts;
 //		
- 	Account acc= null;
+	System.out.println("===================================");
+
+	Account acc=null;
+	//acc = UserService.loginToUnion("d", "d");
+	
+	if(acc != null) {
+		System.out.println("Workss===========================================");
+	}
 //		
-//		acc = account.selectAccountById(2);
-		
-		//System.out.println("By id: "+ acc);
-		
-		System.out.println("===================================");
-		
-		acc=account.selectAccountByUsername("a");
+////		
+ //	Account acc= null;
+////		
+////		acc = account.selectAccountById(2);
 //		
-		System.out.println("By username: " + acc );
-		
-		System.out.println("===================================");
-		int index;
+//		//System.out.println("By id: "+ acc);
 //		
-		acc= new Account(null,"ff","f","first","last",acc.getDep(),1);
-		index= account.insertAccount(acc);
-		System.out.println( index  );
-		
-		System.out.println("===================================");
+//		System.out.println("===================================");
 //		
-//		acc=account.selectAccountById(index);
-//		System.out.println("Deleting id: "+index+ acc);
+//		acc=account.selectAccountByUsername("a");
+////		
+//		System.out.println("By username: " + acc );
 //		
-//		account.deleteAccountById(index);
+//		System.out.println("===================================");
+//		int index;
+////		
+//		acc= new Account(null,"ff","f","first","last",acc.getDep(),1);
+//		index= account.insertAccount(acc);
+//		System.out.println( index  );
 //		
-		System.out.println("===============Deleting====================");
-		
+//		System.out.println("===================================");
+////		
+////		acc=account.selectAccountById(index);
+////		System.out.println("Deleting id: "+index+ acc);
+////		
+////		account.deleteAccountById(index);
+////		
+//		System.out.println("===============Deleting====================");
+//		
 		//acc=account.selectAccountByUsername("z");
 		//System.out.println("Deleting id: "+"z "+ acc);
 		//work if record exist 
