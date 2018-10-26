@@ -41,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [Session],
+  providers: [Session, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
