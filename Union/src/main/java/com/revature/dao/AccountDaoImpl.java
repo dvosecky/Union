@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -139,4 +140,27 @@ public class AccountDaoImpl {
 			session.close();
 		}
 	}
+
+	public Account selectAccountByUsername( String username) {
+		Account account=null;
+		Query query=null;
+		Session session=HibernateUtil.getSession();
+		String hql;
+		
+		try {
+			hql="From Account where uname=:username";
+			query=session.createQuery(hql);
+			query.setParameter("username", username);
+			account= (Account)query.uniqueResult();
+			
+		}catch( HibernateException e) {
+			e.printStackTrace();
+			System.out.println("______________________");
+		}finally {
+			session.close();
+		}
+		return account;
+		
+	}
+
 }
