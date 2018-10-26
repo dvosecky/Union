@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Session } from '../session';
 
 @Component({
   selector: 'app-login',
@@ -7,21 +8,47 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-// NEED TO VALIDATE INPUT
-
 export class LoginComponent implements OnInit {
   email :string;
   password :string;
   
-  constructor(private router :Router, private route: ActivatedRoute) { }
+  constructor(private router :Router, private route: ActivatedRoute,
+              private session :Session) { }
+
+  private validateEmail() {
+    if (this.email === undefined || this.email === "") {
+      return false;
+    }
+    return true;
+  }
+
+  private validatePassword() {
+    if (this.password == undefined || this.password === "") {
+      return false;
+    }
+    return true;
+  }
 
   onSubmit() {
-    // request code
-    // alert("email: " + this.email + ", password: " + this.password);
-    this.router.navigate(['../welcome'], { relativeTo: this.route });
+    if (!this.validateEmail() || !this.validatePassword()) {
+      alert('Invalid email or password');
+      return;
+    }
+
+    // send httpRequest to get user information, including user type, which 
+    // we need to know to determine which welcome page to go to"
+    
+    if (this.email === "admin") {
+      this.session.role = 'admin';
+      this.router.navigate(['../admin-welcome'], { relativeTo: this.route });
+    } else {
+      this.session.role = 'emp';
+      this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
+    }
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
 }
