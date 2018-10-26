@@ -10,7 +10,7 @@ public class EventService {
 	public static List<Event> retrieveAllEvents(){
 		List<Event> events=null;
 		EventDaoImpl manager= new EventDaoImpl();
-		events = manager.getAllEvents();
+		events = manager.selectAllEvents();
 		
 		return events;
 	}

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,9 +27,7 @@ public class Account {
 	
 	@Column(name = "uname")
 	private String username;
-
 	@Column(name = "pw")
-
 	private String password;
 	@Column(name = "fname")
 	private String firstname;
@@ -68,7 +65,6 @@ public class Account {
 
 	public void setPassword(String password) {
 		this.password = password;
-
 	}
 
 	public Account() {
@@ -77,10 +73,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-
-		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", dep=" + dep + "]";
-
+		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
+				+ ", lastname=" + lastname + ", role=" + role + "]";
 	}
 
 	public Integer getId() {
@@ -137,29 +131,5 @@ public class Account {
 
 	public void setRole(Integer role) {
 		this.role = role;
-	}
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
-
-	public List<Invitation> getInvites() {
-		return invites;
-	}
-
-	public void setInvites(List<Invitation> invites) {
-		this.invites = invites;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 }
