@@ -7,9 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.beans.Department;
 import com.revature.services.DepartmentServices;
 
+/*	RETURNS EITHER
+ * 200 success code in case of success
+ * 400 error code in case of nonexistent deletion or insufficient input
+ * 401 error code in case of insufficient credentials
+ * 500 error code in all other cases
+ */
 public class RemoveDepartment extends HttpServlet {
 	private static final long serialVersionUID = 7570299456066560173L;
 
@@ -29,14 +34,16 @@ public class RemoveDepartment extends HttpServlet {
 		
 		
 		if (role > 1) {
-			Department d = DepartmentServices.getDepartmentByDepId(dep_id);
-			if (d != null) {
-				DepartmentServices.deleteDepartmentByDepId(dep_id);
+			boolean result = DepartmentServices.deleteDepartmentByDepId(dep_id);
+			if (result) {
 				res.sendError(200);
 			}
 			else {
 				res.sendError(400);
 			}
+		}
+		else {
+			res.sendError(401);
 		}
 		
 		res.sendError(500);
