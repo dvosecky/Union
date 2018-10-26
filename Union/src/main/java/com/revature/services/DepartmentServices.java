@@ -41,4 +41,18 @@ public class DepartmentServices {
 		dd.deleteDepartment(dep_id);
 	}
 	
+	public static void insertDepartmentWithLead(String dname, Integer lead_id) {
+		DepartmentDaoImpl dd = new DepartmentDaoImpl();
+		AccountDaoImpl ad = new AccountDaoImpl();
+		
+		Department d = new Department();
+		d.setDname(dname);
+		Account a = ad.selectAccountById(lead_id);
+		
+		if (a != null) {
+			dd.insertDepartment(d);
+			a.setRole(1);
+			a.setDep(d);
+		}
+	}
 }
