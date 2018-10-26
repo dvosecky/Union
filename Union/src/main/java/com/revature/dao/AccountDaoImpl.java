@@ -4,13 +4,9 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
-
-import org.hibernate.criterion.Restrictions;
-
 
 import com.revature.beans.Account;
 import com.revature.beans.Department;
@@ -91,37 +87,7 @@ public class AccountDaoImpl {
 		}finally {
 			session.close();
 		}
-		
-	
 	}
-	
-	public List<Account> selectAccountByDepartment( Department department ) {
-		List<Account> account=null;
-		
-		return account;
-	}
-	
-	public Integer insertAccount(Account account) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx=null;
-		Integer id=null;
-	
-		try {
-
-			tx = session.beginTransaction();
-			id=(Integer)session.save(account);
-			tx.commit();
-		}catch(HibernateException e) {
-
-			e.printStackTrace();
-		}finally {
-			session.close();
-			
-		}
-		return id;
-		
-	}
-	
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAllAccount(){
@@ -139,30 +105,26 @@ public class AccountDaoImpl {
 		return accounts;
 		
 	}
-
-
-	public Account selectAccountByUsername( String username) {
-		Account account=null;
-		Query query=null;
-		Session session=HibernateUtil.getSession();
-		String hql;
+	
+	public Integer insertAccount(Account acc){
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		Integer id = null;
 		
 		try {
-			hql="From Account where uname=:username";
-			query=session.createQuery(hql);
-			query.setParameter("username", username);
-			account= (Account)query.uniqueResult();
-			
-		}catch( HibernateException e) {
+			tx = session.beginTransaction();
+			id = (Integer)session.save(acc);
+			tx.commit();
+		} catch (HibernateException e) {
 			e.printStackTrace();
-			System.out.println("______________________");
+			tx.rollback();
 		}finally {
 			session.close();
 		}
-		return account;
 		
+		return id;
 	}
-
+	
 	public void deleteAccount(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
@@ -178,4 +140,3 @@ public class AccountDaoImpl {
 		}
 	}
 }
-
