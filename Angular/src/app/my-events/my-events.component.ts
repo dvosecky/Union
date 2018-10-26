@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
 
 @Component({
-  selector: 'app-view-events',
-  templateUrl: './view-events.component.html',
+  selector: 'app-my-events',
+  templateUrl: './my-events.component.html',
   styleUrls: []
 })
-export class ViewEventsComponent implements OnInit {
+export class MyEventsComponent implements OnInit {
 
   constructor(private session :Session) { }
 

@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { EmpWelcomeComponent } from './emp-welcome/emp-welcome.component';
 import { AdminWelcomeComponent } from './admin-welcome/admin-welcome.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
+import { MyEventsComponent } from './my-events/my-events.component';
+
 import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { Session } from './session';
@@ -20,6 +22,8 @@ import { DhWelcomeComponent } from './dh-welcome/dh-welcome.component';
 import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { UsersComponent } from './users/users.component';
+import { DepartmentsComponent } from './departments/departments.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     EventDetailsComponent,
     ApproveEventsComponent,
     CreateEventsComponent,
-    DhWelcomeComponent
+    DhWelcomeComponent,
+    MyEventsComponent,
+    UsersComponent,
+    DepartmentsComponent
   ],
   imports: [
     BrowserModule,
