@@ -1,14 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 .filter-dark {
-
     overflow: hidden;
     position: relative;
     color: #fff;
-  
+
   }
-  
+
   .filter-dark::before {
-  
     position: absolute;
     top: 0;
     left: 0;
@@ -16,10 +14,28 @@
     height: 100%;
     content: ' ';
     background: rgba(21,21,21,.75);
-  
+
   }
 
   .gray-text {
       color: grey;
   }
 
+.p-5 {
+  padding: 4.5rem !important; }
+
+.pt-5,
+.py-5 {
+  padding-top: 4.5rem !important; }
+
+.pr-5,
+.px-5 {
+  padding-right: 4.5rem !important; }
+
+.pb-5,
+.py-5 {
+  padding-bottom: 4.5rem !important; }
+
+.pl-5,
+.px-5 {
+  padding-left: 4.5rem !important; }
