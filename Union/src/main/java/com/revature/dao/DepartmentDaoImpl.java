@@ -26,30 +26,6 @@ public class DepartmentDaoImpl {
 		return dep;
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	public void criteriaGetAll() {
-		Session session = HibernateUtil.getSession();
-		List<Department> deps = null;
-
-		try {
-			deps = session.createCriteria("FROM Department").list();
-
-			
-		}catch(Exception e) {//atch( HibernateException e) {
-			
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-
-		for(Department a : deps) {
-			System.out.println(a);
-		}
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
-		
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Department> selectAllDepartment(){
 		List<Department> deps = null;
@@ -64,6 +40,24 @@ public class DepartmentDaoImpl {
 		}
 		
 		return deps;
+		
+	}
+	
+
+	public void deleteDepartment(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.delete(session.get(Department.class, id));
+			tx.commit();
+		}catch(HibernateException e) {
+
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}		
 		
 	}
 	

@@ -30,7 +30,7 @@
 		</property>
 			
 		<property name="hibernate.connection.password">
-		
+			
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 

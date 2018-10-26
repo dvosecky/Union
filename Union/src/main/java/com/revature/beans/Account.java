@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "account")
 public class Account {
@@ -37,10 +40,15 @@ public class Account {
 	private Integer role;
 	
 	@OneToMany(mappedBy="acc")
+	@Cascade(CascadeType.DELETE)
 	List<Invitation> invites;
+	
+	@OneToMany(mappedBy="lead")
+	@Cascade(CascadeType.DELETE)
+	List<Event> events;
 
 	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep,
-			Integer role, List<Invitation> invites) {
+			Integer role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -49,7 +57,6 @@ public class Account {
 		this.lastname = lastname;
 		this.dep = dep;
 		this.role = role;
-		this.invites = invites;
 	}
 
 	public String getPassword() {

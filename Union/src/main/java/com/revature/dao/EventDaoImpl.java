@@ -16,7 +16,7 @@ public class EventDaoImpl {
 	//Primary criteria. Automatically will order by date.
 	
 	@SuppressWarnings("unchecked")
-	public List<Event> getAllEvents(){
+	public List<Event> selectAllEvents(){
 		List<Event> events = null;
 		Session s = HibernateUtil.getSession();
 		
@@ -36,7 +36,7 @@ public class EventDaoImpl {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Event> getEventsByName(String name){
+	public List<Event> selectEventsByName(String name){
 		List<Event> events = null;
 		Session s = HibernateUtil.getSession();
 		
@@ -56,7 +56,7 @@ public class EventDaoImpl {
 		return events;
 	}
 	
-	public Event getEventById(int id) {
+	public Event selectEventById(int id) {
 		Event e = null;
 		Session s = HibernateUtil.getSession();
 		
@@ -77,7 +77,7 @@ public class EventDaoImpl {
 	
 	//Inserts
 	//Adds event if account present
-	public Integer addEvent(Event event) {
+	public Integer insertEvent(Event event) {
 		if (event == null || event.getLead() == null) {
 			return null;
 		}
@@ -99,29 +99,6 @@ public class EventDaoImpl {
 		}
 		
 		return id;
-	}
-	
-	//Add statement
-	
-	public Integer insertEvent(Event event) {
-		Integer result = null;
-		Session s = HibernateUtil.getSession();
-		Transaction t = null;
-		
-		try {
-			t = s.beginTransaction();
-			result = (Integer)s.save(event);
-			t.commit();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-		}
-		finally {
-			s.close();
-		}
-		
-		return result;
 	}
 	
 	//Delete statement, which returns number of entries deleted/removed

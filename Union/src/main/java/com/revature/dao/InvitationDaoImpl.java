@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -21,7 +22,8 @@ public class InvitationDaoImpl {
 	
 	//Primary Criteria. Returns invitations from database.
 	
-	public List<Invitation> getAllInvitations() {
+	@SuppressWarnings("unchecked")
+	public List<Invitation> selectAllInvitations() {
 		invites = null;
 		Session s = HibernateUtil.getSession();
 		
@@ -38,7 +40,8 @@ public class InvitationDaoImpl {
 		return invites;
 	}
 	
-	public List<Invitation> getAllInvitesByAcc(Account acc){
+	@SuppressWarnings("unchecked")
+	public List<Invitation> selectAllInvitesByAcc(Account acc){
 		invites = null;
 		Session s = HibernateUtil.getSession();
 		
@@ -57,7 +60,19 @@ public class InvitationDaoImpl {
 		return invites;
 	}
 	
-	public List<Invitation> getAllInvitesByEv(Event ev){
+	public List<Event> selectAllEventsByAcc(Account acc){
+		invites = selectAllInvitesByAcc(acc);
+		List<Event> events = new ArrayList<Event>();
+		
+		for (Invitation invite : invites) {
+			events.add(invite.getEv());
+		}
+		
+		return events;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Invitation> selectAllInvitesByEv(Event ev){
 		invites = null;
 		Session s = HibernateUtil.getSession();
 		
@@ -78,7 +93,7 @@ public class InvitationDaoImpl {
 	
 	//Secondary Criteria, expect already get through a primary search.
 	
-	public List<Invitation> getAllAcceptInvites(){
+	public List<Invitation> selectAllAcceptInvites(){
 		if (invites != null) {
 			for (int i = 0; i < invites.size(); i++) {
 				if (invites.get(i).getAcceptFlag() != 1) {
@@ -90,7 +105,19 @@ public class InvitationDaoImpl {
 		return invites;
 	}
 	
-	public List<Invitation> getAllPrivInvites(){
+	public List<Invitation> selectAllPendingInvites(){
+		if (invites != null) {
+			for (int i = 0; i < invites.size(); i++) {
+				if (invites.get(i).getAcceptFlag() != 1) {
+					invites.remove(i);
+					i--;
+				}
+			}
+		}
+		return invites;
+	}
+	
+	public List<Invitation> selectAllPrivInvites(){
 		if (invites != null) {
 			for (int i = 0; i < invites.size(); i++) {
 				if (invites.get(i).getPrivilegeFlag() != 1) {

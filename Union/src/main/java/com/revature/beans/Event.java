@@ -34,7 +34,7 @@ public class Event {
 	private Account lead;
 	
 	@OneToMany(mappedBy="ev")
-	@Cascade(CascadeType.ALL)
+	@Cascade(CascadeType.DELETE)
 	List<Invitation> invites;
 	
 	public Integer getId() {
@@ -82,18 +82,16 @@ public class Event {
 		return "Event [id=" + id + ", time=" + time + ", name=" + name + "]";
 	}
 
-	public Event(Integer id, Timestamp time, String name, Account lead, List<Invitation> invites) {
+	public Event(Integer id, Timestamp time, String name, Account lead) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.name = name;
 		this.lead = lead;
-		this.invites = invites;
 	}
 
 	public Event() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }

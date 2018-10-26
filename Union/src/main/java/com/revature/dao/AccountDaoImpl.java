@@ -85,4 +85,19 @@ public class AccountDaoImpl {
 		
 		return id;
 	}
+	
+	public void deleteAccount(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.delete(session.get(Account.class, id));
+			tx.commit();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+	}
 }
