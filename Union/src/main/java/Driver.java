@@ -17,20 +17,20 @@ public class Driver {
 //		
 //		acc = account.selectAccountById(2);
 		
-		System.out.println("By id: "+ acc);
+		//System.out.println("By id: "+ acc);
 		
 		System.out.println("===================================");
 		
-//		acc=account.selectAccountByUsername("a");
+		acc=account.selectAccountByUsername("a");
 //		
-//		System.out.println("By username: " + acc );
+		System.out.println("By username: " + acc );
 		
 		System.out.println("===================================");
-//		int index;
+		int index;
 //		
-//		acc= new Account(null,"ff","f","first","last",acc.getDep());
-//		index= account.insertAccount(acc);
-//		System.out.println( index  );
+		acc= new Account(null,"ff","f","first","last",acc.getDep(),1);
+		index= account.insertAccount(acc);
+		System.out.println( index  );
 		
 		System.out.println("===================================");
 //		
