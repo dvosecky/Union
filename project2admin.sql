@@ -1,4 +1,3 @@
-
 DROP TABLE account CASCADE CONSTRAINTS;
 DROP TABLE department CASCADE CONSTRAINTS;
 DROP TABLE event CASCADE CONSTRAINTS;
@@ -67,3 +66,4 @@ SELECT * FROM invitation;
 DESC event;
 
 commit;
+
