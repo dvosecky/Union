@@ -27,4 +27,17 @@ public class EventService {
 		
 		return inserted;
 	}
+
+	public static boolean removeEvent( int eventID ) {
+		boolean deleted = false;
+		EventDaoImpl manager = new EventDaoImpl();
+		Event event = manager.selectEventById(eventID);
+		
+		if( event != null) {
+			
+		}
+		
+		return deleted;
+		
+	}
 }

@@ -69,4 +69,14 @@
     <servlet-name>AddEvent</servlet-name>
     <url-pattern>/AddEvent</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveEvent</display-name>
+    <servlet-name>RemoveEvent</servlet-name>
+    <servlet-class>com.revature.servlet.RemoveEvent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveEvent</servlet-name>
+    <url-pattern>/RemoveEvent</url-pattern>
+  </servlet-mapping>
 </web-app>
