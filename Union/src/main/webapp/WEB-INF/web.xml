@@ -59,7 +59,18 @@
     <servlet-name>AddAccount</servlet-name>
     <url-pattern>/AddAccount</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
+
+ 
+  <servlet>
+    <description></description>
+    <display-name>AddEvent</display-name>
+    <servlet-name>AddEvent</servlet-name>
+    <servlet-class>com.revature.servlet.AddEvent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEvent</servlet-name>
+    <url-pattern>/AddEvent</url-pattern>
+  </servlet-mapping>
   
   <!-- Allow all cross origin interaction from Angular -->
  <filter>
@@ -78,16 +89,4 @@
        <filter-name>CorsFilter</filter-name>
        <url-pattern>/*</url-pattern>
  </filter-mapping>
-=======
-  <servlet>
-    <description></description>
-    <display-name>AddEvent</display-name>
-    <servlet-name>AddEvent</servlet-name>
-    <servlet-class>com.revature.servlet.AddEvent</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddEvent</servlet-name>
-    <url-pattern>/AddEvent</url-pattern>
-  </servlet-mapping>
->>>>>>> 1ceb6bc4e10b0f2443ce8941bbb05d740ea4c659
 </web-app>
