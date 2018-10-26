@@ -11,7 +11,7 @@ export class LoginService {
         console.log("email: " + email);
         console.log("password: " + password);
 
-        this.http.post("http://localhost:8085/Union/Login", "email=" + email + "&password=" + password,
+        this.http.post("http://18.220.118.195:8085/Union/Login", "email=" + email + "&password=" + password,
             {
             headers: new HttpHeaders({
               'Content-Type': 'application/x-www-form-urlencoded'})
