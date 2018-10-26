@@ -1,3 +1,4 @@
+import { ViewEventsService } from './../services/view-events.service';
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
 
@@ -8,10 +9,11 @@ import { Session } from '../session';
 })
 export class ViewEventsComponent implements OnInit {
 
-  constructor(private session :Session) { }
+  constructor(private session :Session, private service :ViewEventsService) { }
 
   admin :boolean = false;
   emp :boolean = false;
+  events;
 
   ngOnInit() {
 
@@ -21,6 +23,9 @@ export class ViewEventsComponent implements OnInit {
     } else if (this.session.role === 'emp') {
       this.emp = true;
     }
+
+    // get the list of events
+    this.events = this.service.getEvents();
   }
 
 }
