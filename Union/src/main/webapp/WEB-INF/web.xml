@@ -59,4 +59,14 @@
     <servlet-name>AddAccount</servlet-name>
     <url-pattern>/AddAccount</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddEvent</display-name>
+    <servlet-name>AddEvent</servlet-name>
+    <servlet-class>com.revature.servlet.AddEvent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEvent</servlet-name>
+    <url-pattern>/AddEvent</url-pattern>
+  </servlet-mapping>
 </web-app>

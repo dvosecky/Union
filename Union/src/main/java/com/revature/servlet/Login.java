@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.beans.Account;
+import com.revature.dto.AccountDTO;
 import com.revature.services.UserService;
 
 /**
@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
 		String username, password;
 		username=request.getParameter("email");
 		password=request.getParameter("password");
-		Account acc=  UserService.loginToUnion(username, password);
+		AccountDTO acc=  UserService.loginToUnion(username, password);
 		
 		if(acc!= null) {
 			ObjectMapper om = new ObjectMapper();
