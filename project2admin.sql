@@ -12,6 +12,7 @@ CREATE TABLE account (
     lname VARCHAR2(20),
     dep_id NUMBER(10),
     role NUMBER(1),
+
     CONSTRAINT account_pk PRIMARY KEY (acc_id)
 );
 
@@ -40,12 +41,16 @@ CREATE TABLE invitation (
 
 ALTER TABLE account ADD CONSTRAINT account_fk FOREIGN KEY (dep_id)
     REFERENCES department (dep_id);
+
 ALTER TABLE event ADD CONSTRAINT event_leadfk FOREIGN KEY (lead_id)
     REFERENCES account (acc_id);
+
+	
 ALTER TABLE invitation ADD CONSTRAINT invitation_acc_fk FOREIGN KEY (acc_id)
     REFERENCES account (acc_id);
 ALTER TABLE invitation ADD CONSTRAINT invitation_ev_fk FOREIGN KEY (ev_id)
     REFERENCES event (ev_id);
+
     
 INSERT INTO department VALUES(1, 'gogo');
 INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1, 0);

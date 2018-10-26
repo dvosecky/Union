@@ -6,20 +6,31 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { EmpWelcomeComponent } from './emp-welcome/emp-welcome.component';
+import { AdminWelcomeComponent } from './admin-welcome/admin-welcome.component';
+import { ViewEventsComponent } from './view-events/view-events.component';
+import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { Session } from './session';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    WelcomeComponent
+    EmpWelcomeComponent,
+    AdminWelcomeComponent,
+    ViewEventsComponent,
+    EmpNavbarComponent,
+    AdminNavbarComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [Session],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -29,9 +29,11 @@ public class Event {
 	private Timestamp time;
 	@Column(name = "ename")
 	private String name;
+
 	@ManyToOne
 	@JoinColumn(name = "lead_id")
 	private Account lead;
+
 	
 	@OneToMany(mappedBy="ev")
 	@Cascade(CascadeType.DELETE)
