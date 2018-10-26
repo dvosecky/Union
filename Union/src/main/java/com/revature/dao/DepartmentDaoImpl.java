@@ -10,26 +10,21 @@ import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
 
 public class DepartmentDaoImpl {
-
-	public Integer insertDepartment( Department department) {
-		Integer id=null;
-		Session session = HibernateUtil.getSession();
-		Transaction tx= null;
+	public Department selectDepartmentById(Integer id) {
+		Department dep = null;
+		Session session= HibernateUtil.getSession();
 		
 		try {
-			tx=session.beginTransaction();
-			id=(Integer)session.save(department);
-			tx.commit();
+		dep = (Department) session.get(Department.class, id);
 		}catch( HibernateException e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
 		
-		return id;
 		
+		return dep;
 	}
-
 	
 	@SuppressWarnings("unchecked")
 	public List<Department> selectAllDepartment(){
@@ -50,7 +45,6 @@ public class DepartmentDaoImpl {
 	
 
 	public void deleteDepartment(Integer id) {
-
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
 		
@@ -64,8 +58,25 @@ public class DepartmentDaoImpl {
 		}finally {
 			session.close();
 		}		
-
 		
 	}
-
+	
+	public Integer insertDepartment(Department dep){
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		Integer id = null;
+		
+		try {
+			tx = session.beginTransaction();
+			id = (Integer)session.save(dep);
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			session.close();
+		}
+		
+		return id;
+	}
 }

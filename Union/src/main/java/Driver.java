@@ -14,38 +14,40 @@ public class Driver {
 		
 		System.out.println("===================================");
 		
-		
-		Account acc= null;
-		
-		acc = account.selectAccountById(2);
+//		
+ 	Account acc= null;
+//		
+//		acc = account.selectAccountById(2);
 		
 		System.out.println("By id: "+ acc);
 		
 		System.out.println("===================================");
 		
-		acc=account.selectAccountByUsername("a");
-		
-		System.out.println("By username: " + acc );
-		
-		System.out.println("===================================");
-		int index;
-		
-		acc= new Account(null,"ff","f","first","last",acc.getDep());
-		index= account.insertAccount(acc);
-		System.out.println( index  );
+//		acc=account.selectAccountByUsername("a");
+//		
+//		System.out.println("By username: " + acc );
 		
 		System.out.println("===================================");
-		
-		acc=account.selectAccountById(index);
-		System.out.println("Deleting id: "+index+ acc);
-		
-		account.deleteAccountById(index);
+//		int index;
+//		
+//		acc= new Account(null,"ff","f","first","last",acc.getDep());
+//		index= account.insertAccount(acc);
+//		System.out.println( index  );
 		
 		System.out.println("===================================");
+//		
+//		acc=account.selectAccountById(index);
+//		System.out.println("Deleting id: "+index+ acc);
+//		
+//		account.deleteAccountById(index);
+//		
+		System.out.println("===============Deleting====================");
 		
-		acc=account.selectAccountByUsername("z");
-		System.out.println("Deleting id: "+"z "+ acc);
+		//acc=account.selectAccountByUsername("z");
+		//System.out.println("Deleting id: "+"z "+ acc);
 		//work if record exist 
+		//acc=account.selectAccountByUsername("z");
+		//System.out.println("Deleting id: "+"z "+ acc);
 		//account.deleteAccountByUsername("z");
 		
 		System.out.println("===================================");
@@ -58,15 +60,15 @@ public class Driver {
 		System.out.println();
 		System.out.println("================Department===================");
 		
-		List<Department> departments=null;
-		DepartmentDaoImpl depart = new DepartmentDaoImpl();
-		
-		departments= depart.selectAllDepartment();
-		
-		for( Department d: departments) {
-			System.out.println(d);
-			System.out.println(d.getAccount());
-		}
+//		List<Department> departments=null;
+//		DepartmentDaoImpl depart = new DepartmentDaoImpl();
+//		
+//		departments= depart.selectAllDepartment();
+//		
+//		for( Department d: departments) {
+//			System.out.println(d);
+//			System.out.println(d.getAccount());
+//		}
 		
 		System.out.println("=====================================");
 		//Department d = new Department(null,"landon");

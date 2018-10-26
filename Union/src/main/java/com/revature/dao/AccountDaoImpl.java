@@ -34,6 +34,11 @@ public class AccountDaoImpl {
 		finally {
 			s.close();
 		}
+		
+		return accounts;
+		
+	}
+	
 	public void deleteAccountById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
@@ -46,10 +51,9 @@ public class AccountDaoImpl {
 			e.printStackTrace();
 		}
 		finally {
-			s.close();
+			session.close();
 		}
-		
-		return accounts;
+
 	}
 	
 	public Account selectAccountById(Integer id) {
@@ -62,7 +66,7 @@ public class AccountDaoImpl {
 			e.printStackTrace();
 		}
 		finally {
-			s.close();
+			session.close();
 		}
 		return account;
 		
@@ -118,19 +122,6 @@ public class AccountDaoImpl {
 		
 	}
 	
-	public Account selectAccountById( Integer id) {
-		Account account = null;
-		Session session= HibernateUtil.getSession();
-		
-		try {
-		account = (Account) session.get(Account.class, id);
-		}catch( HibernateException e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return account;
-	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAllAccount(){
