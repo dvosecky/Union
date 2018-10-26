@@ -14,6 +14,7 @@ export const appRoutes: Routes = [
     { path: 'emp-welcome', component: EmpWelcomeComponent},
     { path: 'admin-welcome', component: AdminWelcomeComponent},
     {path: 'view-events', component: ViewEventsComponent},
+    {path: 'my-events', component: ViewEventsComponent},
     {path: 'event-details', component: EventDetailsComponent},
     {path: 'approve-events', component: ApproveEventsComponent},
     {path: 'create-events', component: CreateEventsComponent},
