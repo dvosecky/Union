@@ -41,13 +41,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.email, this.password);
     
-    // if (this.email === "admin") {
-    //   this.session.role = 'admin';
-    //   this.router.navigate(['../admin-welcome'], { relativeTo: this.route });
-    // } else {
-    //   this.session.role = 'emp';
-    //   this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
-    // }
+
   }
 
   ngOnInit() {
