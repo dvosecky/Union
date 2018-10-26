@@ -139,4 +139,27 @@ public class Account {
 		this.role = role;
 	}
 
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public List<Invitation> getInvites() {
+		return invites;
+	}
+
+	public void setInvites(List<Invitation> invites) {
+		this.invites = invites;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
