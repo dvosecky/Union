@@ -14,7 +14,6 @@ public class UserService {
 		
 		if( acc != null) {
 			if(acc.getPassword().equals(password)) {
-				acc.setDep(null);
 				return acc;
 			}
 		}
