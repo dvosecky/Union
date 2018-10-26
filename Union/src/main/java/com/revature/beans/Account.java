@@ -9,12 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "account")
@@ -27,7 +28,9 @@ public class Account {
 	
 	@Column(name = "uname")
 	private String username;
-	@Column(name="pw")
+
+	@Column(name = "pw")
+
 	private String password;
 	@Column(name = "fname")
 	private String firstname;
@@ -36,24 +39,19 @@ public class Account {
 	@ManyToOne
 	@JoinColumn(name = "dep_id")
 	private Department dep;
+	@Column(name = "role")
+	private Integer role;
 	
-	@OneToMany
-	@JoinTable(name="adrelation" ,
-				joinColumns= @JoinColumn(name="lead_id"),
-				inverseJoinColumns= @JoinColumn(name="dep_id") )
-	private List<Department> departments;
+	@OneToMany(mappedBy="acc")
+	@Cascade(CascadeType.DELETE)
+	List<Invitation> invites;
+	
+	@OneToMany(mappedBy="lead")
+	@Cascade(CascadeType.DELETE)
+	List<Event> events;
 
-	@ManyToMany
-	@JoinTable(name="aerelation",
-				joinColumns= @JoinColumn(name="lead_id"),
-				inverseJoinColumns= @JoinColumn(name="ev_id"))
-	private List<Event> events;
-	
-	@OneToMany(mappedBy = "acc")
-	private List<Invitation> invites;
-	
-	
-	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep) {
+	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep,
+			Integer role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -61,30 +59,25 @@ public class Account {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.dep = dep;
+		this.role = role;
 	}
 
-	public Account(Integer id, String username, String password, String firstname, String lastname, Department dep,
-			List<Department> departments,List<Event> events,List<Invitation> invites ) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password=password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.dep = dep;
-		this.departments = departments;
-		this.events = events;
-		this.invites = invites;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 
 	}
 
 	public Account() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
+
 		return "Account [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
 				+ ", dep=" + dep + "]";
 
@@ -92,6 +85,14 @@ public class Account {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public List<Invitation> getInvites() {
+		return invites;
+	}
+
+	public void setInvites(List<Invitation> invites) {
+		this.invites = invites;
 	}
 
 	public void setId(Integer id) {
@@ -130,12 +131,12 @@ public class Account {
 		this.dep = dep;
 	}
 
-	public List<Department> getDepartments() {
-		return departments;
+	public Integer getRole() {
+		return role;
 	}
 
-	public void setDepartments(List<Department> departments) {
-		this.departments = departments;
+	public void setRole(Integer role) {
+		this.role = role;
 	}
 
 	public List<Event> getEvents() {
@@ -161,8 +162,4 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
-	
-	
 }

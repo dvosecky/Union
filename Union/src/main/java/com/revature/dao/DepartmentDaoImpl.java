@@ -30,8 +30,27 @@ public class DepartmentDaoImpl {
 		
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	public List<Department> selectAllDepartment(){
+		List<Department> deps = null;
+		Session session = HibernateUtil.getSession();
+		
+		try {
+		deps = session.createQuery("FROM department").list();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return deps;
+		
+	}
+	
 
 	public void deleteDepartment(Integer id) {
+
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
 		
@@ -45,24 +64,7 @@ public class DepartmentDaoImpl {
 		}finally {
 			session.close();
 		}		
-		
-	}
 
-
-	@SuppressWarnings("unchecked")
-	public List<Department> selectAllDepartment(){
-		List<Department> departments=null;
-		Session session = HibernateUtil.getSession();
-		
-		try {
-		departments = session.createQuery("FROM Department").list();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		
-		return departments;
 		
 	}
 

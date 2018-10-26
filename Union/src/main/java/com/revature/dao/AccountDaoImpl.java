@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import org.hibernate.criterion.Restrictions;
 
@@ -17,6 +18,22 @@ import com.revature.util.HibernateUtil;
 
 public class AccountDaoImpl {
 
+	@SuppressWarnings("unchecked")
+	public List<Account> selectAccountsByDep(Department dep){
+		List<Account> accounts = null;
+		Session s = HibernateUtil.getSession();
+		
+		try {
+			Criteria c = s.createCriteria(Account.class);
+			c.add(Restrictions.like("dep", dep));
+			accounts = (List<Account>) c.list();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
 	public void deleteAccountById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
@@ -27,10 +44,27 @@ public class AccountDaoImpl {
 			tx.commit();
 		}catch(HibernateException e) {
 			e.printStackTrace();
-		}finally {
-			session.close();
+		}
+		finally {
+			s.close();
 		}
 		
+		return accounts;
+	}
+	
+	public Account selectAccountById(Integer id) {
+		Account account = null;
+		Session session= HibernateUtil.getSession();
+		
+		try {
+		account = (Account) session.get(Account.class, id);
+		}catch( HibernateException e) {
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
+		return account;
 		
 	}
 	
@@ -95,8 +129,6 @@ public class AccountDaoImpl {
 		}finally {
 			session.close();
 		}
-		
-		
 		return account;
 	}
 	
@@ -140,5 +172,19 @@ public class AccountDaoImpl {
 		
 	}
 
-
+	public void deleteAccount(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.delete(session.get(Account.class, id));
+			tx.commit();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+	}
 }
+
