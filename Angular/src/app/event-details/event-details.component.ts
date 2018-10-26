@@ -8,46 +8,18 @@ import { Session } from '../session';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  email :string;
-  password :string;
 
-  constructor(private router :Router, private route: ActivatedRoute,
-              private session :Session) { }
+    constructor(private session :Session) { }
 
-  private validateEmail() {
-    if (this.email === undefined || this.email === "") {
-      return false;
+    admin :boolean = false;
+    emp :boolean = false;
+
+    ngOnInit() {
+      window.scrollTo(0, 0);
+      if (this.session.role === 'admin') {
+        this.admin = true;
+      } else if (this.session.role === 'emp') {
+        this.emp = true;
+      }
     }
-    return true;
-  }
-
-  private validatePassword() {
-    if (this.password == undefined || this.password === "") {
-      return false;
-    }
-    return true;
-  }
-
-  onSubmit() {
-    if (!this.validateEmail() || !this.validatePassword()) {
-      alert('Invalid email or password');
-      return;
-    }
-
-    // send httpRequest to get user information, including user type, which
-    // we need to know to determine which welcome page to go to"
-
-    if (this.email === "admin") {
-      this.session.role = 'admin';
-      this.router.navigate(['../admin-welcome'], { relativeTo: this.route });
-    } else {
-      this.session.role = 'emp';
-      this.router.navigate(['../emp-welcome'], { relativeTo: this.route });
-    }
-  }
-
-  ngOnInit() {
-    window.scrollTo(0, 0);
-  }
-
   }
