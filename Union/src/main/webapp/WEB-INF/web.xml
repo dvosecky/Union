@@ -19,4 +19,44 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllEvents</display-name>
+    <servlet-name>GetAllEvents</servlet-name>
+    <servlet-class>com.revature.servlet.GetAllEvents</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllEvents</servlet-name>
+    <url-pattern>/GetAllEvents</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllAccounts</display-name>
+    <servlet-name>GetAllAccounts</servlet-name>
+    <servlet-class>com.revature.servlet.GetAllAccounts</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllAccounts</servlet-name>
+    <url-pattern>/GetAllAccounts</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveAccount</display-name>
+    <servlet-name>RemoveAccount</servlet-name>
+    <servlet-class>com.revature.servlet.RemoveAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveAccount</servlet-name>
+    <url-pattern>/RemoveAccount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAccount</display-name>
+    <servlet-name>AddAccount</servlet-name>
+    <servlet-class>com.revature.servlet.AddAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAccount</servlet-name>
+    <url-pattern>/AddAccount</url-pattern>
+  </servlet-mapping>
 </web-app>
