@@ -8,14 +8,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  constructor(private router :Router, private route :ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   logout() {
     this.router.navigate(['../login'], { relativeTo: this.route });
   }
 
   ngOnInit() {
-      document.querySelector('.navbar').setAttribute('style', '');
+    document.querySelector('.navbar').setAttribute('style', '');
   }
 
 }

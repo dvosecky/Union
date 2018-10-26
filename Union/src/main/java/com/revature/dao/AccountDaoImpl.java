@@ -2,15 +2,61 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+import org.hibernate.criterion.Restrictions;
+
 
 import com.revature.beans.Account;
+import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
 
 public class AccountDaoImpl {
 
-	public Account selectAccountById( Integer id) {
+	@SuppressWarnings("unchecked")
+	public List<Account> selectAccountsByDep(Department dep){
+		List<Account> accounts = null;
+		Session s = HibernateUtil.getSession();
+		
+		try {
+			Criteria c = s.createCriteria(Account.class);
+			c.add(Restrictions.like("dep", dep));
+			accounts = (List<Account>) c.list();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
+		
+		return accounts;
+		
+	}
+	
+	public void deleteAccountById(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.delete(session.get(Account.class, id));
+			tx.commit();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
+
+	}
+	
+	public Account selectAccountById(Integer id) {
 		Account account = null;
 		Session session= HibernateUtil.getSession();
 		
@@ -18,37 +64,64 @@ public class AccountDaoImpl {
 		account = (Account) session.get(Account.class, id);
 		}catch( HibernateException e) {
 			e.printStackTrace();
-		}finally {
+		}
+		finally {
 			session.close();
 		}
-		
-		
 		return account;
+		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	public void criteriaGetAll() {
+	public void deleteAccountByUsername( String username) {
 		Session session = HibernateUtil.getSession();
-		List<Account> accounts=null;
-
+		Criteria criteria;
+		Account account=null;
+		Transaction tx=null;
+		
 		try {
-			accounts= session.createCriteria(Account.class).list();
-
-			
-		}catch(Exception e) {//atch( HibernateException e) {
-			
+			criteria=session.createCriteria(Account.class);
+			account = (Account) criteria.add(Restrictions.eq("username",username)).uniqueResult();
+	
+			tx=session.beginTransaction();
+			session.delete(username,account);
+		
+			tx.commit();
+		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
+		
+	
+	}
+	
+	public List<Account> selectAccountByDepartment( Department department ) {
+		List<Account> account=null;
+		
+		return account;
+	}
+	
+	public Integer insertAccount(Account account) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		Integer id=null;
+	
+		try {
 
-		for(Account a : accounts) {
-			System.out.println(a);
+			tx = session.beginTransaction();
+			id=(Integer)session.save(account);
+			tx.commit();
+		}catch(HibernateException e) {
+
+			e.printStackTrace();
+		}finally {
+			session.close();
+			
 		}
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+		return id;
 		
 	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAllAccount(){
@@ -56,7 +129,7 @@ public class AccountDaoImpl {
 		Session session = HibernateUtil.getSession();
 		
 		try {
-		accounts = session.createQuery("FROM account").list();
+		accounts = session.createQuery("FROM Account").list();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -66,4 +139,43 @@ public class AccountDaoImpl {
 		return accounts;
 		
 	}
+
+
+	public Account selectAccountByUsername( String username) {
+		Account account=null;
+		Query query=null;
+		Session session=HibernateUtil.getSession();
+		String hql;
+		
+		try {
+			hql="From Account where uname=:username";
+			query=session.createQuery(hql);
+			query.setParameter("username", username);
+			account= (Account)query.uniqueResult();
+			
+		}catch( HibernateException e) {
+			e.printStackTrace();
+			System.out.println("______________________");
+		}finally {
+			session.close();
+		}
+		return account;
+		
+	}
+
+	public void deleteAccount(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.delete(session.get(Account.class, id));
+			tx.commit();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+	}
 }
+

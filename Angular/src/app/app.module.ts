@@ -12,6 +12,10 @@ import { ViewEventsComponent } from './view-events/view-events.component';
 import { EmpNavbarComponent } from './emp-navbar/emp-navbar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { Session } from './session';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { ApproveEventsComponent } from './approve-events/approve-events.component';
+import { CreateEventsComponent } from './create-events/create-events.component';
+import { DhWelcomeComponent } from './dh-welcome/dh-welcome.component';
 
 import { LoginService } from './services/login.service';
 
@@ -25,7 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     AdminWelcomeComponent,
     ViewEventsComponent,
     EmpNavbarComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    EventDetailsComponent,
+    ApproveEventsComponent,
+    CreateEventsComponent,
+    DhWelcomeComponent
   ],
   imports: [
     BrowserModule,

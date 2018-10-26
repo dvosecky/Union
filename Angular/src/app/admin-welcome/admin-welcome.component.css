@@ -1,9 +1,9 @@
 @media screen and (max-width: 500px) {
-  .display-1{
+  .display-1 {
     font-size: 4rem;
   }
 }
 
 .center-button {
-  margin:auto;
+  margin: auto;
 }
