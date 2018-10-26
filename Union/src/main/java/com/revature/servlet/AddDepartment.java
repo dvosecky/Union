@@ -33,7 +33,7 @@ public class AddDepartment extends HttpServlet{
 		}
 		Integer lead_id = Integer.getInteger(proxyString);
 		
-		if (role > 1) {
+		/*if (role > 1) {
 			Department d = DepartmentServices.selectDepartmentByName(dep_name); //TODO
 			if (d == null) {
 				DepartmentServices.insertDepartmentWithLead(dep_name, lead_id);
@@ -42,7 +42,7 @@ public class AddDepartment extends HttpServlet{
 			else {
 				res.sendError(400);
 			}
-		}
+		}*/
 		
 		res.sendError(500);
 	}

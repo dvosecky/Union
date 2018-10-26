@@ -87,32 +87,7 @@ public class AccountDaoImpl {
 		}finally {
 			session.close();
 		}
-		
-		
-		return account;
 	}
-	
-	public Integer insertAccount(Account account) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx=null;
-		Integer id=null;
-	
-		try {
-
-			tx = session.beginTransaction();
-			id=(Integer)session.save(account);
-			tx.commit();
-		}catch(HibernateException e) {
-
-			e.printStackTrace();
-		}finally {
-			session.close();
-			
-		}
-		return id;
-		
-	}
-	
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAllAccount(){
