@@ -20,6 +20,45 @@ public class InvitationDaoImpl {
 		invites = null;
 	}
 	
+	public boolean acceptInviteById(int inv_id) {
+		Session s = HibernateUtil.getSession();
+		
+		try {
+			
+		}
+		catch (Exception e) {
+			
+		}
+		finally {
+			
+		}
+		
+		return false;
+	}
+	
+	public boolean acceptInvite(Invitation i) {
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		boolean result = false;
+		
+		try {
+			t = s.beginTransaction();
+			s.persist(i);
+			i.setAcceptFlag(1);
+			t.commit();
+			result = true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
+	}
+	
 	//Primary Criteria. Returns invitations from database.
 	
 	@SuppressWarnings("unchecked")
