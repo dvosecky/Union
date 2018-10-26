@@ -2,6 +2,7 @@ package com.revature.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,28 +14,19 @@ import com.revature.beans.Account;
 import com.revature.services.UserService;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class GetAllAccounts
  */
-public class Login extends HttpServlet {
+public class GetAllAccounts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-  
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String username, password;
-		username=request.getParameter("email");
-		password=request.getParameter("password");
-		Account acc=  UserService.loginToUnion(username, password);
+	
+		List<Account> accounts = null;
+		ObjectMapper om = new ObjectMapper();
+		PrintWriter out = response.getWriter();
+		accounts = UserService.retrieveAllAccount();
+		out.print(om.writeValueAsString(accounts));
 		
-		if(acc!= null) {
-			ObjectMapper om = new ObjectMapper();
-			PrintWriter out = response.getWriter();
-			out.print(om.writeValueAsString(acc));
-			
-		}else {
-		
-			response.sendError(401);
-		}
 	}
 
 

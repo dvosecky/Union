@@ -68,4 +68,3 @@ public class Department {
 		this.dname = dname;
 	}
 }
-

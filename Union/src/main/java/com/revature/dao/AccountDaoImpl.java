@@ -32,6 +32,24 @@ public class AccountDaoImpl {
 		}
 		
 		return accounts;
+		
+	}
+	
+	public void deleteAccountById(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.delete(session.get(Account.class, id));
+			tx.commit();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
+
 	}
 	
 	public Account selectAccountById(Integer id) {
@@ -42,6 +60,30 @@ public class AccountDaoImpl {
 		account = (Account) session.get(Account.class, id);
 		}catch( HibernateException e) {
 			e.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
+		return account;
+		
+	}
+	
+	public void deleteAccountByUsername( String username) {
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		Account account=null;
+		Transaction tx=null;
+		
+		try {
+			criteria=session.createCriteria(Account.class);
+			account = (Account) criteria.add(Restrictions.eq("username",username)).uniqueResult();
+	
+			tx=session.beginTransaction();
+			session.delete(username,account);
+		
+			tx.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}finally {
 			session.close();
 		}
@@ -49,6 +91,28 @@ public class AccountDaoImpl {
 		
 		return account;
 	}
+	
+	public Integer insertAccount(Account account) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		Integer id=null;
+	
+		try {
+
+			tx = session.beginTransaction();
+			id=(Integer)session.save(account);
+			tx.commit();
+		}catch(HibernateException e) {
+
+			e.printStackTrace();
+		}finally {
+			session.close();
+			
+		}
+		return id;
+		
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAllAccount(){
