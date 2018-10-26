@@ -2,6 +2,10 @@
 .classpath
 .settings
 target/
+Servers/
+.recommenders/
+RemoteSystemsTempFiles/
+
 Union/src/main/resources/*.xml
 
 # Compiled class file
