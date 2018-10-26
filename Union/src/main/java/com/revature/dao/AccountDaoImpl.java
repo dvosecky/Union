@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
+//import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -14,7 +15,8 @@ import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
 
 public class AccountDaoImpl {
-
+	//public final static Logger logger = Logger.getLogger(AccountDaoImpl.class);
+	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAccountsByDep(Department dep){
 		List<Account> accounts = null;
@@ -94,15 +96,18 @@ public class AccountDaoImpl {
 	public List<Account> selectAllAccount(){
 		List<Account> accounts=null;
 		Session session = HibernateUtil.getSession();
-		
+		//logger.info("Session has begin created");
 		try {
 		accounts = session.createQuery("FROM Account").list();
+	//	logger.info("Accounts have been retrieved");
 		}catch(Exception e) {
 			e.printStackTrace();
+	//	logger.error("Exception was found");
 		}finally {
 			session.close();
 		}
 		
+		//logger.info("Accounts have returned");
 		return accounts;
 		
 	}

@@ -4,17 +4,24 @@ import java.util.List;
 
 import com.revature.beans.Account;
 import com.revature.dao.AccountDaoImpl;
+import com.revature.dto.AccountDTO;
 
 public class UserService {
 
-	public static Account loginToUnion( String username, String password) {
+	public static AccountDTO loginToUnion( String username, String password) {
 		Account acc=null;
+		AccountDTO accDTO=null;
 		AccountDaoImpl account=new AccountDaoImpl();
 		acc = account.selectAccountByUsername(username);
 		
+		
 		if( acc != null) {
 			if(acc.getPassword().equals(password)) {
-				return acc;
+				
+				accDTO = new AccountDTO(acc.getId(),acc.getUsername(),acc.getPassword(),
+						acc.getFirstname(),acc.getLastname(),acc.getDep().getDep_id(),acc.getRole());
+				
+				return accDTO;
 			}
 		}
 		
@@ -49,10 +56,13 @@ public class UserService {
 		boolean added=false;
 		AccountDaoImpl manager= new AccountDaoImpl();
 		int id=0;
-		id=manager.insertAccount(account);
-		if( id>0) {
-			added=true;
+		if( manager.selectAccountByUsername(account.getUsername()) == null) {
+			id=manager.insertAccount(account);
+			if( id>0) {
+				added=true;
+			}
 		}
+
 		
 		return added;
 	}
