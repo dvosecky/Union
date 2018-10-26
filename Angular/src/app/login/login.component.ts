@@ -1,3 +1,4 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../session';
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   password :string;
   
   constructor(private router :Router, private route: ActivatedRoute,
-              private session :Session) { }
+              private session :Session, private loginService :LoginService) { }
 
   private validateEmail() {
     if (this.email === undefined || this.email === "") {
