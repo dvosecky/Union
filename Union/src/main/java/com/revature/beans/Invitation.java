@@ -18,6 +18,12 @@ public class Invitation {
 	@SequenceGenerator(sequenceName="inv_seq", name="inv_seq")
 	@GeneratedValue(generator="inv_seq", strategy=GenerationType.SEQUENCE)
 	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	@ManyToOne
 	@JoinColumn(name = "acc_id")
 	private Account acc;
