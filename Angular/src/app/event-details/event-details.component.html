@@ -1,9 +1,11 @@
 <body class="filter-dark" style="	background-image: url('assets/Event_Details_Background.jpg');	background-position: center;	background-size: cover;	background-repeat: no-repeat;	background-attachment: fixed;">
+  <app-admin-navbar *ngIf="admin"></app-admin-navbar>
+  <app-emp-navbar *ngIf="emp"></app-emp-navbar>
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-4 text-center m-4" style="">HR Meeting</h1>
+          <h1 class="display-4 text-center m-4">HR Meeting</h1>
         </div>
       </div>
     </div>
@@ -11,7 +13,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-12" style=""><img class="d-block rounded-circle img-fluid mx-auto" src="assets/Event_Details.jpg" style=""></div>
+        <div class="col-md-12"   ><img class="d-block rounded-circle img-fluid mx-auto" src="assets/Event_Details.jpg"   ></div>
       </div>
     </div>
   </div>
@@ -35,7 +37,7 @@
                   <h3 class="">&nbsp;Desription</h3>
                 </div>
                 <div class="col-md-3">
-                  <h4 class="" style="">12:30 PM</h4>
+                  <h4 class=""   >12:30 PM</h4>
                 </div>
                 <div class="col-md-3">
                   <h4 class="">04/18/1991</h4>
@@ -43,8 +45,8 @@
                 <div class="col-md-3">
                   <h4 class="">Room 408A</h4>
                 </div>
-                <div class="col-sm-4 col-md-3" style="">
-                  <h4 class="" style="">Short Desciption Here</h4>
+                <div class="col-sm-4 col-md-3"   >
+                  <h4 class=""   >Short Desciption Here</h4>
                 </div>
               </div>
             </div>
