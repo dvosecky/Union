@@ -35,24 +35,27 @@ public class DepartmentServices {
 		return dd.selectDepartmentById(dep_id);
 	}
 
-	public static void deleteDepartmentByDepId(Integer dep_id) {
+	public static boolean deleteDepartmentByDepId(Integer dep_id) {
 		DepartmentDaoImpl dd = new DepartmentDaoImpl();
+		boolean result = false;
 		
-		dd.deleteDepartment(dep_id);
+		if (dd.selectDepartmentById(dep_id) != null) {
+			dd.deleteDepartment(dep_id);
+			result = true;
+		}
+		return result;
 	}
 	
-	public static void insertDepartmentWithLead(String dname, Integer lead_id) {
+	public static boolean insertDepartmentWithLead(String dname) {
 		DepartmentDaoImpl dd = new DepartmentDaoImpl();
-		AccountDaoImpl ad = new AccountDaoImpl();
-		
-		Department d = new Department();
-		d.setDname(dname);
-		Account a = ad.selectAccountById(lead_id);
-		
-		if (a != null) {
-			dd.insertDepartment(d);
-			a.setRole(1);
-			a.setDep(d);
+		Department d = dd.selectDepartmentByName(dname);
+		if (d != null) {
+			return false;
 		}
+		
+		d = new Department();
+		d.setDname(dname);
+		dd.insertDepartment(d);
+		return true;
 	}
 }
