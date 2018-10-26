@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpWelcomeComponent implements OnInit {
 
-  constructor(private router :Router, private route :ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     window.scrollTo(0, 0);
@@ -16,7 +16,7 @@ export class EmpWelcomeComponent implements OnInit {
       this.invisibleNavBar();
       window.addEventListener("scroll", this.updateNavBar);
     }
-    , 10);
+      , 10);
   }
 
   ngOnDestroy() {
@@ -27,16 +27,16 @@ export class EmpWelcomeComponent implements OnInit {
     var nav = document.querySelector(".navbar")
     nav.setAttribute('style', 'visibility: hidden; opacity: 0 !important;');
   }
-	
-	updateNavBar() {
+
+  updateNavBar() {
     let nav = document.querySelector(".navbar");
 
-		if (window.scrollY > 30) {
+    if (window.scrollY > 30) {
       nav.setAttribute('style', 'visibility: visible');
       nav.setAttribute('style', '');
     } else {
       nav.setAttribute('style', 'opacity: 0 !important;');
     }
-	}
+  }
 
 }
