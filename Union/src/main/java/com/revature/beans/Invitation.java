@@ -26,41 +26,49 @@ public class Invitation {
 	@JoinColumn(name = "ev_id")
 	private Event ev;
 	@Column(name = "priv_flag")
-	private int privilegeFlag;
+	private Integer privilegeFlag;
 	@Column(name = "accept_flag")
-	private int acceptFlag;
-	public Account getacc() {
+	private Integer acceptFlag;
+	public Account getAcc() {
 		return acc;
 	}
-	public void setacc(Account acc) {
+	public void setAcc(Account acc) {
 		this.acc = acc;
 	}
-	public Event getev() {
+	public Event getEv() {
 		return ev;
 	}
-	public void setev(Event ev) {
+	public void setEv(Event ev) {
 		this.ev = ev;
 	}
-	public int getPrivilegeFlag() {
+	public Integer getPrivilegeFlag() {
 		return privilegeFlag;
 	}
-	public void setPrivilegeFlag(int privilegeFlag) {
+	public void setPrivilegeFlag(Integer privilegeFlag) {
 		this.privilegeFlag = privilegeFlag;
 	}
-	public int getAcceptFlag() {
+	public Integer getAcceptFlag() {
 		return acceptFlag;
 	}
-	public void setAcceptFlag(int acceptFlag) {
+	public void setAcceptFlag(Integer acceptFlag) {
 		this.acceptFlag = acceptFlag;
 	}
-	public Invitation(int privilegeFlag, int acceptFlag) {
+	public Invitation(Integer id, Integer privilegeFlag, Integer acceptFlag) {
 		super();
+		this.id = id;
+		this.privilegeFlag = privilegeFlag;
+		this.acceptFlag = acceptFlag;
+	}
+	public Invitation(Integer id, Account acc, Event ev, Integer privilegeFlag, Integer acceptFlag) {
+		super();
+		this.id = id;
+		this.acc = acc;
+		this.ev = ev;
 		this.privilegeFlag = privilegeFlag;
 		this.acceptFlag = acceptFlag;
 	}
 	public Invitation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
