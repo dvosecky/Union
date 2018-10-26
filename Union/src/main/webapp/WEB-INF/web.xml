@@ -81,6 +81,10 @@
            <param-value>http://localhost:4200</param-value>
        </init-param>
        <init-param>
+           <param-name>cors.allowed.origins</param-name>
+           <param-value>http://localhost:8085</param-value>
+       </init-param>
+       <init-param>
            <param-name>cors.allowed.methods</param-name>
            <param-value>GET,POST,HEAD,OPTIONS,PUT</param-value>
        </init-param>
