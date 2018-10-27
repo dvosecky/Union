@@ -3,9 +3,3 @@
       font-size: 3rem;
   }
 }
-
-@media screen and (max-width: 500px) {
-  .subDisplay{
-    font-size: 2.5rem;
-  }
-}

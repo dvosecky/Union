@@ -12,6 +12,29 @@ import com.revature.dto.EventDTO;
 
 public class EventService {
 
+
+	public static List<EventDTO> retrieveEventsByLead( int eventlead ){
+		List<EventDTO> events =null;
+		List<Event> tempevents =null;
+		EventDaoImpl manager = new EventDaoImpl();
+		EventDTO tempDTO=null;
+		
+		tempevents = manager.selectAllEvents();
+		if( tempevents !=null) {
+			events = new ArrayList<EventDTO>();
+			
+			for( Event e: tempevents) {
+				
+				if( e.getLead().getId() == eventlead ) {
+					tempDTO = new EventDTO( e, e.getLead().getId());
+					events.add(tempDTO);
+				}
+			}
+		}
+		
+		return events;
+	}
+	
 	public static List<EventDTO> retrieveAllEvents(){
 		List<Event> events=null;
 		List<EventDTO> eventDTOS=new ArrayList<EventDTO>();
@@ -77,5 +100,35 @@ public class EventService {
 		return eventDTOS;
 	}
 
+	public static boolean approveEvent(int acc_id, int ev_id) {
+		boolean result = false;
+		AccountDaoImpl ad = new AccountDaoImpl();
+		EventDaoImpl ed = new EventDaoImpl();
+		Account a = ad.selectAccountById(acc_id);
+		
+		if (a != null) {
+			Event e = ed.selectEventById(ev_id);
+			if (e != null) {
+				result = ed.approveEvent(ev_id);
+			}
+		}
+		
+		return result;
+	}
 	
+	public static boolean declineEvent(int acc_id, int ev_id) {
+		boolean result = false;
+		AccountDaoImpl ad = new AccountDaoImpl();
+		EventDaoImpl ed = new EventDaoImpl();
+		Account a = ad.selectAccountById(acc_id);
+		
+		if (a != null) {
+			Event e = ed.selectEventById(ev_id);
+			if (e != null) {
+				result = ed.deleteEventById(ev_id);
+			}
+		}
+		
+		return result;
+	}
 }

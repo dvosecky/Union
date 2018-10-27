@@ -5,7 +5,7 @@ DROP TABLE invitation CASCADE CONSTRAINTS;
 
 CREATE TABLE account (
     acc_id NUMBER(10),
-    uname VARCHAR2(20),
+    uname VARCHAR2(20) UNIQUE,
     pw VARCHAR2(30),
     fname VARCHAR2(20),
     lname VARCHAR2(20),
@@ -27,6 +27,7 @@ CREATE TABLE event (
     description varchar(200),
     location varchar(100),
     lead_id NUMBER(10),
+    accept_flag NUMBER(1),
     CONSTRAINT event_pk PRIMARY KEY (ev_id)
 );
 
@@ -53,9 +54,9 @@ INSERT INTO department VALUES(2, 'coolguys');
 INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1, 0);
 INSERT INTO account VALUES(2, 'a', 'a', 'a', 'a', 1, 0);
 INSERT INTO account VALUES(3, 'guy', '7', '8', '9', 2, 0);
-INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('11-11-1994','dd-mm-yyyy'), 1);
-INSERT INTO event VALUES(2, 'conference', TO_TIMESTAMP('12-12-1994','dd-mm-yyyy'), 1);
-INSERT INTO event VALUES(3, 'conference', TO_TIMESTAMP('12-12-1994','dd-mm-yyyy'), 3);
+INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('11-11-1994','dd-mm-yyyy'), '', '', 1, 0);
+INSERT INTO event VALUES(2, 'conference', TO_TIMESTAMP('12-12-1994','dd-mm-yyyy'), '', '', 1, 0);
+INSERT INTO event VALUES(3, 'conference', TO_TIMESTAMP('12-12-1994','dd-mm-yyyy'), '', '', 3, 0);
 INSERT INTO invitation VALUES(1, 1, 1, 0, 0);
 INSERT INTO invitation VALUES(2, 2, 1, 0, 0);
 INSERT INTO invitation VALUES(3, 3, 1, 0, 0);

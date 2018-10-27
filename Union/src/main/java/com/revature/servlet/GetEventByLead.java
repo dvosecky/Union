@@ -10,22 +10,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.dto.AccountDTO;
-import com.revature.services.UserService;
+import com.revature.dao.AccountDaoImpl;
+import com.revature.dto.EventDTO;
+import com.revature.services.EventService;
 
-/**
- * Servlet implementation class GetAllAccounts
- */
-public class GetAllAccounts extends HttpServlet {
+
+public class GetEventByLead extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		List<AccountDTO> accounts = null;
-		ObjectMapper om = new ObjectMapper();
-		PrintWriter out = response.getWriter();
-		accounts = UserService.retrieveAllAccount();
-		out.print(om.writeValueAsString(accounts));
+
+		int eventLead = Integer.parseInt(request.getParameter("eventID"));
+		AccountDaoImpl manager = new AccountDaoImpl();
+		
+		if( manager.selectAccountById(eventLead) != null) {
+			List<EventDTO> events =null;
+			ObjectMapper om = new ObjectMapper();
+			PrintWriter out = response.getWriter();
+			events = EventService.retrieveEventsByLead(eventLead);
+			if( events != null) {
+				out.print(om.writeValueAsString(events));
+				return;
+			}
+		}
+		
+		response.sendError(400);
 		
 	}
 

@@ -15,6 +15,7 @@ public class EventDaoImpl {
 	
 	//Primary criteria. Automatically will order by date.
 	
+	
 	@SuppressWarnings("unchecked")
 	public List<Event> selectAllEvents(){
 		List<Event> events = null;
@@ -103,14 +104,17 @@ public class EventDaoImpl {
 	
 	//Delete statement, which returns number of entries deleted/removed
 	
-	public void deleteEventById(int id) {
+	public boolean deleteEventById(int id) {
 		Session s = HibernateUtil.getSession();
 		Transaction t = null;
+		boolean result = false;
+		
 		try {
 			t = s.beginTransaction();
 			Event e = (Event) s.load(Event.class, 1);
 			s.delete(e);
 			t.commit();
+			result = true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -119,5 +123,32 @@ public class EventDaoImpl {
 		finally {
 			s.close();
 		}
+		
+		return result;
+	}
+
+	public boolean approveEvent(int id) {
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		boolean result = false;
+		
+		try {
+			t = s.beginTransaction();
+			Criteria c = s.createCriteria(Event.class);
+			c.add(Restrictions.like("id", id));
+			Event e = (Event) c.uniqueResult();
+			e.setAcceptFlag(1);
+			t.commit();
+			result = true;
+		}
+		catch (Exception exc) {
+			exc.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
 	}
 }
