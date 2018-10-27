@@ -1,11 +1,11 @@
-<body class="filter-dark" style="	background-image: url('assets/Event_Details_Background.jpg');	background-position: center;	background-size: cover;	background-repeat: no-repeat;	background-attachment: fixed;">
+<body class="filter-dark" style="	background-image: url('assets/Event_Details_Background.jpg');	background-position: center;	background-size: cover;	background-repeat: no-repeat;	min-height: 1000px;">
   <app-admin-navbar *ngIf="admin"></app-admin-navbar>
   <app-emp-navbar *ngIf="emp"></app-emp-navbar>
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-4 text-center m-4">HR Meeting</h1>
+          <h1 class="display-4 text-center m-4">{{event['name']}}</h1>
         </div>
       </div>
     </div>
@@ -24,31 +24,12 @@
           <div class="row">
             <div class="col-md-12">
               <div class="row">
-                <div class="col-md-3">
-                  <h3 class="">Time&nbsp;</h3>
-                </div>
-                <div class="col-md-3">
-                  <h3 class="">Date&nbsp;</h3>
-                </div>
-                <div class="col-md-3">
-                  <h3 class="">Loction&nbsp;</h3>
-                </div>
-                <div class="col-md-3">
-                  <h3 class="">&nbsp;Desription</h3>
-                </div>
-                <div class="col-md-3">
-                  <h4 class=""   >12:30 PM</h4>
-                </div>
-                <div class="col-md-3">
-                  <h4 class="">04/18/1991</h4>
-                </div>
-                <div class="col-md-3">
-                  <h4 class="">Room 408A</h4>
-                </div>
-                <div class="col-sm-4 col-md-3"   >
-                  <h4 class=""   >Short Desciption Here</h4>
-                </div>
+                
+                <h3 style='margin: auto'>{{event['date']}} {{event['time']}}, Location{{event['location']}}</h3>
               </div>
+                <h5>{{event['description']}}Description</h5>
+              
+               
             </div>
           </div>
         </div>
