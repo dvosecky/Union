@@ -25,7 +25,19 @@ export class ViewEventsComponent implements OnInit {
     }
 
     // get the list of events
-    this.events = this.service.getEvents();
+    this.service.getEvents()
+    .subscribe((data) => {
+      console.log(data);
+      this.events = data;
+      this.events.forEach((event) => {
+        let date = new Date(event['time']);
+        event.date = date.toLocaleDateString();
+        event.time = date.toLocaleTimeString();
+      });
+    }, (error) => {
+      console.log(error);
+    });
+   
   }
 
 }
