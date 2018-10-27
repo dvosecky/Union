@@ -59,8 +59,6 @@
     <servlet-name>AddAccount</servlet-name>
     <url-pattern>/AddAccount</url-pattern>
   </servlet-mapping>
-
- 
   <servlet>
     <description></description>
     <display-name>AddEvent</display-name>
@@ -91,26 +89,34 @@
     <servlet-name>GetEventByAccount</servlet-name>
     <url-pattern>/GetEventByAccount</url-pattern>
   </servlet-mapping>
-  
-  <!-- Allow all cross origin interaction from Angular -->
- <filter>
-       <filter-name>CorsFilter</filter-name>
-       <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
-       <init-param>
-           <param-name>cors.allowed.origins</param-name>
-           <param-value>http://localhost:4200</param-value>
-       </init-param>
-       <init-param>
-           <param-name>cors.allowed.origins</param-name>
-           <param-value>http://localhost:8085</param-value>
-       </init-param>
-       <init-param>
-           <param-name>cors.allowed.methods</param-name>
-           <param-value>GET,POST,HEAD,OPTIONS,PUT</param-value>
-       </init-param>
-   </filter>
-   <filter-mapping>
-       <filter-name>CorsFilter</filter-name>
-       <url-pattern>/*</url-pattern>
- </filter-mapping>
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+    <init-param>
+      <param-name>cors.allowed.origins</param-name>
+      <param-value>http://localhost:4200</param-value>
+    </init-param>
+    <init-param>
+      <param-name>cors.allowed.origins</param-name>
+      <param-value>http://localhost:8085</param-value>
+    </init-param>
+    <init-param>
+      <param-name>cors.allowed.methods</param-name>
+      <param-value>GET,POST,HEAD,OPTIONS,PUT</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEventByLead</display-name>
+    <servlet-name>GetEventByLead</servlet-name>
+    <servlet-class>com.revature.servlet.GetEventByLead</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEventByLead</servlet-name>
+    <url-pattern>/GetEventByLead</url-pattern>
+  </servlet-mapping>
 </web-app>

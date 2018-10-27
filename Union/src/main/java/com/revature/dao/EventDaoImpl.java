@@ -15,6 +15,7 @@ public class EventDaoImpl {
 	
 	//Primary criteria. Automatically will order by date.
 	
+	
 	@SuppressWarnings("unchecked")
 	public List<Event> selectAllEvents(){
 		List<Event> events = null;
