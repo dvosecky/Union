@@ -19,15 +19,18 @@ public class AccountDaoImpl {
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAccountsByDep(Department dep){
+		logger.info("In Select Accounts By Dep");
 		List<Account> accounts = null;
 		Session s = HibernateUtil.getSession();
 		
 		try {
+		logger.debug("Create Criteria for Accounts where Department=Dep");
 			Criteria c = s.createCriteria(Account.class);
 			c.add(Restrictions.like("dep", dep));
 			accounts = (List<Account>) c.list();
 		}
 		catch (Exception e) {
+		logger.error("Exception was found! ");
 			e.printStackTrace();
 		}
 		finally {
@@ -39,6 +42,7 @@ public class AccountDaoImpl {
 	}
 	
 	public void deleteAccountById(Integer id) {
+	
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
 		
@@ -94,20 +98,22 @@ public class AccountDaoImpl {
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAllAccount(){
+		logger.info("In Select All Account Method");
 		List<Account> accounts=null;
 		Session session = HibernateUtil.getSession();
-		//logger.info("Session has begin created");
+
 		try {
+		logger.debug("Query Created To Retrieve Accounts");
 		accounts = session.createQuery("FROM Account").list();
-	//	logger.info("Accounts have been retrieved");
+
 		}catch(Exception e) {
 			e.printStackTrace();
-	//	logger.error("Exception was found");
+		logger.error("Exception was found");
 		}finally {
 			session.close();
 		}
 		
-		//logger.info("Accounts have returned");
+
 		return accounts;
 		
 	}
