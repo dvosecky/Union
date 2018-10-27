@@ -20,7 +20,7 @@ public class GetEventByLead extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int eventLead = Integer.parseInt(request.getParameter("eventID"));
+		int eventLead = Integer.parseInt(request.getParameter("accountID"));
 		AccountDaoImpl manager = new AccountDaoImpl();
 		
 		if( manager.selectAccountById(eventLead) != null) {
