@@ -77,5 +77,19 @@ public class EventService {
 		return eventDTOS;
 	}
 
-	
+	public static boolean approveEvent(int acc_id, int ev_id) {
+		boolean result = false;
+		AccountDaoImpl ad = new AccountDaoImpl();
+		EventDaoImpl ed = new EventDaoImpl();
+		Account a = ad.selectAccountById(acc_id);
+		
+		if (a != null) {
+			Event e = ed.selectEventById(ev_id);
+			if (e != null) {
+				result = ed.approveEvent(ev_id);
+			}
+		}
+		
+		return result;
+	}
 }

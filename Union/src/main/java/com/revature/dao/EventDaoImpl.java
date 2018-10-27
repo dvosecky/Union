@@ -8,7 +8,9 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import com.revature.beans.Account;
 import com.revature.beans.Event;
+import com.revature.beans.Invitation;
 import com.revature.util.HibernateUtil;
 
 public class EventDaoImpl {
@@ -119,5 +121,52 @@ public class EventDaoImpl {
 		finally {
 			s.close();
 		}
+	}
+	/*
+	 Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		boolean result = false;
+		
+		try {
+			t = s.beginTransaction();
+			Invitation inv = (Invitation) s.get(Invitation.class, id);
+			i.setAcceptFlag(1);
+			t.commit();
+			result = true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
+	 */
+
+	public boolean approveEvent(int id) {
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		boolean result = false;
+		
+		try {
+			t = s.beginTransaction();
+			Criteria c = s.createCriteria(Event.class);
+			c.add(Restrictions.like("id", id));
+			Event e = (Event) c.uniqueResult();
+			e.setAcceptFlag(1);
+			t.commit();
+			result = true;
+		}
+		catch (Exception exc) {
+			exc.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
 	}
 }
