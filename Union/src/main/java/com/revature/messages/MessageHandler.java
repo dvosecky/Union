@@ -55,18 +55,30 @@ public class MessageHandler {
 					//Get location of first delimit.
 					int first_delimit_location = line.indexOf(delimiter);
 					if (first_delimit_location < 0 || first_delimit_location == line.length() - 1) {
-						break;
+						continue;
 					}
 					//Get item delimited by delimit: Account id
-					Integer account_id = Integer.parseInt(line.substring(0, first_delimit_location));
+					Integer account_id;
+					try {
+						account_id = Integer.parseInt(line.substring(0, first_delimit_location));
+					}
+					catch (NumberFormatException e) {
+						continue;
+					}
 					
 					//Get location of second delimit
 					int second_delimit_location = line.indexOf(delimiter, first_delimit_location + 1);
 					if (second_delimit_location < 0) {
-						break;
+						continue;
 					}
 					//Get item delimited by delimit: timestamp
-					Timestamp time = Timestamp.valueOf(line.substring(first_delimit_location + 1, second_delimit_location));
+					Timestamp time;
+					try {
+						time = Timestamp.valueOf(line.substring(first_delimit_location + 1, second_delimit_location));
+					}
+					catch (IllegalArgumentException e) {
+						continue;
+					}
 					
 					//Get item undelimited/last item: message content itself, using ternary operator for succinctness
 					String content = (second_delimit_location == line.length() - 1) ? "" : line.substring(second_delimit_location + 1);
