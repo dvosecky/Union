@@ -1,3 +1,4 @@
+import { MyEventsService } from './../services/my-events.service';
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
 
@@ -8,10 +9,11 @@ import { Session } from '../session';
 })
 export class MyEventsComponent implements OnInit {
 
-  constructor(private session :Session) { }
+  constructor(private session :Session, private service :MyEventsService) { }
 
   admin :boolean = false;
   emp :boolean = false;
+  events;
 
   ngOnInit() {
 
@@ -21,6 +23,15 @@ export class MyEventsComponent implements OnInit {
     } else if (this.session.role === 'emp') {
       this.emp = true;
     }
+    this.service.getEvents().subscribe(
+      (data) => {
+        this.events = data;
+        console.log(this.events);
+      }, (error) => {
+        console.log(error);
+      }
+    );
+    
   }
 
 }
