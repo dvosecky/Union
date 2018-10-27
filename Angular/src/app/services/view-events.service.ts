@@ -12,7 +12,7 @@ export class ViewEventsService {
         let headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded'});
 
-        this.http.post("http://18.220.118.195:8085/Union/GetAllEvents", "", {headers})
+        this.http.post("http://localhost:8085/Union/GetAllEvents", "", {headers})
             .subscribe((data) => {
                 console.log(data);
                 events = data;
