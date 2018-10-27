@@ -26,7 +26,7 @@ public class InvitationServices {
 		
 		for (int i = 0; i < is.size(); i++) {
 			if (is.get(i).getId() == inv_id) {
-				id.acceptInviteById(inv_id);
+				id.acceptInvite(inv_id);
 				return true;
 			}
 		}

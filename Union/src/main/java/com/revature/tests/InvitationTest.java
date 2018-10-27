@@ -60,6 +60,12 @@ public class InvitationTest {
 		log.trace("DELETE");
 		id.deleteInvitationById(1);
 		
+		log.trace("ACCEPT WITH ID"); System.out.println("ACCEPT WITH ID");
+		id.acceptInvite(2);
+		
+		log.trace("ACCEPT WITH OBJECT"); System.out.println("ACCEPT WITH OBJECT");
+		id.acceptInvite(inv);
+		
 		log.trace("INVITATION TEST END");
 		System.exit(0);
 	}

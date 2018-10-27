@@ -1,6 +1,7 @@
 .classpath
 .settings
 target/
+hibernate.cfg.xml
 
 # Compiled class file
 *.class

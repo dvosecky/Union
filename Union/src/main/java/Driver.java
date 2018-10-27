@@ -2,7 +2,7 @@ import java.util.List;
 
 import com.revature.beans.Account;
 import com.revature.dao.AccountDaoImpl;
-import com.revature.services.UserService;
+//import com.revature.services.UserService;
 public class Driver {
 
 	public static void main(String[] args) {
@@ -13,12 +13,12 @@ public class Driver {
 //		
 	System.out.println("===================================");
 
-	Account acc=null;
+	//Account acc=null;
 	//acc = UserService.loginToUnion("d", "d");
 	
-	if(acc != null) {
-		System.out.println("Workss===========================================");
-	}
+//	if(acc != null) {
+//		System.out.println("Workss===========================================");
+//	}
 //		
 ////		
  //	Account acc= null;
