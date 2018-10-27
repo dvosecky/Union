@@ -55,7 +55,7 @@ public class MessageHandler {
 					//Get location of first delimit.
 					int first_delimit_location = line.indexOf(delimiter);
 					if (first_delimit_location < 0 || first_delimit_location == line.length() - 1) {
-						break;
+						continue;
 					}
 					//Get item delimited by delimit: Account id
 					Integer account_id = Integer.parseInt(line.substring(0, first_delimit_location));
@@ -63,7 +63,7 @@ public class MessageHandler {
 					//Get location of second delimit
 					int second_delimit_location = line.indexOf(delimiter, first_delimit_location + 1);
 					if (second_delimit_location < 0) {
-						break;
+						continue;
 					}
 					//Get item delimited by delimit: timestamp
 					Timestamp time = Timestamp.valueOf(line.substring(first_delimit_location + 1, second_delimit_location));
