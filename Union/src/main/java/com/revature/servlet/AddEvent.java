@@ -38,8 +38,15 @@ public class AddEvent extends HttpServlet {
 		Account account = manager.selectAccountById(accountID);
 		
 		if( account != null) {
-			Event event = new Event( null,timestamp,eventname,description,location, account); 
-			
+			Event event = null;
+			if( account.getRole() > 0 ) {
+				event = new Event( null,timestamp,eventname,description,location, account,1); 
+				
+			}else {
+				event = new Event( null,timestamp,eventname,description,location, account,0); 
+				
+			}
+		
 			if(EventService.insertEvent(event)) {
 				response.sendError(200);
 			}
