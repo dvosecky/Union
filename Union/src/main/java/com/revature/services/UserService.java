@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.beans.Account;
@@ -29,11 +30,23 @@ public class UserService {
 		
 	}
 
-	public static List<Account> retrieveAllAccount(){
-		List<Account> accounts=null;
+	public static List<AccountDTO> retrieveAllAccount(){
+		List<AccountDTO> accounts=null;
+		List<Account> tempaccounts=null;
 		AccountDaoImpl manager= new AccountDaoImpl();
 		
-		accounts=manager.selectAllAccount();
+		tempaccounts=manager.selectAllAccount();
+		
+		if( tempaccounts != null) {
+			AccountDTO temp =null;
+			accounts = new ArrayList<AccountDTO>();
+			
+			for( Account a: tempaccounts) {
+				temp = new AccountDTO(a);
+				accounts.add(temp);
+			}
+			
+		}
 		
 		return accounts;
 	}

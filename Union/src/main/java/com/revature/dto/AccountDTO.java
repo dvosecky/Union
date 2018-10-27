@@ -1,5 +1,7 @@
 package com.revature.dto;
 
+import com.revature.beans.Account;
+
 public class AccountDTO {
 
 		private int id;
@@ -9,6 +11,17 @@ public class AccountDTO {
 		private String lastname;
 		private int dep;
 		private int role;
+		
+		public AccountDTO( Account acc) {
+		
+			this.id = acc.getId();
+			this.username=acc.getUsername();
+			this.password=acc.getPassword();
+			this.firstname=acc.getFirstname();
+			this.lastname=acc.getLastname();
+			this.dep=acc.getDep().getDep_id();
+			this.role=acc.getRole();
+		}
 		
 		public AccountDTO(int id, String username, String password, String firstname, String lastname, int dep,
 				int role) {

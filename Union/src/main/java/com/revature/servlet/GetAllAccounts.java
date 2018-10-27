@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.beans.Account;
+import com.revature.dto.AccountDTO;
 import com.revature.services.UserService;
 
 /**
@@ -21,7 +21,7 @@ public class GetAllAccounts extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		List<Account> accounts = null;
+		List<AccountDTO> accounts = null;
 		ObjectMapper om = new ObjectMapper();
 		PrintWriter out = response.getWriter();
 		accounts = UserService.retrieveAllAccount();
