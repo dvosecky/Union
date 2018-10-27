@@ -53,7 +53,7 @@ public class DepartmentDaoImpl {
 		Session session = HibernateUtil.getSession();
 		
 		try {
-		deps = session.createQuery("FROM department").list();
+		deps = session.createQuery("FROM Department").list();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

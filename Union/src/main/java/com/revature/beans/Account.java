@@ -132,4 +132,14 @@ public class Account {
 	public void setRole(Integer role) {
 		this.role = role;
 	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
+	
 }

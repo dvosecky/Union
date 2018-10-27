@@ -1,18 +1,33 @@
 import java.util.List;
 
 import com.revature.beans.Account;
+import com.revature.beans.Event;
 import com.revature.dao.AccountDaoImpl;
+import com.revature.dao.EventDaoImpl;
 //import com.revature.services.UserService;
 public class Driver {
 
 	public static void main(String[] args) {
-		
-		
-		AccountDaoImpl account= new AccountDaoImpl();
+	
 	List<Account> accounts;
-//		
+//	
+		
+	System.out.println("===================================");
+	
+	AccountDaoImpl account= new AccountDaoImpl();
+	
+	System.out.println("===================================");
+	//Account acc=account.selectAccountById(2);
+
+	
 	System.out.println("===================================");
 
+	//Event event = new Event(null, null, "landons party", "a cool party", "landons house",acc);
+	//EventDaoImpl manager = new EventDaoImpl();
+	//System.out.println(manager.selectEventById(2));
+	
+	//System.out.println(event);
+	System.out.println("---=-=-=-=-=-=-=-=--------------------------");
 	//Account acc=null;
 	//acc = UserService.loginToUnion("d", "d");
 	
@@ -57,8 +72,11 @@ public class Driver {
 		//account.deleteAccountByUsername("z");
 		
 		System.out.println("===================================");
+		//account.deleteAccount(4);
 		accounts = account.selectAllAccount();
-		
+
+		System.out.println();
+		System.out.println("===================================");
 		for( Account a: accounts) {
 			System.out.println(a);
 		}

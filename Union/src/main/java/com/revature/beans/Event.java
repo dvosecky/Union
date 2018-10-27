@@ -29,13 +29,28 @@ public class Event {
 	private Timestamp time;
 	@Column(name = "ename")
 	private String name;
+	@Column(name ="description")
+	private String description;
+	@Column(name ="location")
+	private String location;
+	@Column(name = "accept_flag")
+	private Integer acceptFlag;
+	
 	@ManyToOne
 	@JoinColumn(name = "lead_id")
 	private Account lead;
-	
+
 	@OneToMany(mappedBy="ev")
 	@Cascade(CascadeType.DELETE)
 	List<Invitation> invites;
+	
+	public Integer getAcceptFlag() {
+		return acceptFlag;
+	}
+
+	public void setAcceptFlag(Integer acceptFlag) {
+		this.acceptFlag = acceptFlag;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -77,17 +92,40 @@ public class Event {
 		this.lead = lead;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", time=" + time + ", name=" + name + "]";
+		return "Event [id=" + id + ", time=" + time + ", name=" + name + ", description=" + description + ", location="
+				+ location + ", acceptFlag=" + acceptFlag + "]";
 	}
 
-	public Event(Integer id, Timestamp time, String name, Account lead) {
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Event(Integer id, Timestamp time, String name, String description,
+			String location, Account lead, Integer acceptFlag) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.name = name;
+		this.location=location;
+		this.description=description;
 		this.lead = lead;
+		this.acceptFlag = acceptFlag;
 	}
 
 	public Event() {

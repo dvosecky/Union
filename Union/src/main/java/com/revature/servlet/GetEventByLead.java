@@ -10,29 +10,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.AccountDaoImpl;
 import com.revature.dto.EventDTO;
 import com.revature.services.EventService;
 
 
-public class GetEventByAccount extends HttpServlet {
+public class GetEventByLead extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int accountID = Integer.parseInt(request.getParameter("accountID"));
-		List<EventDTO> events=null;
-		ObjectMapper om = new ObjectMapper();
-		PrintWriter out = response.getWriter();
-		events = EventService.retrieveEventsByAccount(accountID);
+		int eventLead = Integer.parseInt(request.getParameter("eventID"));
+		AccountDaoImpl manager = new AccountDaoImpl();
 		
-		if(events != null) {
-			out.print(om.writeValueAsString(events));
-			
-		}else {
-			response.sendError(400);
+		if( manager.selectAccountById(eventLead) != null) {
+			List<EventDTO> events =null;
+			ObjectMapper om = new ObjectMapper();
+			PrintWriter out = response.getWriter();
+			events = EventService.retrieveEventsByLead(eventLead);
+			if( events != null) {
+				out.print(om.writeValueAsString(events));
+				return;
+			}
 		}
-
 		
+		response.sendError(400);
 		
 	}
 
