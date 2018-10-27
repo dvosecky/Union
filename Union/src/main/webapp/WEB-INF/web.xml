@@ -79,4 +79,14 @@
     <servlet-name>RemoveEvent</servlet-name>
     <url-pattern>/RemoveEvent</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEventByAccount</display-name>
+    <servlet-name>GetEventByAccount</servlet-name>
+    <servlet-class>com.revature.servlet.GetEventByAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEventByAccount</servlet-name>
+    <url-pattern>/GetEventByAccount</url-pattern>
+  </servlet-mapping>
 </web-app>
