@@ -10,19 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.dto.EventDTO;
+import com.revature.beans.Event;
 import com.revature.services.EventService;
 
-public class GetAllEvents extends HttpServlet {
+
+public class GetEventByAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		List<EventDTO> events=null;
+
+		int accountID = Integer.parseInt(request.getParameter("accountID"));
+		List<Event> events=null;
 		ObjectMapper om = new ObjectMapper();
 		PrintWriter out = response.getWriter();
-		events = EventService.retrieveAllEvents();
-		out.print(om.writeValueAsString(events));
+		events = EventService.retrieveEventsByAccount(accountID);
+		
+		if(events != null) {
+			out.print(om.writeValueAsString(events));
+			
+		}else {
+			response.sendError(400);
+		}
+
+		
 		
 	}
 
