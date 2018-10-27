@@ -2,8 +2,7 @@
     background-position: center;	background-size: cover;	background-repeat: no-repeat;	
     background-attachment: fixed;">
 
-    <app-admin-navbar *ngIf="admin"></app-admin-navbar>
-    <app-emp-navbar *ngIf="emp"></app-emp-navbar>
+    <app-admin-navbar></app-admin-navbar>
 
     <div class="pt-5">
       <div class="container">
@@ -29,6 +28,9 @@
                 </tr>
               </thead>
               <tbody>
+                <tr *ngFor="let user in users">
+                  <td></td>
+                </tr>
                 <tr>
                   <td>1</td>
                   <td>Christmas Party</td>
@@ -36,76 +38,7 @@
                   <td>12/15/18</td>
                   <td>305A</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Staff Meeting</td>
-                  <td>3:00 PM</td>
-                  <td>10/30/18</td>
-                  <td>515C</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
+                
               </tbody>
             </table>
           </div>
