@@ -55,17 +55,26 @@ public class EventService {
 		
 	}
 
-	public static List<Event> retrieveEventsByAccount( int accountID) {
+	public static List<EventDTO> retrieveEventsByAccount( int accountID) {
 		AccountDaoImpl amanager = new AccountDaoImpl();
 		List<Event> events=null;
 		Account account = amanager.selectAccountById(accountID);
+		List<EventDTO> eventDTOS = new ArrayList<EventDTO>();
+		int accID =0;
+		EventDTO eventDTO=null;
 		
 		if( account != null) {
 			InvitationDaoImpl manager = new InvitationDaoImpl();
 			events=manager.selectAllEventsByAcc(account);
+			
+			for( Event e: events) {
+				accID = e.getLead().getId();
+				eventDTO = new EventDTO( e, accID);
+				eventDTOS.add(eventDTO);
+			}
 		}
 		
-		return events;
+		return eventDTOS;
 	}
 
 	

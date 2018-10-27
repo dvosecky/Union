@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.beans.Event;
+import com.revature.dto.EventDTO;
 import com.revature.services.EventService;
 
 
@@ -20,7 +20,7 @@ public class GetEventByAccount extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int accountID = Integer.parseInt(request.getParameter("accountID"));
-		List<Event> events=null;
+		List<EventDTO> events=null;
 		ObjectMapper om = new ObjectMapper();
 		PrintWriter out = response.getWriter();
 		events = EventService.retrieveEventsByAccount(accountID);

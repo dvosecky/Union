@@ -26,7 +26,7 @@ public class EventTest {
 		
 		System.out.println("ADD");
 		AccountDaoImpl ad = new AccountDaoImpl();
-		ev = new Event(3, Timestamp.valueOf("1994-11-07 12:00:00"), "Stuff", ad.selectAccountById(1));
+		ev = new Event(3, Timestamp.valueOf("1994-11-07 12:00:00"), "Stuff","dont go to event","landons house", ad.selectAccountById(1));
 		System.out.println("Added event with id of " + ed.insertEvent(ev) + ".");
 		System.out.println("inserted " + ev);
 		
