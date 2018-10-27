@@ -20,26 +20,27 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Event #</th>
-                  <th> Name</th>
-                  <th>Time</th>
-                  <th>Date</th>
-                  <th>Location</th>
+                  <th>ID</th>
+                  <th>Lastname</th>
+                  <th>Firstname</th>
+                  <th>Email</th>
+                  <th>Role</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let user of users">
-                  <td></td>
+                  <td>{{user['id']}}</td>
+                  <td>{{user['lastname']}}</td>
+                  <td>{{user['firstname']}}</td>
+                  <td>{{user['username']}}</td>
+                  <td>{{user['role']}}</td>
                 </tr>
-           
-                <tr>
-                  <td>1</td>
-                  <td>Christmas Party</td>
-                  <td>1:30 PM</td>
-                  <td>12/15/18</td>
-                  <td>305A</td>
-                </tr>
-                
+<!-- firstname: "a"
+id: 2
+lastname: "a"
+password: "a"
+role: 0
+username: "a" -->
               </tbody>
             </table>
           </div>

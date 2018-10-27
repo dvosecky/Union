@@ -20,6 +20,15 @@ export class UsersComponent implements OnInit {
       (data) => {
         this.users = data;
         console.log(data);
+        this.users.forEach(user => {
+          if (user.role === 0) {
+            user.role = 'employee';
+          } else if (user.role === 1) {
+            user.role = 'dep. head';
+          } else if (user.role === 2) {
+            user.role = 'admin';
+          }
+        });
       }, (error) => {
         console.log(error);
       }
