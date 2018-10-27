@@ -1,6 +1,6 @@
 <body class="filter-dark" style="	background-image: url('assets/View_Events_Background.jpg');	
     background-position: center;	background-size: cover;	background-repeat: no-repeat;	
-    background-attachment: fixed;">
+    background-attachment:fixed;">
 
     <app-admin-navbar *ngIf="admin"></app-admin-navbar>
     <app-emp-navbar *ngIf="emp"></app-emp-navbar>
@@ -22,14 +22,29 @@
               <thead>
                 <tr>
                   <th>Event #</th>
-                  <th> Name</th>
+                  <th>Name</th>
                   <th>Time</th>
                   <th>Date</th>
                   <th>Location</th>
                 </tr>
               </thead>
+              <!-- accountID: 100
+              ​​
+              eventid: 2
+              ​​
+              name: "conference"
+              ​​
+              time: 787212000000 -->
               <tbody>
-                <tr>
+                <tr *ngFor="let event of events; index as i">
+                  <td>{{event['eventid']}}</td>
+                  <td>{{event['name']}}</td>
+                  <td>{{event['time']}}</td>
+                  <td>{{event['date']}}</td>
+                  <td>A location</td>
+                </tr>
+
+                <!-- <tr>
                   <td>1</td>
                   <td>Christmas Party</td>
                   <td>1:30 PM</td>
@@ -105,7 +120,7 @@
                   <td>8:00 AM</td>
                   <td>11/01/18</td>
                   <td>136D</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>

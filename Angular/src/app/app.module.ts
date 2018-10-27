@@ -1,3 +1,4 @@
+import { ViewEventsService } from './services/view-events.service';
 import { appRoutes } from './routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -48,7 +49,7 @@ import { DepartmentsComponent } from './departments/departments.component';
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [Session, LoginService],
+  providers: [Session, LoginService, ViewEventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
