@@ -24,6 +24,8 @@ CREATE TABLE event (
     ev_id NUMBER(10),
     ename VARCHAR2(20),
     etime TIMESTAMP,
+    description varchar(200),
+    location varchar(100),
     lead_id NUMBER(10),
     CONSTRAINT event_pk PRIMARY KEY (ev_id)
 );
