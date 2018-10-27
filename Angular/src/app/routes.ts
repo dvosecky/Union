@@ -1,3 +1,5 @@
+import { UsersComponent } from './users/users.component';
+import { DepartmentsComponent } from './departments/departments.component';
 import { AdminWelcomeComponent } from './admin-welcome/admin-welcome.component';
 import { EmpWelcomeComponent } from './emp-welcome/emp-welcome.component';
 import { LoginComponent } from './login/login.component';
@@ -14,10 +16,14 @@ export const appRoutes: Routes = [
     { path: 'emp-welcome', component: EmpWelcomeComponent},
     { path: 'admin-welcome', component: AdminWelcomeComponent},
     {path: 'view-events', component: ViewEventsComponent},
+    {path: 'my-events', component: ViewEventsComponent},
     {path: 'event-details', component: EventDetailsComponent},
     {path: 'approve-events', component: ApproveEventsComponent},
     {path: 'create-events', component: CreateEventsComponent},
     {path: 'dh-welcome', component: DhWelcomeComponent},
+    {path: 'users', component: UsersComponent},
+    {path: 'departments', component: DepartmentsComponent},
+
     { path: '',
       redirectTo: 'login',
       pathMatch: 'full' // what is this for?

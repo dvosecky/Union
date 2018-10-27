@@ -20,7 +20,72 @@ public class InvitationDaoImpl {
 		invites = null;
 	}
 	
+	public boolean acceptInvite(Invitation i) {
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		boolean result = false;
+		
+		try {
+			t = s.beginTransaction();
+			s.persist(i);
+			i.setAcceptFlag(1);
+			t.commit();
+			result = true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
+	}
+
+	public boolean acceptInvite(int id) {
+		Session s = HibernateUtil.getSession();
+		Transaction t = null;
+		boolean result = false;
+		
+		try {
+			t = s.beginTransaction();
+			Invitation inv = (Invitation) s.get(Invitation.class, id);
+			inv.setAcceptFlag(1);
+			t.commit();
+			result = true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
+	}
+	
 	//Primary Criteria. Returns invitations from database.
+	
+	public Invitation selectInvitationById(int id) {
+		Invitation inv = null;
+		Session s = HibernateUtil.getSession();
+		
+		try {
+			Criteria c = s.createCriteria(Invitation.class);
+			c.add(Restrictions.like("id", id));
+			inv = (Invitation) c.uniqueResult();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
+		
+		return inv;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Invitation> selectAllInvitations() {
@@ -160,8 +225,8 @@ public class InvitationDaoImpl {
 		
 		try {
 			t = s.beginTransaction();
-			Invitation i = (Invitation) s.load(Invitation.class, id);
-			s.delete(i);
+			Invitation inv = (Invitation) s.load(Invitation.class, id);
+			s.delete(inv);
 			t.commit();
 		}
 		catch (Exception e) {

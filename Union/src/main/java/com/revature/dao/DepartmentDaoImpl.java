@@ -2,9 +2,11 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
@@ -22,6 +24,25 @@ public class DepartmentDaoImpl {
 			session.close();
 		}
 		
+		
+		return dep;
+	}
+	
+	public Department selectDepartmentByName(String name) {
+		Department dep = null;
+		Session session = HibernateUtil.getSession();
+		
+		try {
+			Criteria c = session.createCriteria(Department.class);
+			c.add(Restrictions.like("dname", name));
+			dep = (Department) c.uniqueResult();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
 		
 		return dep;
 	}
