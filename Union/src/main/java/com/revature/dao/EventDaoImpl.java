@@ -8,9 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import com.revature.beans.Account;
 import com.revature.beans.Event;
-import com.revature.beans.Invitation;
 import com.revature.util.HibernateUtil;
 
 public class EventDaoImpl {
@@ -106,32 +104,15 @@ public class EventDaoImpl {
 	
 	//Delete statement, which returns number of entries deleted/removed
 	
-	public void deleteEventById(int id) {
+	public boolean deleteEventById(int id) {
 		Session s = HibernateUtil.getSession();
-		Transaction t = null;
-		try {
-			t = s.beginTransaction();
-			Event e = (Event) s.load(Event.class, 1);
-			s.delete(e);
-			t.commit();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-		}
-		finally {
-			s.close();
-		}
-	}
-	/*
-	 Session s = HibernateUtil.getSession();
 		Transaction t = null;
 		boolean result = false;
 		
 		try {
 			t = s.beginTransaction();
-			Invitation inv = (Invitation) s.get(Invitation.class, id);
-			i.setAcceptFlag(1);
+			Event e = (Event) s.load(Event.class, 1);
+			s.delete(e);
 			t.commit();
 			result = true;
 		}
@@ -144,7 +125,7 @@ public class EventDaoImpl {
 		}
 		
 		return result;
-	 */
+	}
 
 	public boolean approveEvent(int id) {
 		Session s = HibernateUtil.getSession();

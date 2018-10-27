@@ -8,10 +8,10 @@ import { Session } from '../session';
 })
 export class CreateEventsComponent implements OnInit {
 
-  constructor(private session :Session) { }
+  constructor(private session: Session) { }
 
-  admin :boolean;
-  emp :boolean;
+  admin: boolean;
+  emp: boolean;
 
   ngOnInit() {
 
@@ -22,5 +22,4 @@ export class CreateEventsComponent implements OnInit {
       this.emp = true;
     }
   }
-
 }
