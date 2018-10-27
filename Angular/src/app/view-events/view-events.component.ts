@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { ViewEventsService } from './../services/view-events.service';
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
@@ -9,7 +10,8 @@ import { Session } from '../session';
 })
 export class ViewEventsComponent implements OnInit {
 
-  constructor(private session :Session, private service :ViewEventsService) { }
+  constructor(private session :Session, private service :ViewEventsService,
+              private router :Router, private route :ActivatedRoute) { }
 
   admin :boolean = false;
   emp :boolean = false;
@@ -38,6 +40,12 @@ export class ViewEventsComponent implements OnInit {
       console.log(error);
     });
    
+  }
+
+  eventDetails(event) {
+    console.log(event);
+    this.session.event = event;
+    this.router.navigate(['../event-details'], { relativeTo: this.route });
   }
 
 }
