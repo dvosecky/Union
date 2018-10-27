@@ -2,7 +2,6 @@ package com.revature.messages;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -93,13 +92,5 @@ public class MessageHandler {
 		}
 		
 		return all_messages;
-	}
-	
-	public Message parseLine(FileReader fr) {
-		Message m = new Message();
-		
-		//TODO
-		
-		return m;
 	}
 }
