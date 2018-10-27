@@ -2,7 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -15,7 +15,7 @@ import com.revature.beans.Department;
 import com.revature.util.HibernateUtil;
 
 public class AccountDaoImpl {
-	//public final static Logger logger = Logger.getLogger(AccountDaoImpl.class);
+	public final static Logger logger = Logger.getLogger(AccountDaoImpl.class);
 	
 	@SuppressWarnings("unchecked")
 	public List<Account> selectAccountsByDep(Department dep){
