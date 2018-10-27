@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../session';
 
 @Component({
@@ -13,6 +12,7 @@ export class EventDetailsComponent implements OnInit {
 
     admin :boolean = false;
     emp :boolean = false;
+    event;
 
     ngOnInit() {
       window.scrollTo(0, 0);
@@ -21,5 +21,9 @@ export class EventDetailsComponent implements OnInit {
       } else if (this.session.role === 'emp') {
         this.emp = true;
       }
+
+      this.event = this.session.event;
+
+
     }
   }

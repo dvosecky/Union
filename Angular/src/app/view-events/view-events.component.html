@@ -36,7 +36,7 @@
               ​​
               time: 787212000000 -->
               <tbody>
-                <tr *ngFor="let event of events; index as i">
+                <tr *ngFor="let event of events; index as i" (click)="eventDetails(event)">
                   <td>{{event['eventid']}}</td>
                   <td>{{event['name']}}</td>
                   <td>{{event['time']}}</td>

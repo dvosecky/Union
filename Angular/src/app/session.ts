@@ -4,4 +4,5 @@ import { Injectable } from "@angular/core";
 export class Session {
     id :number;
     role :string;
+    event;
 }
