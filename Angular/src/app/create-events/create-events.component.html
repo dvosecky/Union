@@ -1,8 +1,10 @@
-<body class="cover bg-info">
+<body class="filter-dark" style="	background-image: url('assets/View_Events_Background.jpg');
+    background-position: center;	background-size: cover;	background-repeat: no-repeat;
+    background-attachment: fixed;">
 
     <app-admin-navbar *ngIf="admin"></app-admin-navbar>
     <app-emp-navbar *ngIf="emp"></app-emp-navbar>
-    
+
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -35,7 +37,7 @@
             </div>
             <div class="mb-3"> <label for="address" class="text-white">Date</label>
               <input type="date" class="form-control" id="address" placeholder="1234 Main St" required="">
-              <div class="invalid-feedback"> Please enter your shipping address. </div>
+              <div class="invalid-feedback"> Please enter your address. </div>
             </div>
             <div class="mb-3"> <label for="address" class="text-white">Description</label>
               <textarea type="text" class="form-control" id="address" placeholder="" required=""></textarea></div><label for="address" class="text-white">Date</label>
@@ -48,6 +50,7 @@
                       <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Separated link</a>
+                          <a class="dropdown-item" href="#">Separated link</a>
                       </div>
                     </div>
                   </div>
