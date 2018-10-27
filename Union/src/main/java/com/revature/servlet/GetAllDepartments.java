@@ -21,10 +21,11 @@ public class GetAllDepartments extends HttpServlet{
 	private static final long serialVersionUID = 3784785168102819424L;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		if (req.getParameter("role") == null) {
-			res.sendError(401);
-			return;
-		}
+		System.out.println("hello?");
+//		if (req.getParameter("role") == null) {
+//			res.sendError(401);
+//			return;
+//		}
 
 		res.setContentType("application/json");
 		PrintWriter out = res.getWriter();
