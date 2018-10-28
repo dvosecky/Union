@@ -17,11 +17,11 @@ export class CreateEventsComponent implements OnInit {
   emp: boolean;
   edit: boolean = false;
 
-  name :string;
-  location :string;
+  name :string = "testname";
+  location :string = 'testLocation';
   time;
   date;
-  description;
+  description = 'testDesc';
 
   ngOnInit() {
     if (this.session.event != null) {
@@ -53,6 +53,6 @@ export class CreateEventsComponent implements OnInit {
       }
     )
     alert('Event Created!');
-    this.router.navigate(['../my-events'], { relativeTo: this.route });
+    // this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
 }
