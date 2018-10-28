@@ -39,6 +39,17 @@
     <servlet-name>GetAllAccounts</servlet-name>
     <url-pattern>/GetAllAccounts</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>GetAllDepartments</display-name>
+    <servlet-name>GetAllDepartments</servlet-name>
+    <servlet-class>com.revature.servlet.GetAllDepartments</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllDepartments</servlet-name>
+    <url-pattern>/GetAllDepartments</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>RemoveAccount</display-name>

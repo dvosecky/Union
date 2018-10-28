@@ -11,8 +11,12 @@ public class DepartmentServices {
 
 	public static List<Department> getAllDepartments(){
 		DepartmentDaoImpl dd = new DepartmentDaoImpl();
+		List<Department> deps = dd.selectAllDepartment();
 		
-		return dd.selectAllDepartment();
+		for (Department dep : deps) {
+			dep.setMembers(null);
+		}
+		return deps;
 	}
 
 	public static Department getDepartmentByAccId(Integer acc_id) {
