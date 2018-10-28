@@ -21,8 +21,8 @@ export class CreateEventsComponent implements OnInit {
 
   name :string = "testname";
   location :string = 'testLocation';
-  time;
-  date;
+  time = "03:03";
+  date = "2018-03-09";
   description = 'testDesc';
 
   ngOnInit() {
@@ -38,6 +38,7 @@ export class CreateEventsComponent implements OnInit {
       this.time = ISO.substring(11,16);
       this.date = ISO.substring(0,10);
       this.description = event.description;
+      this.session.event = null;
     }
 
     window.scrollTo(0, 0);
@@ -46,40 +47,33 @@ export class CreateEventsComponent implements OnInit {
     } else if (this.session.role === 'emp') {
       this.emp = true;
     }
-    console.log(this.session.event);
-    if (this.session.event !== null) {
-
-    }
   }
 
   submit() {
-    if (this.name === undefined || this.name === '') {
-      alert('Event must have a name');
-    }
     console.log(
       "name: " + this.name + ", location: " + this.location + ", time: " + 
         this.time + ", date: " + this.date + ", description: " + this.description);
       
 
     if (this.edit === true) { 
-      
       this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
         (data) => {
           console.log(data);
-          alert('Event Updated!');
         }, (error) => {
           console.log(error);
         }
       );
+      alert('Event Updated!');
     } else {
       this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
         (data) => {
           console.log(data);
-          alert('Event Created!');
+          
         }, (error) => {
           console.log(error);
         }
       );
+      alert('Event Created!');
     }
     this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
