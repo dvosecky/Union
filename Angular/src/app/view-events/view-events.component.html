@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3 class="display-2 text-center">Events</h3>
+          <h3 class="display-2 text-center" id="events">Events</h3>
         </div>
       </div>
     </div>
@@ -22,9 +22,10 @@
   <div class="pt-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-5" style="background-image: linear-gradient(to bottom, rgba(255, 134, 134, 0.2), rgba(255, 0, 0, 0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 100px 15px black;">
+        <div class="col-md-12 mb-5" style="background-image: linear-gradient(to bottom, rgba(255, 134, 134, 0.2), rgba(255, 0, 0, 0.8));	background-position: top left;
+        background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 100px 15px black;">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="invited-events-table">
               <thead>
                 <tr>
                   <th>Event #</th>
@@ -43,8 +44,9 @@
                   <td>12/15/18</td>
                   <td>305A</td>
                   <td>
-                    <div class="btn-group"><a href="#" class="btn btn-primary">Accept</a>
-                      <a href="#" class="btn btn-danger">Decline</a> </div>
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-primary" id="accept-event">Accept</a>
+                      <a href="#" class="btn btn-danger" id="decline-event">Decline</a> </div>
                   </td>
                 </tr>
                 <tr>
@@ -54,8 +56,9 @@
                   <td>10/30/18</td>
                   <td>515C</td>
                   <td>
-                    <div class="btn-group"><a href="#" class="btn btn-primary">Accept</a>
-                      <a href="#" class="btn btn-danger">Decline</a> </div>
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-primary" id="accept-event">Accept</a>
+                      <a href="#" class="btn btn-danger" id="deny-event">Decline</a> </div>
                   </td>
                 </tr>
                 <tr>
@@ -65,8 +68,9 @@
                   <td>11/01/18</td>
                   <td>136D</td>
                   <td>
-                    <div class="btn-group"><a href="#" class="btn btn-primary">Accept</a>
-                      <a href="#" class="btn btn-danger">Decline</a> </div>
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-primary" id="accept-event">Accept</a>
+                      <a href="#" class="btn btn-danger" id="deny-event">Decline</a> </div>
                   </td>
                 </tr>
               </tbody>
@@ -79,8 +83,9 @@
   <div class="pt-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-          <table class="table">
+        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+        	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+          <table class="table" id="view-events-table">
             <thead>
               <tr>
                 <th>Event #</th>
