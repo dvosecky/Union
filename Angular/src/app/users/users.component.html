@@ -16,8 +16,9 @@
   <div class="pt-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-          <table class="table">
+        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+        	background-position: top left; background-size: 100%;	background-repeat: repeat;">
+          <table class="table" id="users-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -36,7 +37,9 @@
                 <td>{{user['username']}}</td>
                 <td>{{user['role']}}</td>
                 <td>
-                  <div class="btn-group"><a href="#" class="btn btn-danger">Remove</a> </div>
+                  <div class="btn-group">
+                    <a href="#" class="btn btn-danger" id="remove-user">Remove</a>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -48,8 +51,9 @@
       <div class="container">
         <form ngNativeValidate>
           <div class="row">
-            <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-              <table class="table">
+            <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+            background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+              <table class="table" id="add-user-table">
                 <thead>
                   <tr>
                     <th>Lastname</th>
@@ -85,14 +89,14 @@
                     <td>
                       <div class="drop-size">
                         <select id="roleSelect">
-                          <option value="Employee">Employee</option>
-                          <option value="Department Head">Department Head</option>
-                          <option value="Admin">Admin</option>
+                          <option value="Employee" id="emp-role">Employee</option>
+                          <option value="Department Head" id="DH-role">Department Head</option>
+                          <option value="Admin" id="admin-role">Admin</option>
                         </select>
                       </div>
                     </td>
                     <td>
-                      <div class="btn-group"><input type="submit"class="btn btn-primary" value="Add"/> </div>
+                      <div class="btn-group"><input type="submit" id="submit-user" class="btn btn-primary" value="Add" /> </div>
                       <!-- <div class="btn-group"><a href="#" class="btn btn-primary">Add</a> </div> -->
                     </td>
                   </tr>
@@ -104,6 +108,5 @@
       </div>
     </div>
   </div>
-
 
 </body>

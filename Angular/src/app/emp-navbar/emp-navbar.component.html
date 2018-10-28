@@ -3,19 +3,19 @@
                                   routerLinkActive="active">
       <i class="fa d-inline fa-lg fa-globe"></i>
       <b> Union</b>
-    </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-target="#navbar11" data-toggle="collapse">
+    </a> <button class="navbar-toggler navbar-toggler-right border-0" id="navbar-toggle"type="button" data-target="#navbar11" data-toggle="collapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbar11">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"> <a class="nav-link"
+        <li class="nav-item"> <a class="nav-link" id="navbar-view-events"
           routerLink='../view-events' routerLinkActive="active">View Events</a> </li>
-        <li class="nav-item"   > <a class="nav-link"
+        <li class="nav-item"   > <a class="nav-link" id="navbar-request-event"
           routerLink='../create-events' routerLinkActive="active">Request A New Event</a> </li>
-        <li class="nav-item"> <a class="nav-link"
+        <li class="nav-item"> <a class="nav-link" id="navbar-manage-events"
           routerLink='../my-events' routerLinkActive="active">Manage My Events</a> </li>
       </ul>
-      <a class="btn navbar-btn ml-md-2 text-white btn-danger" (click)=logout()>Logout</a>
+      <a class="btn navbar-btn ml-md-2 text-white btn-danger" id="navbar-logout" (click)=logout()>Logout</a>
     </div>
   </div>
 </nav>
