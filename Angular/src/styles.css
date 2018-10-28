@@ -228,3 +228,7 @@
 .background-black{
   background-color: black;
 }
+
+.table-margin{
+  margin: 20px;
+}
