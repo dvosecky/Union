@@ -49,7 +49,9 @@
                     <div class="btn-group">
                       <button class="btn dropdown-toggle btn-primary drop-button" data-toggle="dropdown"> Add Employee</button>
                       <div class="dropdown-menu dropdown-space">
-                        <div class="dropdown-divider"></div>
+                        <li *ngFor="let user of users"><input type="checkbox" />{{user.name}}</li>
+
+                        <!-- <div class="dropdown-divider"></div>
                         <li><input type="checkbox" /> Employee 1</li>
                         <div class="dropdown-divider"></div>
                         <li><input type="checkbox" /> Employee 2</li>
@@ -59,7 +61,7 @@
                         <li><input type="checkbox" /> Employee 4</li>
                         <div class="dropdown-divider"></div>
                         <li><input type="checkbox" /> Employee 5</li>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> -->
                       </div>
                     </div>
                   </div>
@@ -67,7 +69,10 @@
                     <div class="btn-group">
                       <button class="btn dropdown-toggle btn-primary drop-button" data-toggle="dropdown"> Add Department</button>
                       <div class="dropdown-menu dropdown-space">
-                        <div class="dropdown-divider"></div>
+                        <li *ngFor="let department of departments">
+                          <input type="checkbox" name>{{department.name}}
+                        </li>
+                        <!-- <div class="dropdown-divider"></div>
                         <li><input type="checkbox" /> Department 1</li>
                         <div class="dropdown-divider"></div>
                         <li><input type="checkbox" /> Department 2</li>
@@ -77,7 +82,7 @@
                         <li><input type="checkbox" /> Department 4</li>
                         <div class="dropdown-divider"></div>
                         <li><input type="checkbox" /> Department 5</li>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> -->
                       </div>
                     </div>
                   </div>
