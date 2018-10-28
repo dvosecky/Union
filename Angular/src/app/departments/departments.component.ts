@@ -1,3 +1,4 @@
+import { DepartmentsService } from './../services/departments.service';
 import { Session } from './../session';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentsComponent implements OnInit {
 
-  constructor(private session :Session) { }
+  constructor(private session :Session, private service :DepartmentsService) { }
 
   admin :boolean = false;
   emp :boolean = false;
+
+  departments;
 
   ngOnInit() {
 
@@ -21,6 +24,14 @@ export class DepartmentsComponent implements OnInit {
     } else if (this.session.role === 'emp') {
       this.emp = true;
     }
-  }
 
+    this.service.getDepartments().subscribe(
+      (data) => {
+        this.departments = data;
+        console.log(data);
+      }, (error) => {
+        console.log(error);
+      } 
+    )
+  }
 }
