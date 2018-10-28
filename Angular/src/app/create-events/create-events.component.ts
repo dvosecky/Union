@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CreateEventService } from '../services/create-event.service';
 
 @Component({
   selector: 'app-create-events',
@@ -10,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CreateEventsComponent implements OnInit {
 
   constructor(private session: Session, private router :Router, 
-              private route :ActivatedRoute) { }
+              private route :ActivatedRoute, private service :CreateEventService) { }
 
   admin: boolean;
   emp: boolean;
@@ -44,6 +45,13 @@ export class CreateEventsComponent implements OnInit {
       "name: " + this.name + ", location: " + this.location + ", time: " + 
         this.time + ", date: " + this.date + ", description: " + this.description);
       
+    this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
+      (data) => {
+        console.log(data);
+      }, (error) => {
+        console.log(error);
+      }
+    )
     alert('Event Created!');
     this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
