@@ -49,10 +49,10 @@ ALTER TABLE invitation ADD CONSTRAINT invitation_acc_fk FOREIGN KEY (acc_id)
 ALTER TABLE invitation ADD CONSTRAINT invitation_ev_fk FOREIGN KEY (ev_id)
     REFERENCES event (ev_id);
     
-INSERT INTO department VALUES(1, 'gogo');
-INSERT INTO department VALUES(2, 'coolguys');
-INSERT INTO account VALUES(1, 'd', 'd', 'd', 'd', 1, 0);
-INSERT INTO account VALUES(2, 'a', 'a', 'a', 'a', 1, 0);
+INSERT INTO department VALUES(1, 'landons department');
+INSERT INTO department VALUES(2, 'coolguys department');
+INSERT INTO account VALUES(1, 'admin', 'admin', 'admin', 'admin', 1, 2);
+INSERT INTO account VALUES(2, 'user', 'user', 'a', 'a', 1, 0);
 INSERT INTO account VALUES(3, 'guy', '7', '8', '9', 2, 0);
 INSERT INTO event VALUES(1, 'meeting', TO_TIMESTAMP('11-11-1994','dd-mm-yyyy'), '', '', 1, 0);
 INSERT INTO event VALUES(2, 'conference', TO_TIMESTAMP('12-12-1994','dd-mm-yyyy'), '', '', 1, 0);
