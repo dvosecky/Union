@@ -14,7 +14,13 @@ public class EventDTO {
 	
 	
 	
-
+	public EventDTO(Event event) {
+		this.eventid=event.getId();
+		this.time=event.getTime();
+		this.name=event.getName();
+		this.description=event.getDescription();
+		this.location=event.getLocation();
+	}
 
 	
 	public EventDTO( Event event,int accountID) {
