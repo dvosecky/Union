@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,9 +11,38 @@ import com.revature.beans.Invitation;
 import com.revature.dao.AccountDaoImpl;
 import com.revature.dao.EventDaoImpl;
 import com.revature.dao.InvitationDaoImpl;
+import com.revature.dto.InvitationDTO;
 
 public class InvitationServices {
 	public static final Logger logger = Logger.getLogger(InvitationServices.class);
+	
+	//Get invitation DTO list of all invitations user identified by acc_id has
+	public static List<InvitationDTO> getAllInvitations(int acc_id){
+		logger.info("Services has been called to return a list of invitation DTOs by user.");
+		
+		//Initialization of resources
+		List<InvitationDTO> invites_fixed = new ArrayList<InvitationDTO>();
+		List<Invitation> invites = null;	
+		AccountDaoImpl ad = new AccountDaoImpl();
+		InvitationDaoImpl id = new InvitationDaoImpl();
+		Account acc = ad.selectAccountById(acc_id);
+		
+		logger.trace("Checking if account associated with acc_id exists.");
+		if (acc == null) {
+			logger.warn("Account does not exist, returning empty list.");
+			return invites_fixed;
+		}
+		
+		//Accessing DAO layer to get all invites associated with Account acc
+		invites = id.selectAllInvitesByAcc(acc);
+		
+		//Adding all invites as InvitationDTOs
+		for (Invitation i : invites) {
+			invites_fixed.add(new InvitationDTO(i));
+		}
+		
+		return invites_fixed;
+	}
 	
 	//invitation is accepted by account
 	public static boolean acceptInvitation(Integer acc_id, Integer inv_id) {
