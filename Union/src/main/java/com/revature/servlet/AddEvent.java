@@ -34,6 +34,7 @@ public class AddEvent extends HttpServlet {
 		//converts date and time to a timestamp datatype
 		log.debug("Converting date and time into SQL timestamp.");
 		String temp =date+" "+time+":00";
+		System.out.println(temp);
 		Timestamp timestamp = Timestamp.valueOf(temp);
 		
 		//converts accountID to in int data type
