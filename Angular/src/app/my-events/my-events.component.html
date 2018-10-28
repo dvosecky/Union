@@ -22,90 +22,21 @@
               <thead>
                 <tr>
                   <th>Event #</th>
-                  <th> Name</th>
+                  <th>Name</th>
                   <th>Time</th>
                   <th>Date</th>
                   <th>Location</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Christmas Party</td>
-                  <td>1:30 PM</td>
-                  <td>12/15/18</td>
-                  <td>305A</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Staff Meeting</td>
-                  <td>3:00 PM</td>
-                  <td>10/30/18</td>
-                  <td>515C</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
+                  <tr *ngFor="let event of events; index as i" (click)="editEvent(event)"
+                    (click)="editEvent(event)">
+                      <td>{{event['eventid']}}</td>
+                      <td>{{event['name']}}</td>
+                      <td>{{event['time']}}</td>
+                      <td>{{event['date']}}</td>
+                      <td>A location</td>
+                    </tr>
               </tbody>
             </table>
           </div>
