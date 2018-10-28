@@ -15,6 +15,20 @@ import com.revature.dto.EventDTO;
 public class EventService {
 	public static final Logger logger = Logger.getLogger(EventService.class);
 
+	//Inserted a event into a db and returns a boolean value 
+	public static boolean editEvent(Event event) {
+		logger.info("Service layer called to edit an event.");
+		EventDaoImpl manager = new EventDaoImpl();
+
+		logger.debug("Event is being edited in database using edit Event method");
+		boolean result = manager.editEvent(event);
+		//if id is greater than zero, event was inserted and
+		//return event id
+		
+		
+		return result;
+	}
+	
 	//A list of events is returned using event lead id
 	public static List<EventDTO> retrieveEventsByLead( int eventlead ){
 		logger.info("In Retrieve Events By Lead");
