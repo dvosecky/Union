@@ -14,7 +14,7 @@ export class CreateEventsComponent implements OnInit {
 
   admin: boolean;
   emp: boolean;
-  event = null;
+  edit: boolean = false;
 
   name :string;
   location :string;
@@ -24,7 +24,8 @@ export class CreateEventsComponent implements OnInit {
 
   ngOnInit() {
     if (this.session.event != null) {
-      this.event = event;
+      this.edit = true;
+      console.log(event);
     }
 
     window.scrollTo(0, 0);
@@ -42,6 +43,7 @@ export class CreateEventsComponent implements OnInit {
     console.log(
       "name: " + this.name + ", location: " + this.location + ", time: " + 
         this.time + ", date: " + this.date + ", description: " + this.description);
+      
     alert('Event Created!');
     this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
