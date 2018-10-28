@@ -5,7 +5,7 @@ import com.revature.beans.Invitation;
 public class InvitationDTO {
 	private Integer id;
 	private Integer acc_id;
-	private Integer ev_id;
+	private EventDTO event;
 	private Integer privelegeFlag;
 	private Integer acceptFlag;
 	
@@ -16,7 +16,7 @@ public class InvitationDTO {
 	public InvitationDTO(Invitation i) {
 		id = i.getId();
 		acc_id = i.getAcc().getId();
-		ev_id = i.getEv().getId();
+		event = new EventDTO(i.getEv());
 		privelegeFlag = i.getPrivilegeFlag();
 		acceptFlag = i.getAcceptFlag();
 	}
@@ -37,12 +37,12 @@ public class InvitationDTO {
 		this.acc_id = acc_id;
 	}
 
-	public Integer getEv_id() {
-		return ev_id;
+	public EventDTO getEvent() {
+		return event;
 	}
 
-	public void setEv_id(Integer ev_id) {
-		this.ev_id = ev_id;
+	public void setEvent(EventDTO event) {
+		this.event = event;
 	}
 
 	public Integer getPrivelegeFlag() {
@@ -63,7 +63,7 @@ public class InvitationDTO {
 
 	@Override
 	public String toString() {
-		return "InvitationDTO [id=" + id + ", acc_id=" + acc_id + ", ev_id=" + ev_id + ", privelegeFlag="
+		return "InvitationDTO [id=" + id + ", acc_id=" + acc_id + ", event=" + event + ", privelegeFlag="
 				+ privelegeFlag + ", acceptFlag=" + acceptFlag + "]";
 	}
 }
