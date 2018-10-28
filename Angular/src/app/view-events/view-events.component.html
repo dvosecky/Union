@@ -1,54 +1,51 @@
 <body class="filter-dark" style="	background-image: url('assets/View_Events_Background.jpg');
     background-position: center;	background-size: cover;	background-repeat: no-repeat; min-height: 1000px;">
 
-    <app-admin-navbar *ngIf="admin"></app-admin-navbar>
-    <app-emp-navbar *ngIf="emp"></app-emp-navbar>
+  <app-admin-navbar *ngIf="admin"></app-admin-navbar>
+  <app-emp-navbar *ngIf="emp"></app-emp-navbar>
 
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="display-2 text-center">Events</h3>
-          </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="display-2 text-center">Events</h3>
         </div>
       </div>
     </div>
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center text-white"><b>You have 3 invitations that you need to confirm!</b></h3>
+    </div>
+  </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-5" style="background-image: linear-gradient(to bottom, rgba(255, 134, 134, 0.2), rgba(255, 0, 0, 0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 100px 15px black;">
+          <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
                   <th>Event #</th>
-                  <th>Name</th>
+                  <th>&nbsp;Name</th>
                   <th>Time</th>
                   <th>Date</th>
-                  <th>Location</th>
+                  <th>Loation</th>
+                  <th>Accept or Decline</th>
                 </tr>
               </thead>
-              <!-- accountID: 100
-              ​​
-              eventid: 2
-              ​​
-              name: "conference"
-              ​​
-              time: 787212000000 -->
               <tbody>
-                <tr *ngFor="let event of events; index as i" (click)="eventDetails(event)">
-                  <td>{{event['eventid']}}</td>
-                  <td>{{event['name']}}</td>
-                  <td>{{event['time']}}</td>
-                  <td>{{event['date']}}</td>
-                  <td>{{event['location']}}</td>
-                </tr>
-
-                <!-- <tr>
+                <tr>
                   <td>1</td>
                   <td>Christmas Party</td>
                   <td>1:30 PM</td>
                   <td>12/15/18</td>
                   <td>305A</td>
+                  <td>
+                    <div class="btn-group"><a href="#" class="btn btn-primary">Accept</a>
+                      <a href="#" class="btn btn-danger">Decline</a> </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -56,6 +53,10 @@
                   <td>3:00 PM</td>
                   <td>10/30/18</td>
                   <td>515C</td>
+                  <td>
+                    <div class="btn-group"><a href="#" class="btn btn-primary">Accept</a>
+                      <a href="#" class="btn btn-danger">Decline</a> </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -63,68 +64,45 @@
                   <td>8:00 AM</td>
                   <td>11/01/18</td>
                   <td>136D</td>
+                  <td>
+                    <div class="btn-group"><a href="#" class="btn btn-primary">Accept</a>
+                      <a href="#" class="btn btn-danger">Decline</a> </div>
+                  </td>
                 </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr> -->
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Event #</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of events; index as i">
+                <td>{{event['eventid']}}</td>
+                <td>{{event['name']}}</td>
+                <td>{{event['time']}}</td>
+                <td>{{event['date']}}</td>
+                <td>A location</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
