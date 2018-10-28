@@ -16,6 +16,8 @@ export class CreateEventsComponent implements OnInit {
   admin: boolean;
   emp: boolean;
   edit: boolean = false;
+  title: string = "Add A New Event";
+  subtitle: string = "Enter the information below to add a new event";
 
   name :string = "testname";
   location :string = 'testLocation';
@@ -26,7 +28,16 @@ export class CreateEventsComponent implements OnInit {
   ngOnInit() {
     if (this.session.event != null) {
       this.edit = true;
+      this.title = 'Edit Your Event';
+      this.subtitle = 'Update the fields below to edit your event';
+      let event = this.session.event;
       console.log(event);
+      this.name = event.name;
+      this.location = event.location;
+      let ISO :string = event.datetime.toISOString();
+      this.time = ISO.substring(11,16);
+      this.date = ISO.substring(0,10);
+      this.description = event.description;
     }
 
     window.scrollTo(0, 0);
@@ -34,6 +45,10 @@ export class CreateEventsComponent implements OnInit {
       this.admin = true;
     } else if (this.session.role === 'emp') {
       this.emp = true;
+    }
+    console.log(this.session.event);
+    if (this.session.event !== null) {
+
     }
   }
 
@@ -45,14 +60,27 @@ export class CreateEventsComponent implements OnInit {
       "name: " + this.name + ", location: " + this.location + ", time: " + 
         this.time + ", date: " + this.date + ", description: " + this.description);
       
-    this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
-      (data) => {
-        console.log(data);
-      }, (error) => {
-        console.log(error);
-      }
-    )
-    alert('Event Created!');
-    // this.router.navigate(['../my-events'], { relativeTo: this.route });
+
+    if (this.edit === true) { 
+      
+      this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
+        (data) => {
+          console.log(data);
+          alert('Event Updated!');
+        }, (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
+        (data) => {
+          console.log(data);
+          alert('Event Created!');
+        }, (error) => {
+          console.log(error);
+        }
+      );
+    }
+    this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
 }

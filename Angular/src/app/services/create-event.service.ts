@@ -17,6 +17,15 @@ export class CreateEventService {
     'eventName=' + name + '&location=' + location + '&time=' + time +
         '&date=' + date + '&description=' + description + '&accountID=' + this.session.id, {headers});
   }
+
+  editEvent(name, location, time, date, description) {
+    let headers :HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    return this.http.post('http://18.220.118.195:8085/Union/AddEvent',
+    'eventName=' + name + '&location=' + location + '&time=' + time +
+        '&date=' + date + '&description=' + description + '&accountID=' + this.session.id, {headers});
+  }
 }
 // eventname = request.getParameter("eventName");
 // description = request.getParameter("description");
