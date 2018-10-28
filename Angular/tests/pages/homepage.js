@@ -4,7 +4,7 @@ var AngularHomepage = function() {
     var loginButton = element(by.id('submit-login'));
   
     this.get = function() {
-      browser.get('http://www.angularjs.org');
+      browser.get('http://18.220.118.195:8085/UnionFront/');
     };
   
     this.setName = function(name) {
@@ -17,6 +17,13 @@ var AngularHomepage = function() {
   
     this.submit = function() {
       loginButton.click();
+    };
+
+    this.adminLogin = function() {
+        browser.get('http://18.220.118.195:8085/UnionFront/');
+        usernameField.sendKeys('admin');
+        passwordField.sendKeys('admin');
+        loginButton.click();
     };
   };
   module.exports = new AngularHomepage();

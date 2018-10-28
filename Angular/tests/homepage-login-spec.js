@@ -1,4 +1,4 @@
-var angularHomepage = require('./AngularHomepage');
+var angularHomepage = require('./pages/homepage.js');
 describe('Testing homepage login', function() {
     var usernameField = element(by.id('email'));
     var passwordField = element(by.id('password'));
@@ -9,8 +9,8 @@ describe('Testing homepage login', function() {
     });
 
     it('should login successfully', function() {
-        usernameField.sendKeys('d');
-        passwordField.sendKeys('d');
+        usernameField.sendKeys('admin');
+        passwordField.sendKeys('admin');
     
         loginButton.click();
 
@@ -21,9 +21,15 @@ describe('Testing homepage login', function() {
 
     it('should login successfully using POM', function() {
       angularHomepage.get();
-      angularHomepage.setName('d');
-      angularHomepage.setPass('d');
+      angularHomepage.setName('admin');
+      angularHomepage.setPass('admin');
       angularHomepage.submit();
+
+      expect(element(by.id('welcome-admin')).getText()).toBeTruthy;
+    });
+
+    it('should login successfully using POM efficiently', function() {
+      angularHomepage.adminLogin();
 
       expect(element(by.id('welcome-admin')).getText()).toBeTruthy;
     });
