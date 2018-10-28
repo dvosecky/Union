@@ -20,7 +20,7 @@
 		</property>
 
 		<property name="hibernate.connection.url">
-			jdbc:oracle:thin:uniondb.cosylogl4jcy.us-east-2.rds.amazonaws.com:1521:orcl
+			jdbc:oracle:thin:@uniondb.cosylogl4jcy.us-east-2.rds.amazonaws.com:1521:orcl
 	
 		</property>
 
