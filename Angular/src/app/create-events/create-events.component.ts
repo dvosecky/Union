@@ -88,14 +88,15 @@ export class CreateEventsComponent implements OnInit {
       
 
     if (this.edit === true) { 
-      this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
-        (data) => {
-          console.log(data);
-        }, (error) => {
-          console.log(error);
-        }
-      );
-      alert('Event Updated!');
+      // NOT IMPLEMENTED
+      // this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
+      //   (data) => {
+      //     console.log(data);
+      //   }, (error) => {
+      //     console.log(error);
+      //   }
+      // );
+      // alert('Event Updated!');
     } else {
       this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
         (data) => {

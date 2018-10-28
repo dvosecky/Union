@@ -26,17 +26,13 @@ export class CreateEventService {
         eventId + '&inv_priv_flag=0');
   }
 
-  editEvent(name, location, time, date, description) {
-    let headers :HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-    return this.http.post('http://18.220.118.195:8085/Union/AddEvent',
-    'eventName=' + name + '&location=' + location + '&time=' + time +
-        '&date=' + date + '&description=' + description + '&accountID=' + this.session.id, {headers});
-  }
+  // NOT IMPLEMENTED
+  // editEvent(name, location, time, date, description) {
+  //   let headers :HttpHeaders = new HttpHeaders({
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   });
+  //   return this.http.post('http://18.220.118.195:8085/Union/EventDetailChange',
+  //   'eventName=' + name + '&location=' + location + '&time=' + time +
+  //       '&date=' + date + '&description=' + description + '&accountID=' + this.session.id, {headers});
+  // }
 }
-// eventname = request.getParameter("eventName");
-// description = request.getParameter("description");
-// location = request.getParameter("location");
-// date = request.getParameter("date");
-// time = request.getParameter("time")
