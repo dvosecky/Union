@@ -2,55 +2,48 @@
     background-position: center;	background-size: cover;	background-repeat: no-repeat;
     min-height: 1000px;">
 
-    <app-admin-navbar></app-admin-navbar>
+  <app-admin-navbar></app-admin-navbar>
 
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="display-2 text-center">Users</h3>
-          </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="display-2 text-center">Users</h3>
         </div>
       </div>
     </div>
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Add Or Remove</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of users">
-                  <td>{{user['id']}}</td>
-                  <td>{{user['lastname']}}</td>
-                  <td>{{user['firstname']}}</td>
-                  <td>{{user['username']}}</td>
-                  <td>{{user['role']}}</td>
-                  <td>
-                    <div class="btn-group"><a href="#" class="btn btn-primary">Add</a>
-                      <a href="#" class="btn btn-danger">Rem</a> </div>
-                  </td>
-                </tr>
-<!-- firstname: "a"
-id: 2
-lastname: "a"
-password: "a"
-role: 0
-username: "a" -->
-              </tbody>
-            </table>
-          </div>
+  </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user['id']}}</td>
+                <td>{{user['lastname']}}</td>
+                <td>{{user['firstname']}}</td>
+                <td>{{user['username']}}</td>
+                <td>{{user['role']}}</td>
+                <td>
+                  <div class="btn-group"><a href="#" class="btn btn-danger">Remove</a> </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
 
 </body>
