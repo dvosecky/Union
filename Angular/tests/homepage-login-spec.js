@@ -1,3 +1,4 @@
+var angularHomepage = require('./AngularHomepage');
 describe('Testing homepage login', function() {
     var usernameField = element(by.id('email'));
     var passwordField = element(by.id('password'));
@@ -13,6 +14,17 @@ describe('Testing homepage login', function() {
     
         loginButton.click();
 
-        expect(element(by.id('welcome')).getText()).toEqual('Welcome admin');
+        //Element exists on welcome-admin page, but not login page. If logged in
+        //as an admin which 'd' is, should find this element. Otherwise, not.
+        expect(element(by.id('welcome-admin')).getText()).toBeTruthy;
+    });
+
+    it('should login successfully using POM', function() {
+      angularHomepage.get();
+      angularHomepage.setName('d');
+      angularHomepage.setPass('d');
+      angularHomepage.submit();
+
+      expect(element(by.id('welcome-admin')).getText()).toBeTruthy;
     });
   });
