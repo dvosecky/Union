@@ -13,7 +13,7 @@ export class MyEventsService {
         let headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded'});
         console.log(this.session.id);
-        return this.http.post("http://localhost:8085/Union/GetEventByAccount", 
+        return this.http.post("http://localhost:8085/Union/GetEventByLead", 
           'accountID='+this.session.id, {headers});
     }
 }
