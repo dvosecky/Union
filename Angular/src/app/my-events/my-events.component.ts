@@ -29,6 +29,11 @@ export class MyEventsComponent implements OnInit {
       (data) => {
         this.events = data;
         console.log(this.events);
+        this.events.forEach(event => {
+          event.datetime = new Date(event.time);
+          event.date = event.datetime.toLocaleDateString();
+          event.time = event.datetime.toLocaleTimeString();
+        });
       }, (error) => {
         console.log(error);
       }

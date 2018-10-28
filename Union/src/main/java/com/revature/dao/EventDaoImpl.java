@@ -15,6 +15,40 @@ import com.revature.util.HibernateUtil;
 public class EventDaoImpl {
 	public static final Logger logger = Logger.getLogger(EventDaoImpl.class);
 	
+	//Edits
+	//Edits event if event present
+	public boolean editEvent(Event event) {
+		if (event == null) {
+			return false;
+		}
+		logger.info("In Insert Event");	
+		Session s = HibernateUtil.getSession();
+		Transaction tx = null;
+		boolean result = false;
+			
+		try {
+			//Event is save in database
+			logger.debug("Event is changed in database");
+			tx = s.beginTransaction();
+			Event current_event = (Event) s.get(Event.class, event.getId());
+			current_event.setName(event.getName());
+			current_event.setDescription(event.getDescription());
+			current_event.setLocation(event.getLocation());
+			current_event.setTime(event.getTime());
+			tx.commit();
+			result = true;
+		}
+		catch (Exception e) {
+			logger.error("Exception is found in transaction");
+			e.printStackTrace();
+		}
+		finally {
+			s.close();
+		}
+		
+		return result;
+	}
+	
 	//Returns a list of events 
 	@SuppressWarnings("unchecked")
 	public List<Event> selectAllEvents(){
