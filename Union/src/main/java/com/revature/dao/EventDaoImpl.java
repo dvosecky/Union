@@ -26,7 +26,6 @@ public class EventDaoImpl {
 		Transaction tx = null;
 		boolean result = false;
 			
-		
 		try {
 			//Event is save in database
 			logger.debug("Event is changed in database");
