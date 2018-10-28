@@ -77,13 +77,13 @@ public class EventService {
 	}
 
 	//Inserted a event into a db and returns a boolean value 
-	public static boolean insertEvent(Event event) {
+	public static Integer insertEvent(Event event) {
 		logger.info("In Insert Event");
 		boolean inserted = false;
 		EventDaoImpl manager = new EventDaoImpl();
 
 		logger.debug("Event is being inserted into database using insert Event method");
-		int id = manager.insertEvent(event);
+		Integer id = manager.insertEvent(event);
 		//if id is greater than zero, event was inserted and
 		//return event id
 		if( id >0) {
@@ -91,7 +91,7 @@ public class EventService {
 		}
 		
 		
-		return inserted;
+		return id;
 	}
 
 	//An event is removed and returns a boolean value
