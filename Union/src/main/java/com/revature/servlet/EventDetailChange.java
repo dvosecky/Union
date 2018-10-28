@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.testng.log4testng.Logger;
+import org.apache.log4j.Logger;
 
 import com.revature.beans.Account;
 import com.revature.beans.Event;
