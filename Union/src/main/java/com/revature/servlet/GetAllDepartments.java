@@ -24,21 +24,6 @@ public class GetAllDepartments extends HttpServlet{
 	private static final long serialVersionUID = 3784785168102819424L;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-//<<<<<<< HEAD
-		System.out.println("hello?");
-//		if (req.getParameter("role") == null) {
-//			res.sendError(401);
-//			return;
-//		}
-//=======
-		//Checking if role is in request parameters.
-//		if (req.getParameter("role") == null) {
-//			log.warn("Sending error because role could not be found in request.");
-//			res.sendError(401);
-//			return;
-//		}
-//>>>>>>> 1f22ee67f0e8d27efc4a830c09680d88c9176698
-
 		//Initialization
 		res.setContentType("application/json");
 		PrintWriter out = res.getWriter();
