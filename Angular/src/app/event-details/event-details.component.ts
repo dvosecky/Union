@@ -23,7 +23,6 @@ export class EventDetailsComponent implements OnInit {
       }
 
       this.event = this.session.event;
-
-
+      this.session.event = null;
     }
   }
