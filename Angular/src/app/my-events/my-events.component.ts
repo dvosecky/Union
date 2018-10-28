@@ -1,6 +1,7 @@
 import { MyEventsService } from './../services/my-events.service';
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-my-events',
@@ -9,7 +10,8 @@ import { Session } from '../session';
 })
 export class MyEventsComponent implements OnInit {
 
-  constructor(private session :Session, private service :MyEventsService) { }
+  constructor(private session :Session, private service :MyEventsService,
+              private router :Router, private route :ActivatedRoute) { }
 
   admin :boolean = false;
   emp :boolean = false;
@@ -32,6 +34,11 @@ export class MyEventsComponent implements OnInit {
       }
     );
     
+  }
+
+  editEvent(event) {
+    this.router.navigate(['../create-events']);
+    this.session.event = event;
   }
 
 }

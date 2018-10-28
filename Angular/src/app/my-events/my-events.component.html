@@ -22,14 +22,15 @@
               <thead>
                 <tr>
                   <th>Event #</th>
-                  <th> Name</th>
+                  <th>Name</th>
                   <th>Time</th>
                   <th>Date</th>
                   <th>Location</th>
                 </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let event of events; index as i" (click)="eventDetails(event)">
+                  <tr *ngFor="let event of events; index as i" (click)="editEvent(event)"
+                    (click)="editEvent(event)">
                       <td>{{event['eventid']}}</td>
                       <td>{{event['name']}}</td>
                       <td>{{event['time']}}</td>

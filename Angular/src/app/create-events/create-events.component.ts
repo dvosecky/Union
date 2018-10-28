@@ -12,8 +12,12 @@ export class CreateEventsComponent implements OnInit {
 
   admin: boolean;
   emp: boolean;
+  event = null;
 
   ngOnInit() {
+    if (this.session.event != null) {
+      this.event = event;
+    }
 
     window.scrollTo(0, 0);
     if (this.session.role === 'admin') {
