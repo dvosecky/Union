@@ -8,7 +8,7 @@ export class ViewEventsService {
 
     constructor(private http :HttpClient, private session :Session) { }
 
-    getEvents(account) {
+    getEvents() {
         let headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded'});
         return this.http.post("http://localhost:8085/Union/GetEventByAccount", 
