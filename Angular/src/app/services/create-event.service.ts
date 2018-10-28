@@ -13,7 +13,7 @@ export class CreateEventService {
     let headers :HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    return this.http.post('http://localhost:8085/Union/AddEvent',
+    return this.http.post('http://18.220.118.195:8085/Union/AddEvent',
     'eventName=' + name + '&location=' + location + '&time=' + time +
         '&date=' + date + '&description=' + description + '&accountID=' + this.session.id, {headers});
   }
