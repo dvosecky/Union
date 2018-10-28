@@ -2,115 +2,43 @@
     background-position: center;	background-size: cover;	background-repeat: no-repeat;
     min-height: 1000px;">
 
-    <app-admin-navbar *ngIf="admin"></app-admin-navbar>
-    <app-emp-navbar *ngIf="emp"></app-emp-navbar>
+  <app-admin-navbar *ngIf="admin"></app-admin-navbar>
+  <app-emp-navbar *ngIf="emp"></app-emp-navbar>
 
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="display-2 text-center">Departments</h3>
-          </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="display-2 text-center">Departments</h3>
         </div>
       </div>
     </div>
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Event #</th>
-                  <th> Name</th>
-                  <th>Time</th>
-                  <th>Date</th>
-                  <th>Location</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Christmas Party</td>
-                  <td>1:30 PM</td>
-                  <td>12/15/18</td>
-                  <td>305A</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Staff Meeting</td>
-                  <td>3:00 PM</td>
-                  <td>10/30/18</td>
-                  <td>515C</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>HR Meeting</td>
-                  <td>8:00 AM</td>
-                  <td>11/01/18</td>
-                  <td>136D</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+  </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+          <table class="table ">
+            <thead>
+              <tr>
+                <th>Department ID</th>
+                <th>Department Name</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let department of departments">
+                <td>{{department['dep_id']}}</td>
+                <td>{{department['dname']}}</td>
+                <td>
+                  <div class="btn-group"><a href="#" class="btn btn-danger">Remove</a> </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
 
 </body>
