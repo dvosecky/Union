@@ -22,11 +22,11 @@ export class CreateEventsComponent implements OnInit {
   title: string = "Add A New Event";
   subtitle: string = "Enter the information below to add a new event";
 
-  name :string = "testname";
-  location :string = 'testLocation';
-  time = "03:03";
-  date = "2018-03-09";
-  description = 'testDesc';
+  name :string;
+  location :string;
+  time;
+  date;
+  description;
   users;
   departments;
   inviteesBool = [];
