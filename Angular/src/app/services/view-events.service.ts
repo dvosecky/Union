@@ -11,7 +11,7 @@ export class ViewEventsService {
     getEvents() {
         let headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded'});
-        return this.http.post("http://18.220.118.195:8085/Union/GetEventByAccount", 
+        return this.http.post("http://localhost:8085/Union/GetEventByAccount", 
             "accountID=" + this.session.id, {headers})
     }
 }

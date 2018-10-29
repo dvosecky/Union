@@ -20,6 +20,17 @@
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>CreateInvitation</display-name>
+    <servlet-name>CreateInvitation</servlet-name>
+    <servlet-class>com.revature.servlet.CreateInvitation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateInvitation</servlet-name>
+    <url-pattern>/CreateInvitation</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
     <description></description>
     <display-name>EventDetailChange</display-name>

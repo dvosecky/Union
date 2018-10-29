@@ -14,16 +14,17 @@ export class CreateEventService {
 
   createEvent(name, location, time, date, description) {
     let headers = this.headers;
-    return this.http.post('http://18.220.118.195:8085/Union/AddEvent',
+    return this.http.post('http://localhost:8085/Union/AddEvent',
     'eventName=' + name + '&location=' + location + '&time=' + time +
         '&date=' + date + '&description=' + description + '&accountID=' + this.session.id, {headers});
   }
 
   createInvitation(inviteeId, eventId) {
     let headers = this.headers;
-    return this.http.post('http://18.220.118.195:8085/Union/CreateInvitation',
-      'acc_id=' + this.session.id + '&inv_acc_id=' + inviteeId + '&inv_ev_id=' +
-        eventId + '&inv_priv_flag=0');
+    console.log('session id' + this.session.id);
+    return this.http.post('http://localhost:8085/Union/CreateInvitation',
+      'acc_id=' + inviteeId + '&inv_ev_id=' +
+        eventId + '&inv_priv_flag=0', {headers});
   }
 
   editEvent(name, location, time, date, description, eventId) {

@@ -104,9 +104,10 @@ public class InvitationServices {
 	}
 
 	//An invitation is inserted into database
-	public static boolean invite(Integer acc_id, Integer inv_acc_id, Integer inv_ev_id, Integer inv_priv_flag) {
+	public static boolean invite(Integer acc_id, Integer inv_ev_id, Integer inv_priv_flag) {
 		logger.info("In Invite");
-		if (acc_id == null || inv_acc_id == null || inv_ev_id == null || inv_priv_flag == null) {
+		if (acc_id == null || inv_ev_id == null || inv_priv_flag == null) {
+			System.out.println("2");
 			return false;
 		}
 		
@@ -120,20 +121,21 @@ public class InvitationServices {
 		
 		//It would be better to return a 401 error if this is the case, but
 		//it seems like this logic should be here for better abstraction.
-		if (e.getLead().getId() != a.getId()) {
-			return false;
-		}
+//		if (e.getLead().getId() != a.getId()) {
+//			System.out.println("1");
+//			return false;
+//		}
 	
 		//invitation for a specific event is return
-		logger.debug("Invites for a specific event is return using select all invites");
-		List<Invitation> invites = id.selectAllInvitesByEv(e);
+//		logger.debug("Invites for a specific event is return using select all invites");
+//		List<Invitation> invites = id.selectAllInvitesByEv(e);
 		
 		
-		for (int i = 0; i < invites.size(); i++) {
-			if (invites.get(i).getAcc().getId() == a.getId()) {
-				return false;
-			}
-		}
+//		for (int i = 0; i < invites.size(); i++) {
+//			if (invites.get(i).getAcc().getId() == a.getId()) {
+//				System.out.println("3");
+//			}
+//		}
 		
 		
 		Invitation inv = new Invitation(null, a, e, 0, inv_priv_flag);

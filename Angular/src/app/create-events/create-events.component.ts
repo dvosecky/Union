@@ -102,13 +102,20 @@ export class CreateEventsComponent implements OnInit {
     } else {
       this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
         (data) => {
-          console.log(data);
+          
           invitees.forEach(invitee => {
-            this.service.createInvitation(invitee.id, data['eventid']);
+            console.log(invitee.id);
+            this.service.createInvitation(invitee.id, data).subscribe(
+              (data) => {
+                console.log(data);
+              }, (error) => {
+                console.log(error);
+              }
+            );
           });
           
         }, (error) => {
-          console.log(error);
+         
         }
       );
       alert('Event Created!');

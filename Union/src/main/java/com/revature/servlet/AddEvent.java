@@ -16,7 +16,6 @@ import com.revature.beans.Account;
 import com.revature.beans.Event;
 import com.revature.dao.AccountDaoImpl;
 import com.revature.services.EventService;
-import com.revature.services.UserService;
 
 
 public class AddEvent extends HttpServlet {
@@ -66,9 +65,12 @@ public class AddEvent extends HttpServlet {
 			}
 		
 			//Accessing service layer to add event.
-			if(EventService.insertEvent(event) != null) {
+			Integer eventId = EventService.insertEvent(event);
+			if(eventId != null) {
+				ObjectMapper om = new ObjectMapper();
 				PrintWriter out = response.getWriter();
-				out.print(event.toString());
+				System.out.println(eventId);
+				out.print(om.writeValueAsString(eventId));
 				return;
 			}
 		}

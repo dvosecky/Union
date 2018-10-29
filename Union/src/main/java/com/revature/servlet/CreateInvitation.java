@@ -31,31 +31,32 @@ public class CreateInvitation extends HttpServlet{
 			res.sendError(401);
 			return;
 		}
-		Integer acc_id = Integer.getInteger(proxyString);
-		proxyString = req.getParameter("inv_acc_id");
-		if (proxyString == null) {
-			log.warn("Sending back an error: account id of account receiving invite missing from parameters.");
-			res.sendError(400);
-			return;
-		}
-		Integer inv_acc_id = Integer.getInteger(proxyString);
+		Integer acc_id = Integer.valueOf(proxyString);
+//		proxyString = req.getParameter("inv_acc_id");
+//		if (proxyString == null) {
+//			log.warn("Sending back an error: account id of account receiving invite missing from parameters.");
+//			res.sendError(400);
+//			return;
+//		}
+//		Integer inv_acc_id = Integer.valueOf(proxyString);
 		proxyString = req.getParameter("inv_ev_id");
+		System.out.println(proxyString);
 		if (proxyString == null) {
 			log.warn("Sending back an error: event id missing from parameters.");
 			res.sendError(400);
 			return;
 		}
-		Integer inv_ev_id = Integer.getInteger(proxyString);
+		Integer inv_ev_id = Integer.valueOf(proxyString);
 		proxyString = req.getParameter("inv_priv_flag");
 		if (proxyString == null) {
 			log.warn("Sending back an error: privilege flag missing from parameters.");
 			res.sendError(400);
 			return;
 		}
-		Integer inv_priv_flag = Integer.getInteger(proxyString);
-		
+		Integer inv_priv_flag = Integer.valueOf(proxyString);
+
 		//Accessing service layer to send invite
-		boolean result = InvitationServices.invite(acc_id, inv_acc_id, inv_ev_id, inv_priv_flag);
+		boolean result = InvitationServices.invite(acc_id, inv_ev_id, inv_priv_flag);
 		
 		//Checking boolean result of invite creation and sending appropriate http code
 		log.trace("Checking boolean result of invite operation.");
