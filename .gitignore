@@ -6,6 +6,9 @@ Servers/
 .recommenders/
 RemoteSystemsTempFiles/
 
+#Stuff I added
+hibernate.cfg.xml
+#Previous stuff I added
 Union/src/main/resources/*.xml
 
 # Compiled class file
