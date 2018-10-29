@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="text-center col-md-7 mx-auto"> <i class="fa d-block fa-globe fa-5x mb-4 text-white"></i>
-          <h2 class="text-white"><b>{{title}}</b></h2>
+          <h2 class="text-white" id="create-event-title"><b>{{title}}</b></h2>
           <p class="lead text-white">{{subtitle}}</p>
         </div>
       </div>
@@ -47,8 +47,9 @@
                 <div class="row">
                   <div class="col-md-6 text-center ">
                     <div class="btn-group">
-                      <button class="btn dropdown-toggle btn-primary drop-button" data-toggle="dropdown"> Add Employee</button>
+                      <button class="btn dropdown-toggle btn-primary drop-button" id="invite-emp-dropdown" data-toggle="dropdown"> Add Employee</button>
                       <div class="dropdown-menu dropdown-space">
+
                         <li *ngFor="let user of users; index as i">
                           <input type="checkbox" [(ngModel)]="inviteesBool[i]" name="users" value="user.id">
                           {{user.firstname}} {{user.lastname}}</li>
@@ -61,7 +62,7 @@
                   </div>
                   <div class="col-md-6 text-center">
                     <div class="btn-group">
-                      <button class="btn dropdown-toggle btn-primary drop-button" data-toggle="dropdown"> Add Department</button>
+                      <button class="btn dropdown-toggle btn-primary drop-button" id="invite-department-dropdown" data-toggle="dropdown"> Add Department</button>
                       <div class="dropdown-menu dropdown-space">
                         <li *ngFor="let department of departments">
                           <input type="checkbox" name="department">{{department.dname}}
@@ -76,15 +77,15 @@
               </div>
             </div>
             <div>
-              <input type="submit" class="btn btn-block submit-button" value="Submit" >
-                
+              <input type="submit" class="btn btn-block submit-button" value="Submit" id="submit-event" >
+
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <div class="text-white background-black" id="where">
+  <div class="text-white background-black">
     <div class="container">
       <div class="row">
         <div class="col-md-12 mt-3">
