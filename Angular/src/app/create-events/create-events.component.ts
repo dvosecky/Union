@@ -1,7 +1,9 @@
+import { DepartmentsService } from './../services/departments.service';
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../session';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CreateEventService } from '../services/create-event.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-create-events',
@@ -11,7 +13,8 @@ import { CreateEventService } from '../services/create-event.service';
 export class CreateEventsComponent implements OnInit {
 
   constructor(private session: Session, private router :Router, 
-              private route :ActivatedRoute, private service :CreateEventService) { }
+              private route :ActivatedRoute, private service :CreateEventService,
+              private userService :UsersService, private depService :DepartmentsService) { }
 
   admin: boolean;
   emp: boolean;
@@ -24,6 +27,9 @@ export class CreateEventsComponent implements OnInit {
   time = "03:03";
   date = "2018-03-09";
   description = 'testDesc';
+  users;
+  departments;
+  inviteesBool = [];
 
   ngOnInit() {
     if (this.session.event != null) {
@@ -47,34 +53,66 @@ export class CreateEventsComponent implements OnInit {
     } else if (this.session.role === 'emp') {
       this.emp = true;
     }
+
+    this.userService.getUsers().subscribe(
+      (data) => {
+        console.log(data);
+        this.users = data;
+      }, (error) => {
+        console.log(error);
+      }
+    );
+    this.depService.getDepartments().subscribe(
+      (data) => {
+        console.log(data);
+        this.departments = data;
+      }, (error) => {
+        console.log(error);
+      }
+    );
   }
 
   submit() {
+    let invitees = [];
+    console.log(this.inviteesBool);
+    for (let i = 0; i < this.inviteesBool.length; i++) {
+      if (this.inviteesBool[i] === true) {
+        invitees.push(this.users[i]);
+      }
+    }
+    console.log(invitees);
+
     console.log(
       "name: " + this.name + ", location: " + this.location + ", time: " + 
         this.time + ", date: " + this.date + ", description: " + this.description);
       
 
     if (this.edit === true) { 
-      this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
-        (data) => {
-          console.log(data);
-        }, (error) => {
-          console.log(error);
-        }
-      );
-      alert('Event Updated!');
+      // NOT IMPLEMENTED
+      // this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
+      //   (data) => {
+      //     console.log(data);
+      //   }, (error) => {
+      //     console.log(error);
+      //   }
+      // );
+      // alert('Event Updated!');
     } else {
       this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
         (data) => {
           console.log(data);
+          invitees.forEach(invitee => {
+            this.service.createInvitation(invitee.id, data['eventid']);
+          });
           
         }, (error) => {
           console.log(error);
         }
       );
       alert('Event Created!');
+
+      
     }
-    this.router.navigate(['../my-events'], { relativeTo: this.route });
+    //this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
 }

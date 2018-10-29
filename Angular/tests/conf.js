@@ -9,7 +9,9 @@ exports.config = {
     //Added suites to organize tests and run specific suites
     suites: {
         smoke: 'homepage-smoke-spec.js',
-        homepage: ['homepage-smoke-spec.js', 'homepage-login-spec.js']
+        homepage: ['homepage-smoke-spec.js', 'homepage-login-spec.js'],
+        admin: 'admin-basic-spec.js',
+        basic: ['homepage-login-spec.js', 'admin-basic.spec.js']
     },
     jasmineNodeOpts: {
         showColors: true,

@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Account;
 import com.revature.beans.Event;
 import com.revature.dao.AccountDaoImpl;
 import com.revature.services.EventService;
+import com.revature.services.UserService;
 
 
 public class AddEvent extends HttpServlet {
@@ -63,8 +66,9 @@ public class AddEvent extends HttpServlet {
 			}
 		
 			//Accessing service layer to add event.
-			if(EventService.insertEvent(event)) {
-				response.sendError(200);
+			if(EventService.insertEvent(event) != null) {
+				PrintWriter out = response.getWriter();
+				out.print(event.toString());
 				return;
 			}
 		}
