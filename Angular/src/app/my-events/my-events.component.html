@@ -2,46 +2,46 @@
     background-position: center;	background-size: cover;	background-repeat: no-repeat;
     min-height: 1000px;">
 
-    <app-admin-navbar *ngIf="admin"></app-admin-navbar>
-    <app-emp-navbar *ngIf="emp"></app-emp-navbar>
+  <app-admin-navbar *ngIf="admin"></app-admin-navbar>
+  <app-emp-navbar *ngIf="emp"></app-emp-navbar>
 
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="display-3 text-center">My Events</h3>
-          </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="display-3 text-center" id="my-events">My Events</h3>
         </div>
       </div>
     </div>
-    <div class="pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-            <table class="table table-hover clickable">
-              <thead>
-                <tr>
-                  <th>Event #</th>
-                  <th>Name</th>
-                  <th>Time</th>
-                  <th>Date</th>
-                  <th>Location</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let event of events; index as i" (click)="editEvent(event)"
-                    (click)="editEvent(event)">
-                      <td>{{event['eventid']}}</td>
-                      <td>{{event['name']}}</td>
-                      <td>{{event['time']}}</td>
-                      <td>{{event['date']}}</td>
-                      <td>{{event['location']}}</td>
-                    </tr>
-              </tbody>
-            </table>
-          </div>
+  </div>
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bg-light" style="	box-shadow: 0px 0px 100px 25px black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+          	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+          <table class="table table-hover clickable" id="my-events-table">
+            <thead>
+              <tr>
+                <th>Event #</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of events; index as i" (click)="editEvent(event)" (click)="editEvent(event)">
+                <td>{{event['eventid']}}</td>
+                <td>{{event['name']}}</td>
+                <td>{{event['time']}}</td>
+                <td>{{event['date']}}</td>
+                <td>{{event['location']}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
 
 </body>
