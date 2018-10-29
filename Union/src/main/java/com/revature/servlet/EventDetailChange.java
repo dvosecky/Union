@@ -39,6 +39,8 @@ public class EventDetailChange extends HttpServlet {
 		//converts accountID to in int data type
 		int accountID =Integer.parseInt(req.getParameter("accountID") );
 
+		int ev_id = Integer.parseInt(req.getParameter("ev_id"));
+		
 		//retrieve account 
 		AccountDaoImpl manager=new AccountDaoImpl();
 		Account account = manager.selectAccountById(accountID);
@@ -53,11 +55,11 @@ public class EventDetailChange extends HttpServlet {
 			 */
 			if( account.getRole() > 0 ) {
 				log.trace("Found that role was sufficient to not need approval.");
-				event = new Event( null,timestamp,eventname,description,location, account,1); 
+				event = new Event( ev_id,timestamp,eventname,description,location, account,1); 
 				
 			}else {
 				log.trace("Found that role is insufficient to approve, and thus needs department head or above to approve.");
-				event = new Event( null,timestamp,eventname,description,location, account,0); 
+				event = new Event( ev_id,timestamp,eventname,description,location, account,0); 
 				
 			}
 		
