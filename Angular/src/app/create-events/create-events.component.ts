@@ -30,6 +30,7 @@ export class CreateEventsComponent implements OnInit {
   users;
   departments;
   inviteesBool = [];
+  eventId;
 
   ngOnInit() {
     if (this.session.event != null) {
@@ -38,6 +39,7 @@ export class CreateEventsComponent implements OnInit {
       this.subtitle = 'Update the fields below to edit your event';
       let event = this.session.event;
       console.log(event);
+      this.eventId = event.eventid;
       this.name = event.name;
       this.location = event.location;
       let ISO :string = event.datetime.toISOString();
@@ -88,15 +90,15 @@ export class CreateEventsComponent implements OnInit {
       
 
     if (this.edit === true) { 
-      // NOT IMPLEMENTED
-      // this.service.editEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
-      //   (data) => {
-      //     console.log(data);
-      //   }, (error) => {
-      //     console.log(error);
-      //   }
-      // );
-      // alert('Event Updated!');
+      this.service.editEvent(this.name, this.location, this.time, this.date, 
+        this.description, this.eventId).subscribe(
+        (data) => {
+          console.log(data);
+        }, (error) => {
+          console.log(error);
+        }
+      );
+      alert('Event Updated!');
     } else {
       this.service.createEvent(this.name, this.location, this.time, this.date, this.description).subscribe(
         (data) => {
@@ -113,6 +115,6 @@ export class CreateEventsComponent implements OnInit {
 
       
     }
-    //this.router.navigate(['../my-events'], { relativeTo: this.route });
+    this.router.navigate(['../my-events'], { relativeTo: this.route });
   }
 }
